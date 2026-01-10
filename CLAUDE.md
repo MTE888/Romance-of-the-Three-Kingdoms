@@ -1,5 +1,44 @@
 # Three Kingdoms Digital Platform
 
+## ⚠️ MULTI-SESSION WORKFLOW (READ THIS FIRST!)
+
+**This project uses a multi-session coordination system.** Before doing ANY work:
+
+### 1. Required Reading (In Order)
+```bash
+# Start here - every time you begin a session:
+1. Read SESSION_LOG.md       # See what other sessions are working on
+2. Read STATUS.md             # Check current progress and next tasks
+3. Read docs/DECISIONS.md     # Understand technical decisions made
+```
+
+### 2. Before Starting Work
+- **Pull latest**: `git checkout develop && git pull origin develop`
+- **Add yourself to SESSION_LOG.md**: Document what you're working on
+- **Pick a task from STATUS.md**: Choose from "Next Up" section
+- **Avoid conflicts**: Don't modify files another session is working on
+
+### 3. During Work
+- **Commit frequently**: Small, focused commits with clear messages
+- **Document decisions**: Add to docs/DECISIONS.md if making architecture choices
+- **Update if blocked**: Add blockers to your SESSION_LOG.md entry
+
+### 4. After Work
+- **Update SESSION_LOG.md**: Mark status as Complete or In Progress
+- **Update STATUS.md**: Document progress, mark completed tasks
+- **Push your work**: `git push origin your-branch-name`
+
+### 5. Key Coordination Files
+- **SESSION_LOG.md** → Who's working on what (check for conflicts)
+- **STATUS.md** → Current progress and next tasks
+- **docs/DECISIONS.md** → All technical decisions
+- **docs/PROJECT_PLANNING.md** → Full roadmap
+- **docs/ARCHITECTURE.md** → Technical architecture
+
+**DO NOT SKIP THIS WORKFLOW.** It prevents conflicts between sessions.
+
+---
+
 ## What: Project Overview
 
 A comprehensive **web application** for exploring the Three Kingdoms period (169-280 AD) - blending historical records, literary interpretation, and modern design to create the definitive digital resource for this pivotal era in Chinese history.
