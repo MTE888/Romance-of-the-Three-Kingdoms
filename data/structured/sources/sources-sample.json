@@ -1,0 +1,191 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created_at": "2026-01-10T00:00:00Z",
+    "description": "Source materials catalog for Three Kingdoms Digital Platform"
+  },
+  "sources": [
+    {
+      "id": "sanguozhi-records",
+      "type": "history",
+      "title": {
+        "zh": "三国志",
+        "en": "Records of the Three Kingdoms"
+      },
+      "author": {
+        "zh": "陈寿",
+        "en": "Chen Shou"
+      },
+      "dynasty": "Western Jin",
+      "date": "289 CE",
+      "date_range": {
+        "start": 289,
+        "end": 289
+      },
+      "coverage_period": {
+        "start": 184,
+        "end": 280,
+        "description": "Three Kingdoms period from Yellow Turban Rebellion to Jin unification"
+      },
+      "language": "classical_chinese",
+      "reliability_tier": "primary",
+      "description": {
+        "zh": "官修正史，记载三国时期历史",
+        "en": "Official dynastic history of the Three Kingdoms period, one of the Twenty-Four Histories"
+      },
+      "structure": {
+        "total_fascicles": 65,
+        "sections": [
+          {
+            "name": {"zh": "魏书", "en": "Book of Wei"},
+            "fascicles": 30
+          },
+          {
+            "name": {"zh": "蜀书", "en": "Book of Shu"},
+            "fascicles": 15
+          },
+          {
+            "name": {"zh": "吴书", "en": "Book of Wu"},
+            "fascicles": 20
+          }
+        ]
+      },
+      "file_path": "data/sources/historical/sanguozhi/sanguozhi-full.txt",
+      "url": "https://www.gutenberg.org/ebooks/25606",
+      "license": "public_domain",
+      "notes": "Primary historical source. Chen Shou served the Jin Dynasty and had access to Wei, Shu, and Wu archives."
+    },
+    {
+      "id": "sanguozhi-annotated",
+      "type": "history",
+      "title": {
+        "zh": "三国志注",
+        "en": "Annotated Records of the Three Kingdoms"
+      },
+      "author": {
+        "zh": "陈寿",
+        "en": "Chen Shou"
+      },
+      "commentator": {
+        "zh": "裴松之",
+        "en": "Pei Songzhi"
+      },
+      "dynasty": "Liu Song",
+      "date": "429-431 CE",
+      "language": "classical_chinese",
+      "reliability_tier": "primary",
+      "description": {
+        "zh": "裴松之为三国志所作注解，引用大量已佚史料",
+        "en": "Pei Songzhi's extensive commentary on Records, preserving many lost historical sources"
+      },
+      "relationship": {
+        "based_on": "sanguozhi-records",
+        "adds": "commentary and alternative accounts"
+      },
+      "file_path": "data/sources/historical/sanguozhi-zhu/",
+      "url": "https://ctext.org/wiki.pl?if=en&res=339496",
+      "license": "public_domain",
+      "notes": "Commentary doubles the length of original text. Critical for resolving historical conflicts."
+    },
+    {
+      "id": "romance-novel",
+      "type": "novel",
+      "title": {
+        "zh": "三国演义",
+        "en": "Romance of the Three Kingdoms"
+      },
+      "author": {
+        "zh": "罗贯中",
+        "en": "Luo Guanzhong"
+      },
+      "dynasty": "Yuan/Ming",
+      "date": "14th century",
+      "date_range": {
+        "start": 1330,
+        "end": 1400,
+        "note": "Exact date uncertain, various editions exist"
+      },
+      "coverage_period": {
+        "start": 169,
+        "end": 280,
+        "description": "From Yellow Turban Rebellion to Jin unification, with literary embellishments"
+      },
+      "language": "vernacular_chinese",
+      "reliability_tier": "fiction",
+      "description": {
+        "zh": "历史小说，基于三国历史创作，融合历史事实与文学虚构",
+        "en": "Historical novel based on Three Kingdoms period, blending historical facts with literary fiction"
+      },
+      "structure": {
+        "total_chapters": 120,
+        "format": "classical novel"
+      },
+      "file_path": "src/",
+      "url": "https://ctext.org/sanguo-yanyi",
+      "license": "public_domain",
+      "artistic_license": {
+        "historical_basis": 0.7,
+        "fictional_elements": 0.3,
+        "note": "Traditional saying: 七分实，三分虚 (70% fact, 30% fiction)"
+      },
+      "notes": "One of the Four Great Classical Novels of Chinese literature. Hugely influential in shaping popular perception of the period."
+    },
+    {
+      "id": "hou-han-shu",
+      "type": "history",
+      "title": {
+        "zh": "后汉书",
+        "en": "Book of Later Han"
+      },
+      "author": {
+        "zh": "范晔",
+        "en": "Fan Ye"
+      },
+      "dynasty": "Liu Song",
+      "date": "445 CE",
+      "coverage_period": {
+        "start": 25,
+        "end": 220,
+        "description": "Eastern Han Dynasty"
+      },
+      "language": "classical_chinese",
+      "reliability_tier": "primary",
+      "description": {
+        "zh": "东汉官方史书，记载东汉历史",
+        "en": "Official history of the Eastern Han Dynasty"
+      },
+      "relevance": "Background context for the fall of Han and rise of Three Kingdoms",
+      "file_path": "data/sources/historical/hou-han-shu/late-han/",
+      "url": "https://ctext.org/hou-han-shu",
+      "license": "public_domain",
+      "notes": "Chapters 54-90 cover late Eastern Han period (184-220 CE) most relevant to Three Kingdoms"
+    },
+    {
+      "id": "brewitt-taylor-translation",
+      "type": "translation",
+      "title": {
+        "en": "Romance of the Three Kingdoms (English Translation)"
+      },
+      "original_work": "romance-novel",
+      "translator": {
+        "en": "C.H. Brewitt-Taylor"
+      },
+      "published": 1925,
+      "publisher": "Kelly & Walsh",
+      "language": "english",
+      "reliability_tier": "translation",
+      "description": {
+        "en": "First complete English translation of Romance of the Three Kingdoms"
+      },
+      "file_path": "data/sources/translations/english/novel/brewitt-taylor/",
+      "url": "https://archive.org/details/romanceofthreeki01loku",
+      "license": "public_domain",
+      "translation_quality": {
+        "accuracy": "high",
+        "readability": "moderate",
+        "notes": "Language somewhat archaic by modern standards, but faithful translation"
+      },
+      "notes": "Public domain translation, useful for reference and comparison"
+    }
+  ]
+}
