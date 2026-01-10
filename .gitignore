@@ -15,3 +15,25 @@ sftp-config.json
 ~$*.xls*
 ~$*.ppt*
 ~$*.doc*
+
+# Claude Code local configuration
+CLAUDE.local.md
+.claude/local/
+
+# Analysis and temporary files
+analysis/
+temp/
+*.tmp
+
+# Python virtual environments
+venv/
+env/
+.venv/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Build outputs
+dist/
+build/
+*.egg-info/
