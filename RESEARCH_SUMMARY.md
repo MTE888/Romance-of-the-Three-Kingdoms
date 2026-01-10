@@ -169,14 +169,41 @@ This research session has completed its primary mission. The ball is now in the 
 3. Integrate findings into Phase 1 planning
 4. Update PROJECT_PLANNING.md checklist
 
-**Status**: ✅ Research Complete - Awaiting Planning Session Review
+**Status**: ✅ Research Complete + Data Structure Ready
 
 ---
 
 **Branch to Pull From**: `claude/research-three-kingdoms-KWCaj`
-**Files Modified**:
-- 🆕 `docs/SOURCE_MATERIALS.md` (744 lines, comprehensive guide)
+
+**Files Created**:
+- 🆕 `docs/SOURCE_MATERIALS.md` (744 lines, comprehensive integration guide)
 - 🆕 `RESEARCH_SUMMARY.md` (this file)
+- 🆕 `data/README.md` (Complete workflow and getting started)
+- 🆕 `data/sources/reference/SOURCES.md` (Comprehensive bibliography, 12 sources)
+- 🆕 `data/sources/historical/sanguozhi/README.md` (Download instructions)
+- 🆕 `data/scripts/download-sources.sh` (Automated download script)
+- 📝 `.gitignore` (Updated for data directory)
+
+**Directory Structure Created**:
+```
+data/
+├── sources/              # Raw source materials
+│   ├── historical/       # 三国志, 后汉书, etc.
+│   ├── translations/     # English versions
+│   ├── media/            # Maps, artwork
+│   └── reference/        # SOURCES.md bibliography
+├── structured/           # Extracted JSON data
+│   ├── characters/
+│   ├── events/
+│   ├── locations/
+│   ├── sources/
+│   └── cross-references/
+└── scripts/              # Processing tools
+    ├── extraction/
+    ├── transformation/
+    ├── validation/
+    └── import/
+```
 
 **Compatible With**: Planning session branch `claude/setup-project-planning-Nn6XS`
 
