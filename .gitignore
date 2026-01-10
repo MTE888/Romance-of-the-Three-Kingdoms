@@ -15,3 +15,25 @@ sftp-config.json
 ~$*.xls*
 ~$*.ppt*
 ~$*.doc*
+
+# Data directory - large source files
+data/sources/**/*.txt
+data/sources/**/*.pdf
+data/sources/**/*.epub
+data/sources/**/*.mobi
+data/sources/media/**/*.jpg
+data/sources/media/**/*.png
+data/sources/media/**/*.svg
+data/sources/media/**/*.webp
+
+# But keep documentation
+!data/**/README.md
+!data/**/*.md
+
+# Generated and temporary data
+data/structured/generated/
+data/temp/
+*.tmp
+
+# Scripts can generate output
+data/scripts/output/
