@@ -1,0 +1,86 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Build outputs
+dist
+build
+.next
+out
+.turbo
+
+# Development
+.git
+.github
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Environment files (use .env.example instead)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Testing
+coverage
+.nyc_output
+*.test.ts
+*.spec.ts
+__tests__
+__mocks__
+
+# Documentation (not needed in containers)
+*.md
+!README.md
+!CHANGELOG.md
+docs
+
+# Data and temporary files
+data/sources/historical/*
+data/sources/translations/*
+data/sources/media/*
+data/structured/characters/*.json
+data/structured/events/*.json
+data/structured/locations/*.json
+tmp
+temp
+
+# Prisma
+packages/database/node_modules/.prisma/client/*.d.ts
+packages/database/prisma/migrations/migration_lock.toml
+
+# Logs
+logs
+*.log
+
+# IDE
+.vscode
+.idea
+*.sublime-*
+*.code-workspace
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.circleci
+
+# Other
+LICENSE
+CONTRIBUTING.md
