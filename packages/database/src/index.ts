@@ -4,11 +4,33 @@
  * Prisma client and database utilities
  */
 
-// Prisma client will be exported here after schema is created
-// export * from '@prisma/client';
+import { PrismaClient } from './generated';
 
-// Placeholder export
+// Export Prisma client and types
+export * from './generated';
+
+// Export database version
 export const DATABASE_VERSION = '0.1.0';
 
-// Database client will be initialized here
-// export const db = new PrismaClient();
+// Export singleton database client instance
+// This ensures only one Prisma Client instance is created across the application
+let db: PrismaClient;
+
+declare global {
+  // eslint-disable-next-line no-var
+  var __db: PrismaClient | undefined;
+}
+
+if (process.env.NODE_ENV === 'production') {
+  db = new PrismaClient();
+} else {
+  // In development, use a global variable to preserve the client across hot reloads
+  if (!global.__db) {
+    global.__db = new PrismaClient({
+      log: ['query', 'error', 'warn'],
+    });
+  }
+  db = global.__db;
+}
+
+export { db };
