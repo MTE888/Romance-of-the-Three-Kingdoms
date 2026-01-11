@@ -8,8 +8,8 @@
 
 ### 1. Pull Latest Code
 ```bash
-git checkout develop
-git pull origin develop
+git checkout Develop
+git pull origin Develop
 ```
 
 ### 2. Read These Files (5 minutes)
