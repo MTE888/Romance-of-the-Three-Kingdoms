@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "source": "romance",
+    "extracted_at": "2026-01-10T15:37:35.767863",
+    "count": 5,
+    "version": "1.0"
+  },
+  "characters": [
+    {
+      "id": "liu-bei",
+      "canonical_name": {
+        "zh": "刘备",
+        "en": "Liu Bei"
+      },
+      "courtesy_name": {
+        "zh": "玄德",
+        "en": "Xuande"
+      },
+      "birth_year": 161,
+      "death_year": 223,
+      "kingdom": "shu",
+      "titles": [],
+      "relationships": [],
+      "source_id": "romance",
+      "extracted_at": "2026-01-10T15:37:35.766492"
+    },
+    {
+      "id": "guan-yu",
+      "canonical_name": {
+        "zh": "关羽",
+        "en": "Guan Yu"
+      },
+      "courtesy_name": {
+        "zh": "云长",
+        "en": "Yunchang"
+      },
+      "birth_year": 160,
+      "death_year": 220,
+      "kingdom": "shu",
+      "titles": [],
+      "relationships": [],
+      "source_id": "romance",
+      "extracted_at": "2026-01-10T15:37:35.766730"
+    },
+    {
+      "id": "zhang-fei",
+      "canonical_name": {
+        "zh": "张飞",
+        "en": "Zhang Fei"
+      },
+      "courtesy_name": {
+        "zh": "翼德",
+        "en": "Yide"
+      },
+      "birth_year": 167,
+      "death_year": 221,
+      "kingdom": "shu",
+      "titles": [],
+      "relationships": [],
+      "source_id": "romance",
+      "extracted_at": "2026-01-10T15:37:35.766932"
+    },
+    {
+      "id": "cao-cao",
+      "canonical_name": {
+        "zh": "曹操",
+        "en": "Cao Cao"
+      },
+      "courtesy_name": {
+        "zh": "孟德",
+        "en": "Mengde"
+      },
+      "birth_year": 155,
+      "death_year": 220,
+      "kingdom": "wei",
+      "titles": [],
+      "relationships": [],
+      "source_id": "romance",
+      "extracted_at": "2026-01-10T15:37:35.767149"
+    },
+    {
+      "id": "dong-zhuo",
+      "canonical_name": {
+        "zh": "董卓",
+        "en": "Dong Zhuo"
+      },
+      "courtesy_name": {
+        "zh": "仲颖",
+        "en": "Zhongying"
+      },
+      "birth_year": null,
+      "death_year": null,
+      "kingdom": "other",
+      "titles": [],
+      "relationships": [],
+      "source_id": "romance",
+      "extracted_at": "2026-01-10T15:37:35.767395"
+    }
+  ]
+}

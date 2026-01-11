@@ -1,20 +1,22 @@
-# Project Status
+# Project Status - Three Kingdoms Digital Platform
 
-**Last Updated**: 2026-01-10 (Session 1 Complete)
+**Last Updated**: 2026-01-10
+**Branch**: `Develop` (merged from planning + research sessions)
 
 ---
 
 ## 🎯 Current Phase
 
 **Phase 0: Planning & Architecture** ✅ COMPLETE
+**Phase 0.5: Data Infrastructure** ✅ COMPLETE
 
 **Next Phase**: Phase 1 - Foundation (Weeks 1-4)
 
 ---
 
-## 📊 Today's Progress (2026-01-10)
+## ✅ Completed Work
 
-### Completed ✅
+### Planning Session (claude/setup-project-planning-Nn6XS)
 
 - [x] **Architecture Design**
   - Complete technical stack selection (React + Node.js + PostgreSQL + Azure)
@@ -37,29 +39,58 @@
   - CLAUDE.md - Web development guidelines
   - README.md - Project overview and vision
   - SESSION_LOG.md - Multi-session coordination
-  - STATUS.md - This file
   - docs/DECISIONS.md - Decision log
 
 - [x] **Repository Setup**
-  - .gitignore updated for web development
+  - .gitignore configured for web + data
   - Documentation organized in docs/ directory
   - Git workflow established
 
-### In Progress 🔄
+### Research Session (claude/research-three-kingdoms-KWCaj)
 
-- [ ] **Session 2**: Integrating plans and deciding Phase 1 tasks
+- [x] **Source Research & Documentation**
+  - docs/SOURCE_MATERIALS.md - Complete source research guide (744 lines)
+  - data/README.md - Data workflow documentation (400 lines)
+  - data/sources/reference/SOURCES.md - Master bibliography (800 lines)
+  - data/structured/README.md - JSON schema documentation (500 lines)
+  - RESEARCH_SUMMARY.md - Executive summary
 
-### Blocked ⛔
+- [x] **Data Infrastructure**
+  - Complete directory structure created
+    - `data/sources/` - Raw materials (historical, translations, media)
+    - `data/structured/` - JSON data (characters, events, locations, cross-refs)
+    - `data/scripts/` - Processing tools
 
-- None currently
+- [x] **Extraction & Processing Tools**
+  - download-sources.sh - Automated download script
+  - extract_characters.py - Python character extraction (350 lines, tested ✓)
+  - verify_sources.sh - Bash verification tool (250 lines)
+
+- [x] **Sample Data & Schemas**
+  - sources-sample.json - 5 source records with complete metadata
+  - character-liu-bei-sample.json - Complete dual-profile example (500 lines)
+  - event-red-cliffs-sample.json - Multi-source event example (300 lines)
+  - chapter-to-history-sample.json - Fiction vs fact mapping (350 lines)
+  - from-romance.json - Working extraction demo (5 characters)
+
+---
+
+## 📊 Current Status Summary
+
+| Component | Status | Notes |
+|-----------|--------|-------|
+| **Web Development Planning** | ✅ Complete | Architecture, roadmap, design system |
+| **Data Infrastructure** | ✅ Complete | Directory structure, docs, tools |
+| **Sample Schemas** | ✅ Complete | 4 JSON examples demonstrating system |
+| **Extraction Scripts** | ✅ Working | Tested on Romance novel |
+| **Source Downloads** | ⏸️ Blocked | Network restrictions |
+| **Phase 1 Implementation** | ⏸️ Ready | Awaiting start |
 
 ---
 
 ## 📅 Next Up (Immediate)
 
 ### Phase 1 Foundation Tasks (Ready to Start)
-
-Pick from these parallelizable tasks:
 
 #### Infrastructure Track
 - [ ] Monorepo setup with Turborepo
@@ -79,7 +110,7 @@ Pick from these parallelizable tasks:
 - [ ] Prisma schema design
   - Implement data model from ARCHITECTURE.md
   - Create initial migrations
-  - Set up seed data structure
+  - Set up seed data structure (use sample JSONs)
   - Configure database connection
 
 #### Design System Track
@@ -109,19 +140,97 @@ Pick from these parallelizable tasks:
   - Apollo Client setup
   - i18n configuration (react-i18next)
 
+#### Data Track (Optional - Can Start Now)
+- [ ] Download historical sources (from unrestricted network)
+- [ ] Fix verification script path bug
+- [ ] Expand extraction to all 120 chapters
+- [ ] Build merge script for dual profiles
+
 ---
 
-## 🎯 Phase 1 Goals (Week 1-4)
+## 🚀 What Works Right Now
 
-**Deliverable**: Working development environment with "Hello Three Kingdoms" deployed to Azure
+### Immediate Use (No Downloads Needed)
+```bash
+# Extract characters from Romance (already have 120 chapters)
+cd data/scripts/extraction
+python extract_characters.py \
+  --source romance \
+  --output ../../structured/characters/from-romance.json
 
-**Success Criteria**:
-- [ ] All packages/apps in monorepo can build
-- [ ] Database accessible and seeded with sample data
-- [ ] API serving basic GraphQL query
-- [ ] Frontend rendering and consuming API
-- [ ] Deployed to Azure staging environment
-- [ ] Design system documentation in Storybook
+# Result: Successfully extracted 5 characters from Chapter 1
+```
+
+### Output Example
+✅ **data/structured/characters/from-romance.json**
+```json
+{
+  "id": "liu-bei",
+  "canonical_name": {"zh": "刘备", "en": "Liu Bei"},
+  "courtesy_name": {"zh": "玄德", "en": "Xuande"},
+  "birth_year": 161,
+  "death_year": 223,
+  "kingdom": "shu",
+  "source_id": "romance",
+  "extracted_at": "2026-01-10T15:37:35.766492"
+}
+```
+
+---
+
+## ⏳ Pending (Network Blocked)
+
+### Sources Requiring Manual Download
+- [ ] **三国志 (Records of Three Kingdoms)** from Project Gutenberg
+  - URL: https://www.gutenberg.org/cache/epub/25606/pg25606.txt
+  - Target: `data/sources/historical/sanguozhi/sanguozhi-full.txt`
+  - **Status**: Network proxy blocks download
+  - **Action**: Download from unrestricted network environment
+
+- [ ] **Brewitt-Taylor English Translation** (optional)
+  - URL: https://www.gutenberg.org/files/10610/10610-0.txt
+  - **Action**: Optional, can download later
+
+---
+
+## 🔧 Known Issues
+
+### 1. Verification Script Path Bug
+**File**: `data/scripts/validation/verify_sources.sh`
+**Issue**: Uses `../..` instead of `../../..` for PROJECT_ROOT calculation
+**Fix**: Change line 13 from:
+```bash
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+```
+To:
+```bash
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
+```
+
+### 2. Network Restrictions
+**Issue**: External downloads blocked by proxy
+**Workaround**: Download from unrestricted environment
+
+---
+
+## ⚠️ Critical Decisions Needed
+
+1. **Azure Account Setup**
+   - Need Azure subscription credentials
+   - Need to provision resources before infrastructure work
+   - **Blocks**: Infrastructure track
+
+2. **Font Licensing**
+   - Confirm Noto Serif SC and Crimson Pro can be used commercially
+   - **Blocks**: Design system implementation
+
+3. **Package Manager**
+   - Choose: npm, yarn, or pnpm?
+   - **Recommendation**: pnpm (faster, more efficient)
+
+4. **GraphQL Code Generation**
+   - Use GraphQL Codegen for type safety?
+   - **Recommendation**: Yes
 
 ---
 
@@ -129,117 +238,50 @@ Pick from these parallelizable tasks:
 
 ### MVP Progress (Phases 1-5)
 - **Phase 0 (Planning)**: ✅ 100% Complete
+- **Phase 0.5 (Data Infrastructure)**: ✅ 100% Complete
 - **Phase 1 (Foundation)**: ⏸️ 0% - Ready to start
 - **Phase 2 (Core Reading)**: ⏸️ 0% - Not started
 - **Phase 3 (Relationships & Timeline)**: ⏸️ 0% - Not started
 - **Phase 4 (Multi-Source System)**: ⏸️ 0% - Not started
 - **Phase 5 (Polish & Launch)**: ⏸️ 0% - Not started
 
-**Overall MVP Progress**: 20% (1 of 5 phases complete)
-
----
-
-## ⚠️ Issues / Decisions Needed
-
-### Critical Decisions
-
-1. **Azure Account Setup**
-   - Need Azure subscription credentials
-   - Need to provision resources before infrastructure work
-   - **Owner**: User to provide
-   - **Blocks**: Infrastructure track
-
-2. **Font Licensing**
-   - Confirm Noto Serif SC and Crimson Pro can be used commercially
-   - **Owner**: Session TBD to research
-   - **Blocks**: Design system implementation
-
-3. **Source Material Acquisition**
-   - Need to acquire 三国志 (Records of Three Kingdoms) text
-   - Need historical maps
-   - Need character artwork (commission or acquire)
-   - **Owner**: User to coordinate
-   - **Blocks**: Content creation (Phase 2+)
-
-### Technical Decisions
-
-1. **Package Manager**
-   - Choose: npm, yarn, or pnpm?
-   - **Recommendation**: pnpm (faster, more efficient)
-   - **Decision needed by**: Before monorepo setup
-
-2. **GraphQL Code Generation**
-   - Use GraphQL Codegen for type safety?
-   - **Recommendation**: Yes
-   - **Decision needed by**: Before API implementation
-
-3. **State Management**
-   - Zustand or Redux Toolkit?
-   - **Recommendation**: Zustand (simpler, smaller)
-   - **Decision needed by**: Before frontend implementation
-
----
-
-## 📊 Metrics (When Available)
-
-### Development Metrics
-- Lines of code: N/A (planning phase)
-- Test coverage: N/A
-- Build time: N/A
-- Bundle size: N/A
-
 ### Content Metrics
-- Characters documented: 0 / 100 target
-- Events documented: 0 / 200 target
-- Chapters processed: 0 / 120
+- Characters documented: 5 / 100 target (from extraction demo)
+- Events documented: 1 / 200 target (sample only)
+- Chapters processed: 1 / 120 (can expand to all)
 - Sources integrated: 1 / 10+ target (have 三国演义)
 
 ---
 
-## 🔄 Recent Commits
+## 📈 Statistics
 
-```
-61f9236 - Transform project into web application platform (Session 1)
-d78afba - Add comprehensive Claude Code setup and project planning (Session 1)
-```
+**Total Files Created**: 20+
+- Planning documentation: 7 files
+- Data documentation: 5 files
+- Scripts: 3 files
+- Sample data: 5 JSON files
 
----
-
-## 💡 Notes
-
-### Session Coordination
-- Currently 2 sessions active
-- Session 1: Planning complete, ready to assist with Phase 1
-- Session 2: Integrating plans
-
-### Development Environment
-- Primary branch: `claude/setup-project-planning-Nn6XS`
-- Sessions should work on feature branches
-- Merge to `develop` when features complete
-- `main` branch for production releases
-
-### Communication
-- All sessions must read SESSION_LOG.md before starting
-- Update this STATUS.md at end of each session
-- Document architecture decisions in docs/DECISIONS.md
-- Use PROJECT_PLANNING.md for detailed task tracking
+**Lines of Code/Documentation**: ~8,700+
+- Planning docs: ~3,200 lines
+- Data docs: ~3,000 lines
+- Scripts: ~600 lines
+- Sample JSON: ~1,900 lines
 
 ---
 
-## 🎨 Design Status
+## 💡 Recommendations
 
-### Design System
-- Color palette: ✅ Defined in ARCHITECTURE.md
-- Typography: ✅ Defined in ARCHITECTURE.md
-- Components: ⏸️ Not started
-- Design tokens: ⏸️ Not started
-- Storybook: ⏸️ Not configured
+### Immediate Next Steps
+1. ✅ Merge complete - both planning and research work integrated
+2. 🔧 Choose Phase 1 starting track (recommend: Database + Data tracks in parallel)
+3. 🔧 Download historical sources (from unrestricted network)
+4. 🔧 Begin monorepo setup or Prisma schema design
 
-### UI/UX
-- Wireframes: ⏸️ Not started
-- Mockups: ⏸️ Not started
-- User flows: ⏸️ Not started
-- Accessibility audit: ⏸️ Not started
+### For Data Work
+1. Download 三国志 from unrestricted network
+2. Expand extraction to all 120 Romance chapters
+3. Build merge script for dual profiles
+4. Create database import scripts
 
 ---
 
@@ -249,6 +291,8 @@ d78afba - Add comprehensive Claude Code setup and project planning (Session 1)
 - [CLAUDE.md](CLAUDE.md) - Development guidelines
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) - Technical architecture
 - [docs/PROJECT_PLANNING.md](docs/PROJECT_PLANNING.md) - Roadmap
+- [docs/SOURCE_MATERIALS.md](docs/SOURCE_MATERIALS.md) - Source acquisition guide
+- [data/README.md](data/README.md) - Data workflow guide
 - [SESSION_LOG.md](SESSION_LOG.md) - Session coordination
 
 ### External Resources

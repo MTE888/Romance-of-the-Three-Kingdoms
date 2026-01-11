@@ -1,0 +1,336 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created_at": "2026-01-10T00:00:00Z",
+    "description": "Sample event demonstrating multi-source accounts (historical vs literary)"
+  },
+  "event": {
+    "id": "battle-red-cliffs",
+    "canonical_name": {
+      "zh": "赤壁之战",
+      "en": "Battle of Red Cliffs",
+      "pinyin": "Chìbì Zhī Zhàn"
+    },
+    "type": "battle",
+    "date": {
+      "year": 208,
+      "month": 11,
+      "season": "winter",
+      "lunar_calendar": "13th year of Jian'an era",
+      "confidence": "high",
+      "source_id": "sanguozhi-records"
+    },
+    "location": {
+      "ancient_name": {"zh": "赤壁", "en": "Red Cliffs"},
+      "modern_location": {
+        "province": "Hubei",
+        "near": "Chibi City",
+        "coordinates": {
+          "latitude": 29.72,
+          "longitude": 113.90,
+          "approximate": true
+        }
+      },
+      "geographic_significance": "Strategic position on Yangtze River"
+    },
+    "participants": {
+      "cao_wei_forces": {
+        "commander": {
+          "id": "cao-cao",
+          "name": {"zh": "曹操", "en": "Cao Cao"}
+        },
+        "estimated_strength": {
+          "soldiers": 200000,
+          "source": "historical estimates",
+          "reliability": "uncertain",
+          "notes": "Romance claims 800,000, historians estimate 200,000-300,000"
+        },
+        "key_generals": [
+          {"id": "cao-ren", "name": {"zh": "曹仁", "en": "Cao Ren"}},
+          {"id": "zhang-liao", "name": {"zh": "张辽", "en": "Zhang Liao"}}
+        ]
+      },
+      "sun_liu_alliance": {
+        "commanders": [
+          {
+            "id": "zhou-yu",
+            "name": {"zh": "周瑜", "en": "Zhou Yu"},
+            "role": "Supreme Commander (Wu)",
+            "kingdom": "wu"
+          },
+          {
+            "id": "liu-bei",
+            "name": {"zh": "刘备", "en": "Liu Bei"},
+            "role": "Allied Commander (Shu)",
+            "kingdom": "shu"
+          }
+        ],
+        "estimated_strength": {
+          "soldiers": 50000,
+          "source": "historical estimates",
+          "notes": "Significantly outnumbered"
+        },
+        "key_strategists": [
+          {"id": "zhuge-liang", "name": {"zh": "诸葛亮", "en": "Zhuge Liang"}},
+          {"id": "pang-tong", "name": {"zh": "庞统", "en": "Pang Tong"}}
+        ],
+        "key_generals": [
+          {"id": "huang-gai", "name": {"zh": "黄盖", "en": "Huang Gai"}, "role": "Fire attack executor"},
+          {"id": "gan-ning", "name": {"zh": "甘宁", "en": "Gan Ning"}}
+        ]
+      }
+    },
+    "accounts": {
+      "historical": {
+        "source_id": "sanguozhi-records",
+        "summary": {
+          "zh": "孙刘联军在赤壁击败曹操水军，阻止曹操统一天下，奠定三国鼎立格局",
+          "en": "Sun-Liu alliance defeated Cao Cao's naval forces at Red Cliffs, preventing unification and establishing basis for Three Kingdoms division"
+        },
+        "sequence_of_events": [
+          {
+            "order": 1,
+            "description": "Cao Cao advances south after conquering Jingzhou",
+            "source_citation": "Book of Wei, Biography of Emperor Wu"
+          },
+          {
+            "order": 2,
+            "description": "Sun Quan and Liu Bei form alliance against Cao Cao",
+            "source_citation": "Book of Wu, Biography of Sun Quan; Book of Shu, Biography of Zhuge Liang"
+          },
+          {
+            "order": 3,
+            "description": "Huang Gai proposes fire attack strategy",
+            "source_citation": "Book of Wu, Biography of Huang Gai"
+          },
+          {
+            "order": 4,
+            "description": "Fire ships sent into Cao's fleet, causing massive destruction",
+            "key_tactic": "Fire attack on chained ships"
+          },
+          {
+            "order": 5,
+            "description": "Cao Cao retreats northward, abandons campaign",
+            "source_citation": "Book of Wei, Biography of Emperor Wu"
+          }
+        ],
+        "outcome": {
+          "victor": "Sun-Liu alliance",
+          "casualties": {
+            "cao_forces": "Heavy losses to fire and subsequent retreat",
+            "alliance_forces": "Relatively light",
+            "notes": "Exact numbers not recorded"
+          },
+          "strategic_impact": "Prevented Cao Cao from unifying China under Wei control"
+        },
+        "historical_analysis": {
+          "key_factors": [
+            "Alliance between Sun Quan and Liu Bei",
+            "Effective use of fire attack",
+            "Cao Cao's forces unfamiliar with naval warfare",
+            "Northerners suffering from disease in southern climate"
+          ],
+          "controversies": [
+            {
+              "question": "Exact location of battle",
+              "positions": "Multiple sites claim to be Red Cliffs"
+            },
+            {
+              "question": "Size of Cao Cao's forces",
+              "estimates_range": "100,000 to 300,000",
+              "consensus": "Likely 200,000-250,000"
+            }
+          ]
+        }
+      },
+      "literary": {
+        "source_id": "romance-novel",
+        "chapters": [48, 49, 50],
+        "chapter_titles": [
+          {"zh": "宴长江曹操赋诗 锁战船北军用武", "en": "Cao Cao's Banquet and Poetry at Yangtze"},
+          {"zh": "七星坛诸葛祭风 三江口周瑜纵火", "en": "Zhuge Liang Prays for Wind, Zhou Yu Sets Fire"},
+          {"zh": "诸葛亮智算华容 关云长义释曹操", "en": "Zhuge Liang's Stratagem at Huarong, Guan Yu Releases Cao Cao"}
+        ],
+        "summary": {
+          "zh": "诸葛亮借东风，庞统献连环计，黄盖诈降，周瑜火烧赤壁，大败曹军；关羽华容道义释曹操",
+          "en": "Zhuge Liang summons east wind, Pang Tong suggests chain stratagem, Huang Gai feigns surrender, Zhou Yu burns fleet at Red Cliffs; Guan Yu releases Cao Cao at Huarong Road"
+        },
+        "dramatic_elements": [
+          {
+            "element": "Zhuge Liang prays for east wind on altar",
+            "chapter": 49,
+            "type": "supernatural",
+            "historical_basis": "No historical record",
+            "purpose": "Elevate Zhuge Liang's mystical abilities",
+            "cultural_significance": "Iconic scene in Chinese literature"
+          },
+          {
+            "element": "Pang Tong's chain stratagem (连环计)",
+            "chapter": 47,
+            "type": "embellishment",
+            "historical_basis": "Ships may have been chained, but Pang Tong's role uncertain",
+            "purpose": "Add intrigue and demonstrate strategic brilliance"
+          },
+          {
+            "element": "Huang Gai's feigned surrender (苦肉计)",
+            "chapter": 46,
+            "type": "dramatization",
+            "historical_basis": "Huang Gai did lead fire attack, surrender ruse likely embellished",
+            "purpose": "Demonstrate sacrifice and loyalty"
+          },
+          {
+            "element": "Guan Yu releases Cao Cao at Huarong Road",
+            "chapter": 50,
+            "type": "fictional",
+            "historical_basis": "No historical record of this encounter",
+            "purpose": "Demonstrate Guan Yu's honor and gratitude (repaying past favor)"
+          }
+        ],
+        "literary_themes": [
+          "Intelligence over strength (智谋胜武力)",
+          "Unity against common enemy (联合抗敌)",
+          "Supernatural elements showing mandate of heaven",
+          "Personal honor and righteousness (义气)"
+        ],
+        "famous_quotes": [
+          {
+            "speaker": "Cao Cao",
+            "quote": {"zh": "既生瑜，何生亮", "en": "If Zhou Yu exists, why must Zhuge Liang exist too?"},
+            "context": "Zhou Yu's jealousy of Zhuge Liang's talent (actually from later chapters)",
+            "note": "Often misattributed to Red Cliffs context"
+          }
+        ]
+      },
+      "comparison": {
+        "historical_core": [
+          "Battle occurred in 208/209 CE at Red Cliffs",
+          "Sun-Liu alliance defeated Cao Cao",
+          "Fire attack was key tactic",
+          "Huang Gai played important role",
+          "Cao Cao retreated north after defeat"
+        ],
+        "literary_additions": [
+          {
+            "element": "Zhuge Liang summoning wind",
+            "type": "supernatural",
+            "rationale": "Elevate Zhuge Liang to legendary status"
+          },
+          {
+            "element": "Elaborate stratagems and counter-stratagems",
+            "type": "dramatization",
+            "rationale": "Create narrative tension and showcase intelligence"
+          },
+          {
+            "element": "Guan Yu releasing Cao Cao",
+            "type": "fictional scene",
+            "rationale": "Demonstrate moral virtue and honor above practical concerns"
+          },
+          {
+            "element": "Exaggerated troop numbers (830,000 vs. ~200,000)",
+            "type": "amplification",
+            "rationale": "Increase dramatic stakes"
+          }
+        ],
+        "divergence_analysis": {
+          "historical_accuracy": 0.65,
+          "note": "Core events accurate, but heavily embellished with fictional details",
+          "most_accurate_aspects": [
+            "Alliance formation",
+            "Fire attack tactic",
+            "Strategic outcome"
+          ],
+          "most_fictional_aspects": [
+            "Supernatural elements",
+            "Zhuge Liang's central role (historically Zhou Yu led campaign)",
+            "Huarong Road episode"
+          ]
+        }
+      }
+    },
+    "significance": {
+      "immediate_impact": [
+        "Prevented Cao Cao from conquering south",
+        "Established defensive line along Yangtze River",
+        "Solidified Sun-Liu alliance (temporarily)"
+      ],
+      "long_term_impact": [
+        "Established three-way division of power",
+        "Set stage for Three Kingdoms period (220-280)",
+        "Prevented premature reunification under Wei"
+      ],
+      "historical_assessment": "One of the most decisive battles in Chinese history",
+      "cultural_impact": "One of most famous battles in Chinese culture, subject of countless adaptations"
+    },
+    "related_events": [
+      {
+        "id": "capture-jingzhou",
+        "name": {"zh": "曹操南征荆州", "en": "Cao Cao's Southern Campaign to Jingzhou"},
+        "relationship": "precedes",
+        "year": 208
+      },
+      {
+        "id": "partition-of-jingzhou",
+        "name": {"zh": "荆州之分", "en": "Partition of Jingzhou"},
+        "relationship": "follows",
+        "year": 209,
+        "note": "Sun and Liu divided conquered territory"
+      },
+      {
+        "id": "battle-of-hefei",
+        "name": {"zh": "合肥之战", "en": "Battle of Hefei"},
+        "relationship": "parallel_conflict",
+        "year": 208,
+        "note": "Cao Cao's defense in the north during same period"
+      }
+    ],
+    "sources_cited": [
+      {
+        "source_id": "sanguozhi-records",
+        "sections": [
+          "Book of Wei, Biography of Emperor Wu (魏书·武帝纪)",
+          "Book of Wu, Biography of Zhou Yu (吴书·周瑜传)",
+          "Book of Wu, Biography of Huang Gai (吴书·黄盖传)",
+          "Book of Shu, Biography of Zhuge Liang (蜀书·诸葛亮传)"
+        ]
+      },
+      {
+        "source_id": "romance-novel",
+        "chapters": [46, 47, 48, 49, 50],
+        "section": "Red Cliffs Campaign"
+      }
+    ],
+    "media": {
+      "maps": [
+        {
+          "file": "data/sources/media/maps/battles/red-cliffs-position.png",
+          "description": "Strategic positions of forces",
+          "type": "battle_map"
+        },
+        {
+          "file": "data/sources/media/maps/battles/red-cliffs-fire-attack.png",
+          "description": "Fire attack execution",
+          "type": "tactical_diagram"
+        }
+      ],
+      "artwork": [
+        {
+          "file": "data/sources/media/artwork/scenes/red-cliffs-burning.jpg",
+          "description": "Artistic depiction of burning fleet",
+          "type": "scene"
+        }
+      ]
+    },
+    "metadata": {
+      "importance_rank": 1,
+      "verified": true,
+      "last_updated": "2026-01-10T00:00:00Z",
+      "data_completeness": {
+        "historical_account": 0.90,
+        "literary_account": 0.95,
+        "sources": 1.0,
+        "analysis": 0.85
+      },
+      "tags": ["battle", "turning_point", "fire_attack", "alliance", "decisive"]
+    }
+  }
+}

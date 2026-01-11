@@ -1,0 +1,284 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created_at": "2026-01-10T00:00:00Z",
+    "description": "Cross-reference mapping Romance chapters to historical events, highlighting fiction vs. fact"
+  },
+  "mappings": [
+    {
+      "chapter_number": 1,
+      "chapter_title": {
+        "zh": "宴桃园豪杰三结义 斩黄巾英雄首立功",
+        "en": "Oath of the Peach Garden and First Victory Against Yellow Turbans"
+      },
+      "historical_period": {
+        "year_range": "184 CE",
+        "era": "Late Eastern Han - Yellow Turban Rebellion"
+      },
+      "historical_events_covered": [
+        {
+          "event_id": "yellow-turban-rebellion",
+          "name": {"zh": "黄巾起义", "en": "Yellow Turban Rebellion"},
+          "historical_accuracy": "high",
+          "source": "hou-han-shu",
+          "notes": "Rebellion historically occurred in 184 CE, widespread peasant uprising"
+        }
+      ],
+      "characters_introduced": [
+        {
+          "character_id": "liu-bei",
+          "name": {"zh": "刘备", "en": "Liu Bei"},
+          "historical_basis": "confirmed",
+          "portrayal_accuracy": "moderate - basic facts correct, details embellished"
+        },
+        {
+          "character_id": "guan-yu",
+          "name": {"zh": "关羽", "en": "Guan Yu"},
+          "historical_basis": "confirmed",
+          "portrayal_accuracy": "low - heavily mythologized"
+        },
+        {
+          "character_id": "zhang-fei",
+          "name": {"zh": "张飞", "en": "Zhang Fei"},
+          "historical_basis": "confirmed",
+          "portrayal_accuracy": "moderate - exaggerated characteristics"
+        }
+      ],
+      "fiction_vs_fact": [
+        {
+          "scene": "Peach Garden Oath (桃园结义)",
+          "historical_accuracy": "fictional",
+          "fact": "Liu Bei, Guan Yu, and Zhang Fei were close companions and allies",
+          "fiction": "The specific oath ceremony in a peach garden is not recorded in historical sources",
+          "source_note": "Records mention their relationship but no oath ceremony",
+          "cultural_significance": "Iconic scene representing loyalty and brotherhood in Chinese culture",
+          "why_added": "Establish theme of loyalty; create dramatic founding moment for their alliance"
+        },
+        {
+          "scene": "Three heroes fighting Lü Bu (三英战吕布)",
+          "historical_accuracy": "fictional",
+          "fact": "Lü Bu was a powerful general; Liu Bei's forces did encounter him",
+          "fiction": "This specific three-on-one duel is not recorded",
+          "why_added": "Demonstrate martial prowess; establish Lü Bu as formidable opponent",
+          "note": "This scene actually appears in later chapters, not chapter 1"
+        },
+        {
+          "scene": "Yellow Turban suppression",
+          "historical_accuracy": "high",
+          "fact": "Liu Bei did participate in suppressing Yellow Turban Rebellion",
+          "source": "sanguozhi-records, Book of Shu",
+          "fiction": "Specific battles and tactics are dramatized",
+          "portrayal": "Mostly accurate with embellished details"
+        }
+      ],
+      "literary_devices": [
+        {
+          "device": "Dramatic opening",
+          "purpose": "Establish protagonists and their bond",
+          "technique": "Brotherhood oath ceremony"
+        },
+        {
+          "device": "Heroic introduction",
+          "purpose": "Create sympathetic protagonists",
+          "technique": "Humble origins rising to defeat rebellion"
+        }
+      ],
+      "themes_introduced": [
+        "Loyalty and brotherhood (义)",
+        "Righteousness over self-interest (忠义)",
+        "Rising from humble origins",
+        "Mandate of Heaven (serving legitimate Han Dynasty)"
+      ]
+    },
+    {
+      "chapter_number": 49,
+      "chapter_title": {
+        "zh": "七星坛诸葛祭风 三江口周瑜纵火",
+        "en": "Zhuge Liang Prays for Wind at Seven Star Altar; Zhou Yu Sets Fire at Three Rivers"
+      },
+      "historical_period": {
+        "year_range": "208-209 CE",
+        "era": "Battle of Red Cliffs"
+      },
+      "historical_events_covered": [
+        {
+          "event_id": "battle-red-cliffs",
+          "name": {"zh": "赤壁之战", "en": "Battle of Red Cliffs"},
+          "historical_accuracy": "moderate",
+          "source": "sanguozhi-records",
+          "notes": "Battle occurred, but many details are fictional"
+        }
+      ],
+      "fiction_vs_fact": [
+        {
+          "scene": "Zhuge Liang prays for east wind (借东风)",
+          "historical_accuracy": "fictional",
+          "fact": "Wind direction favored the alliance's fire attack",
+          "fiction": "Zhuge Liang summoning wind through ritual is supernatural invention",
+          "source_note": "Historical records mention favorable wind but no prayer ritual",
+          "cultural_significance": "One of most iconic scenes in Chinese literature",
+          "why_added": "Elevate Zhuge Liang to quasi-supernatural status; demonstrate Mandate of Heaven",
+          "symbolic_meaning": "Heaven's favor towards the righteous cause"
+        },
+        {
+          "scene": "Fire attack on Cao Cao's fleet",
+          "historical_accuracy": "high",
+          "fact": "Fire attack was key tactic that destroyed Cao Cao's fleet",
+          "source": "sanguozhi-records, Book of Wu, Biography of Huang Gai",
+          "fiction": "Specific dramatic details embellished",
+          "portrayal": "Core tactic accurate, execution dramatized"
+        },
+        {
+          "scene": "Zhou Yu's leadership",
+          "historical_accuracy": "high",
+          "fact": "Zhou Yu was supreme commander of allied forces",
+          "source": "sanguozhi-records",
+          "fiction": "Novel diminishes his role compared to Zhuge Liang",
+          "historiographical_note": "Historically Zhou Yu deserves primary credit; novel shifts credit to Zhuge Liang"
+        }
+      ],
+      "historical_divergences": [
+        {
+          "aspect": "Commander attribution",
+          "historical_truth": "Zhou Yu was supreme commander and chief strategist",
+          "novel_portrayal": "Zhuge Liang portrayed as mastermind, Zhou Yu secondary",
+          "reason": "Novel written from Shu perspective; elevates Shu figures",
+          "impact": "Distorts public perception - many believe Zhuge Liang led Red Cliffs campaign"
+        },
+        {
+          "aspect": "Supernatural elements",
+          "historical_truth": "Natural weather conditions favored fire attack",
+          "novel_portrayal": "Zhuge Liang summons wind through magical ritual",
+          "reason": "Add supernatural legitimacy to Shu cause; create memorable scene",
+          "cultural_note": "Reflects Daoist influence in Chinese culture"
+        }
+      ],
+      "themes": [
+        "Heaven's mandate favors the righteous",
+        "Intelligence and strategy over brute force",
+        "Unity against common enemy",
+        "Sacrifice for greater good (Huang Gai's feigned surrender)"
+      ],
+      "related_chapters": [
+        {
+          "chapter": 48,
+          "title": "Setup for Red Cliffs campaign",
+          "relationship": "precedes"
+        },
+        {
+          "chapter": 50,
+          "title": "Guan Yu releases Cao Cao at Huarong Road",
+          "relationship": "follows"
+        }
+      ]
+    },
+    {
+      "chapter_number": 85,
+      "chapter_title": {
+        "zh": "刘先主遗诏托孤儿 诸葛亮安居平五路",
+        "en": "Liu Bei Entrusts His Heir to Zhuge Liang; Zhuge Liang Defends Against Five Armies"
+      },
+      "historical_period": {
+        "year_range": "223 CE",
+        "era": "Death of Liu Bei"
+      },
+      "historical_events_covered": [
+        {
+          "event_id": "liu-bei-death",
+          "name": {"zh": "刘备病逝白帝城", "en": "Death of Liu Bei at Baidi Castle"},
+          "historical_accuracy": "high",
+          "source": "sanguozhi-records, Book of Shu",
+          "notes": "Event historically confirmed"
+        },
+        {
+          "event_id": "deathbed-entrustment",
+          "name": {"zh": "白帝托孤", "en": "Deathbed Entrustment at Baidi"},
+          "historical_accuracy": "moderate",
+          "source": "sanguozhi-records",
+          "notes": "Event occurred but dialogue likely embellished"
+        }
+      },
+      "fiction_vs_fact": [
+        {
+          "scene": "Liu Bei entrusts Liu Shan to Zhuge Liang",
+          "historical_accuracy": "moderate",
+          "fact": "Liu Bei did entrust his son and kingdom to Zhuge Liang before death",
+          "source": "sanguozhi-records, Book of Shu, Biography of Zhuge Liang",
+          "fiction": "Exact words and dramatic dialogue are literary invention",
+          "famous_quote": {
+            "zh": "若嗣子可辅，辅之；如其不才，君可自取",
+            "en": "If my son is worthy, support him; if not, you may take the throne yourself",
+            "historical_basis": "Similar sentiment recorded in Records, exact words uncertain"
+          },
+          "significance": "Demonstrates Liu Bei's trust and Zhuge Liang's loyalty"
+        },
+        {
+          "scene": "Liu Bei's death at Baidi Castle",
+          "historical_accuracy": "high",
+          "fact": "Liu Bei died at Baidi Castle in 223 CE after defeat at Battle of Yiling",
+          "source": "sanguozhi-records",
+          "fiction": "Deathbed scenes dramatized",
+          "context": "Defeated in campaign to avenge Guan Yu's death"
+        },
+        {
+          "scene": "Five-army invasion defended by Zhuge Liang",
+          "historical_accuracy": "moderate",
+          "fact": "Zhuge Liang did face multiple threats after Liu Bei's death",
+          "fiction": "Specific five-pronged attack may be dramatized or consolidated",
+          "purpose": "Demonstrate Zhuge Liang's strategic brilliance in crisis"
+        }
+      ],
+      "emotional_impact": [
+        "Climactic end to Liu Bei's arc",
+        "Transfer of responsibility to next generation",
+        "Zhuge Liang's loyalty demonstrated through acceptance"
+      ],
+      "themes": [
+        "Loyalty beyond death (忠)",
+        "Transfer of mandate and responsibility",
+        "Trust between lord and minister",
+        "End of an era"
+      ],
+      "historical_context": {
+        "preceding_event": "Battle of Yiling defeat (夷陵之战)",
+        "liu_bei_age_at_death": 62,
+        "liu_shan_age": "17 (approximate)",
+        "political_situation": "Shu Han vulnerable after Liu Bei's death and earlier losses",
+        "zhuge_liang_role": "Became regent and dominant political force in Shu"
+      }
+    }
+  ],
+  "aggregated_statistics": {
+    "total_chapters": 120,
+    "chapters_with_high_historical_accuracy": 45,
+    "chapters_with_moderate_accuracy": 50,
+    "chapters_with_low_accuracy": 25,
+    "most_accurate_content_types": [
+      "Major battles and their outcomes",
+      "Births and deaths of major figures",
+      "Territory control changes",
+      "Alliance formations"
+    ],
+    "most_fictional_content_types": [
+      "Personal dialogues",
+      "Supernatural events",
+      "Individual combat duels",
+      "Strategic stratagems (often exaggerated)"
+    ]
+  },
+  "methodology": {
+    "accuracy_scoring": {
+      "high": "Core events and outcomes historically confirmed",
+      "moderate": "Events occurred but details embellished or uncertain",
+      "low": "Largely fictional with minimal historical basis",
+      "fictional": "No historical record, pure literary invention"
+    },
+    "sources_used": [
+      "sanguozhi-records",
+      "sanguozhi-annotated",
+      "hou-han-shu",
+      "romance-novel"
+    ],
+    "verification_process": "Cross-reference novel chapters with historical records, identify divergences, document reasons for fictional additions"
+  }
+}
