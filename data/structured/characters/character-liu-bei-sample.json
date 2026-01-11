@@ -1,0 +1,307 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created_at": "2026-01-10T00:00:00Z",
+    "description": "Sample character profile demonstrating dual-profile system (historical vs literary)"
+  },
+  "character": {
+    "id": "liu-bei",
+    "canonical_name": {
+      "zh": "刘备",
+      "en": "Liu Bei",
+      "pinyin": "Liú Bèi"
+    },
+    "alternative_names": [
+      {
+        "type": "courtesy_name",
+        "zh": "玄德",
+        "en": "Xuande",
+        "pinyin": "Xuándé"
+      },
+      {
+        "type": "title",
+        "zh": "刘皇叔",
+        "en": "Imperial Uncle Liu",
+        "context": "Claimed descent from Han royal family"
+      },
+      {
+        "type": "posthumous_title",
+        "zh": "昭烈皇帝",
+        "en": "Emperor Zhaolie",
+        "context": "Posthumous title in Shu Han"
+      }
+    ],
+    "dates": {
+      "birth": {
+        "year": 161,
+        "month": null,
+        "day": null,
+        "source_id": "sanguozhi-records",
+        "confidence": "high"
+      },
+      "death": {
+        "year": 223,
+        "month": 4,
+        "day": null,
+        "location": {"zh": "白帝城", "en": "Baidi Castle"},
+        "source_id": "sanguozhi-records",
+        "confidence": "high"
+      },
+      "lifespan": 62
+    },
+    "kingdom_affiliation": {
+      "primary": "shu",
+      "history": [
+        {
+          "period": "161-184",
+          "affiliation": "han",
+          "role": "subject"
+        },
+        {
+          "period": "184-221",
+          "affiliation": "han",
+          "role": "warlord / official"
+        },
+        {
+          "period": "221-223",
+          "affiliation": "shu",
+          "role": "emperor"
+        }
+      ]
+    },
+    "profiles": {
+      "historical": {
+        "source_id": "sanguozhi-records",
+        "summary": {
+          "zh": "刘备，蜀汉开国皇帝，以仁义著称，善于用人，联合东吴抗曹，最终建立蜀汉政权",
+          "en": "Founder and first emperor of Shu Han. Known for benevolence, skilled at recruiting talent, allied with Eastern Wu against Cao Wei, ultimately established Shu Han regime"
+        },
+        "personality_traits": [
+          {
+            "trait": {"zh": "宽厚", "en": "magnanimous"},
+            "source_citation": "Book of Shu, Biography of First Ruler",
+            "evidence": "善下人，喜怒不形于色 (Good at treating subordinates, did not show anger or joy on his face)"
+          },
+          {
+            "trait": {"zh": "坚韧", "en": "persistent"},
+            "evidence": "Despite numerous defeats, continued to pursue his ambitions"
+          },
+          {
+            "trait": {"zh": "识人", "en": "perceptive of talent"},
+            "evidence": "Successfully recruited Zhuge Liang, Guan Yu, Zhang Fei, and other capable individuals"
+          }
+        ],
+        "major_accomplishments": [
+          {
+            "year": 184,
+            "event": "Participated in suppression of Yellow Turban Rebellion",
+            "significance": "Beginning of military career"
+          },
+          {
+            "year": 208,
+            "event": "Battle of Red Cliffs",
+            "role": "Allied with Sun Quan to defeat Cao Cao",
+            "significance": "Prevented Cao Cao from unifying China"
+          },
+          {
+            "year": 214,
+            "event": "Captured Yi Province",
+            "significance": "Established territorial base for Shu Han"
+          },
+          {
+            "year": 221,
+            "event": "Proclaimed Emperor of Shu Han",
+            "significance": "Established one of Three Kingdoms"
+          }
+        ],
+        "historical_assessment": {
+          "contemporary_view": "Regarded as legitimate heir to Han Dynasty",
+          "historiographical_view": "Successful warlord who capitalized on Han legitimacy claim",
+          "strengths": ["Political skill", "Personal charisma", "Ability to attract talent"],
+          "weaknesses": ["Military defeats", "Emotional decisions (e.g., campaign against Wu)", "Dependent on advisors"]
+        }
+      },
+      "literary": {
+        "source_id": "romance-novel",
+        "summary": {
+          "zh": "仁德之君，桃园结义，三顾茅庐，托孤白帝，被塑造为理想君主的典范",
+          "en": "Embodiment of benevolent rulership. Sworn brotherhood at Peach Garden, three visits to Zhuge Liang's cottage, deathbed entrustment at Baidi Castle. Portrayed as model of ideal Confucian ruler"
+        },
+        "personality_traits": [
+          {
+            "trait": {"zh": "仁义", "en": "benevolent and righteous"},
+            "emphasized": true,
+            "fictional_enhancement": "Portrayal emphasizes virtues more than historical records"
+          },
+          {
+            "trait": {"zh": "谦逊", "en": "humble"},
+            "emphasized": true,
+            "iconic_scene": "Three visits to thatched cottage (三顾茅庐)"
+          },
+          {
+            "trait": {"zh": "重义", "en": "values righteousness"},
+            "iconic_scene": "Peach Garden Oath with Guan Yu and Zhang Fei"
+          },
+          {
+            "trait": {"zh": "善哭", "en": "prone to tears"},
+            "literary_device": "Emotional vulnerability to show compassion",
+            "note": "Folk saying: '刘备的江山是哭出来的' (Liu Bei's kingdom was cried into existence)"
+          }
+        ],
+        "iconic_scenes": [
+          {
+            "chapter": 1,
+            "title": {"zh": "桃园三结义", "en": "Oath of the Peach Garden"},
+            "description": "Sworn brotherhood with Guan Yu and Zhang Fei",
+            "historical_basis": "Relationship existed but oath ceremony likely fictional",
+            "literary_significance": "Establishes theme of loyalty and brotherhood"
+          },
+          {
+            "chapter": 37,
+            "title": {"zh": "三顾茅庐", "en": "Three Visits to the Thatched Cottage"},
+            "description": "Liu Bei visits Zhuge Liang three times to recruit him",
+            "historical_basis": "Meeting occurred, but details embellished",
+            "literary_significance": "Demonstrates humility and respect for talent"
+          },
+          {
+            "chapter": 85,
+            "title": {"zh": "白帝托孤", "en": "Deathbed Entrustment at Baidi"},
+            "description": "Liu Bei entrusts his son and kingdom to Zhuge Liang",
+            "historical_basis": "Event occurred, dialogue likely embellished",
+            "literary_significance": "Demonstrates trust and Zhuge Liang's loyalty"
+          }
+        ],
+        "fictional_embellishments": [
+          {
+            "element": "Supernatural signs at birth and death",
+            "type": "mythological",
+            "purpose": "Legitimize his mandate to rule"
+          },
+          {
+            "element": "Perfect virtue and righteousness",
+            "type": "idealization",
+            "purpose": "Create Confucian ideal ruler archetype"
+          },
+          {
+            "element": "Emotional displays",
+            "type": "dramatization",
+            "purpose": "Humanize character and create sympathy"
+          }
+        ],
+        "cultural_impact": {
+          "archetype": "Benevolent ruler who values righteousness over pragmatism",
+          "popular_perception": "Hero of the novel despite ultimate failure",
+          "proverbs": [
+            {"zh": "刘备摔孩子——收买人心", "en": "Liu Bei throws his child - to win hearts", "meaning": "Pretending to care"},
+            {"zh": "三个臭皮匠，胜过诸葛亮", "en": "Three cobblers equal one Zhuge Liang", "context": "Related to Liu Bei's reliance on advisors"}
+          ]
+        }
+      },
+      "comparison": {
+        "divergences": [
+          {
+            "aspect": "Personality",
+            "historical": "Pragmatic warlord with political skill",
+            "literary": "Idealized Confucian ruler embodying perfect virtue",
+            "explanation": "Novel emphasizes Confucian virtues to create moral exemplar"
+          },
+          {
+            "aspect": "Emotional expression",
+            "historical": "Controlled, did not show emotions (善怒不形于色)",
+            "literary": "Frequently cries, shows emotions openly",
+            "explanation": "Literary device to create sympathy and demonstrate compassion"
+          },
+          {
+            "aspect": "Military ability",
+            "historical": "Multiple defeats, dependent on generals",
+            "literary": "Portrayed more favorably, defeats downplayed",
+            "explanation": "Novel focuses on moral character over military success"
+          }
+        ],
+        "commonalities": [
+          "Both sources agree on his ability to attract talented followers",
+          "Both emphasize his claim to Han legitimacy",
+          "Both acknowledge his ultimate failure to restore Han Dynasty",
+          "Both record major biographical events (birth, death, major battles)"
+        ]
+      }
+    },
+    "relationships": [
+      {
+        "type": "sworn_brother",
+        "character_id": "guan-yu",
+        "name": {"zh": "关羽", "en": "Guan Yu"},
+        "description": "Elder sworn brother (by age), lifelong companion",
+        "source_id": "romance-novel",
+        "historical_accuracy": "Relationship existed, oath ceremony likely fictional"
+      },
+      {
+        "type": "sworn_brother",
+        "character_id": "zhang-fei",
+        "name": {"zh": "张飞", "en": "Zhang Fei"},
+        "description": "Younger sworn brother, military general",
+        "source_id": "romance-novel",
+        "historical_accuracy": "Relationship existed, oath ceremony likely fictional"
+      },
+      {
+        "type": "advisor",
+        "character_id": "zhuge-liang",
+        "name": {"zh": "诸葛亮", "en": "Zhuge Liang"},
+        "description": "Prime minister and chief strategist",
+        "relationship": "lord-vassal",
+        "source_id": "sanguozhi-records",
+        "historical_accuracy": "confirmed"
+      },
+      {
+        "type": "son",
+        "character_id": "liu-shan",
+        "name": {"zh": "刘禅", "en": "Liu Shan"},
+        "description": "Heir and second emperor of Shu Han",
+        "source_id": "sanguozhi-records",
+        "historical_accuracy": "confirmed"
+      },
+      {
+        "type": "ally",
+        "character_id": "sun-quan",
+        "name": {"zh": "孙权", "en": "Sun Quan"},
+        "description": "Ruler of Eastern Wu, allied against Cao Wei",
+        "relationship": "alliance (broken later)",
+        "source_id": "sanguozhi-records",
+        "historical_accuracy": "confirmed"
+      },
+      {
+        "type": "rival",
+        "character_id": "cao-cao",
+        "name": {"zh": "曹操", "en": "Cao Cao"},
+        "description": "Founder of Cao Wei, primary rival",
+        "source_id": "sanguozhi-records",
+        "historical_accuracy": "confirmed"
+      }
+    ],
+    "appearances": {
+      "romance_chapters": [1, 2, 5, 6, 7, 8, 11, 12, 13, 19, 20, 21, 23, 28, 29, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 60, 61, 62, 63, 64, 65, 81, 82, 83, 84, 85],
+      "total_mentions": "~500+ across 120 chapters",
+      "protagonist_status": true,
+      "first_appearance": {
+        "chapter": 1,
+        "title": {"zh": "宴桃园豪杰三结义", "en": "Oath of the Peach Garden"}
+      },
+      "death_scene": {
+        "chapter": 85,
+        "title": {"zh": "白帝托孤", "en": "Deathbed Entrustment at Baidi Castle"}
+      }
+    },
+    "metadata": {
+      "importance_rank": 1,
+      "character_type": "historical_figure",
+      "verified": true,
+      "last_updated": "2026-01-10T00:00:00Z",
+      "data_completeness": {
+        "historical_profile": 0.95,
+        "literary_profile": 0.90,
+        "relationships": 0.85,
+        "sources": 1.0
+      }
+    }
+  }
+}
