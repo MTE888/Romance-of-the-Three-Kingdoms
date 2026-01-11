@@ -1,17 +1,106 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+.nyc_output/
+
+# Production builds
+dist/
+build/
+.next/
+out/
+
+# Development
+.turbo/
+.vite/
+.cache/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-*
 *.swp
 *.swo
-*.sublime-*
-*.pyc
-jmeter.log
-__pycache__
-tmp/
-node_modules/
-sftp-config.json
-.DS_Store
 *.iml
 *.ipr
 *.iws
-*.idea
+.DS_Store
+
+# OS
+Thumbs.db
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+prisma/dev.db
+prisma/dev.db-journal
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+analysis/
+
+# Claude Code local configuration
+CLAUDE.local.md
+.claude/local/
+
+# Python (legacy, keeping for reference)
+__pycache__/
+*.pyc
+venv/
+env/
+.venv/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Office temporary files
 ~$*.xls*
 ~$*.ppt*
 ~$*.doc*
+
+# Azure
+.azure/
+
+# Storybook
+storybook-static/
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
