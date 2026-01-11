@@ -1,0 +1,49 @@
+{
+  "name": "three-kingdoms-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The definitive digital platform for exploring the Three Kingdoms period",
+  "keywords": [
+    "three-kingdoms",
+    "chinese-history",
+    "react",
+    "nodejs",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MTE888/Romance-of-the-Three-Kingdoms.git"
+  },
+  "license": "TBD",
+  "author": "Three Kingdoms Digital Platform Team",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "test": "turbo run test",
+    "test:unit": "turbo run test:unit",
+    "test:e2e": "turbo run test:e2e",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "dev:web": "turbo run dev --filter=web",
+    "dev:api": "turbo run dev --filter=api",
+    "build:web": "turbo run build --filter=web",
+    "build:api": "turbo run build --filter=api"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "prettier": "^3.1.0",
+    "turbo": "^1.11.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.12.0"
+}

@@ -1,0 +1,487 @@
+// Three Kingdoms Digital Platform - Database Schema
+// Implements multi-source truth system with PostgreSQL + JSONB
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum SourceType {
+  NOVEL      // 三国演义 (Romance of Three Kingdoms)
+  HISTORY    // 三国志 (Records of Three Kingdoms)
+  ANALYSIS   // Modern scholarly analysis
+  ARTWORK    // Historical artwork, portraits
+  MAP        // Historical maps
+}
+
+enum ReliabilityTier {
+  PRIMARY    // 三国志 - Historical records
+  SECONDARY  // Supporting historical documents
+  TERTIARY   // Later interpretations
+  FICTION    // 三国演义 - Literary work
+}
+
+enum Kingdom {
+  WEI        // 魏国
+  SHU        // 蜀国
+  WU         // 吴国
+  HAN        // 汉朝
+  OTHER      // Other/Neutral
+}
+
+enum RelationshipType {
+  SWORN_BROTHER   // 结拜兄弟
+  FAMILY          // 家族关系
+  SPOUSE          // 配偶
+  PARENT_CHILD    // 父子/母子
+  LORD_VASSAL     // 君臣关系
+  FRIEND          // 朋友
+  RIVAL           // 对手
+  ENEMY           // 敌人
+  MENTOR_STUDENT  // 师徒
+}
+
+enum RelationshipSource {
+  HISTORICAL // From historical records
+  LITERARY   // From Romance novel
+  BOTH       // Confirmed in both
+}
+
+enum EventType {
+  BATTLE     // 战役
+  POLITICAL  // 政治事件
+  PERSONAL   // 个人事件
+  NATURAL    // 自然事件
+  CULTURAL   // 文化事件
+}
+
+enum DatePrecision {
+  EXACT       // 确切日期
+  APPROXIMATE // 大约时间
+  ERA         // 时代估计
+}
+
+enum LocationType {
+  CITY        // 城市
+  PROVINCE    // 省/州
+  BATTLEFIELD // 战场
+  LANDMARK    // 地标
+}
+
+enum AnnotationType {
+  HISTORICAL_NOTE   // 历史注释
+  CHARACTER_INTRO   // 人物介绍
+  EVENT_REFERENCE   // 事件引用
+}
+
+enum ConsensusLevel {
+  UNANIMOUS // 一致认同
+  MAJORITY  // 多数认同
+  DISPUTED  // 有争议
+  UNIQUE    // 孤证
+}
+
+// ============================================================================
+// SOURCE SYSTEM
+// ============================================================================
+
+model Source {
+  id          String          @id @default(uuid())
+  type        SourceType
+  title       String
+  author      String?
+  era         String?         // e.g., "14th century", "Ming Dynasty"
+  language    String          @default("zh")
+  reliability ReliabilityTier
+
+  // Multilingual description stored as JSON: { zh: "...", en: "..." }
+  description Json
+
+  // Flexible metadata for additional source information
+  metadata    Json?
+
+  // Relations
+  facts       Fact[]
+
+  // Timestamps
+  createdAt   DateTime        @default(now()) @map("created_at")
+  updatedAt   DateTime        @updatedAt @map("updated_at")
+
+  @@map("sources")
+}
+
+// ============================================================================
+// CHARACTER SYSTEM
+// ============================================================================
+
+model Character {
+  id              String   @id @default(uuid())
+
+  // Identity - stored as JSON: { zh: "刘备", en: "Liu Bei" }
+  canonicalName   Json     @map("canonical_name")
+  courtesyName    Json?    @map("courtesy_name")  // { zh: "玄德" }
+  aliases         Json[]   // Array of { zh: "...", en: "..." }
+
+  // Core Information
+  birthYear       Int?     @map("birth_year")
+  deathYear       Int?     @map("death_year")
+  birthLocationId String?  @map("birth_location_id")
+
+  // Categorization
+  kingdom         Kingdom
+  socialClass     String?  @map("social_class")
+  occupations     String[] // Array of occupation strings
+
+  // Multi-source representation (JSONB for flexibility)
+  // Structure: { summary: { zh, en }, personalityTraits: [], achievements: [], sources: [] }
+  historicalProfile Json   @map("historical_profile")
+  literaryProfile   Json   @map("literary_profile")
+
+  // Rich Content
+  biography       Json?    // Multilingual markdown: { zh: "...", en: "..." }
+  images          Json[]   // Array of image objects: { url, caption, source }
+  quotes          Json[]   // Array of quote objects: { text, context, source }
+
+  // Metadata
+  verified            Boolean  @default(false)
+  verificationNotes   String?  @map("verification_notes")
+
+  // Relations
+  birthLocation       Location?              @relation("CharacterBirthLocation", fields: [birthLocationId], references: [id])
+  relationshipsAsA    CharacterRelationship[] @relation("CharacterA")
+  relationshipsAsB    CharacterRelationship[] @relation("CharacterB")
+  eventParticipations Json[]                  // Stored as JSONB array
+  facts               Fact[]
+  timelineEntries     TimelineEntry[]
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("characters")
+}
+
+// ============================================================================
+// RELATIONSHIPS
+// ============================================================================
+
+model CharacterRelationship {
+  id              String             @id @default(uuid())
+
+  characterAId    String             @map("character_a_id")
+  characterBId    String             @map("character_b_id")
+  relationshipType RelationshipType  @map("relationship_type")
+
+  // Source-aware
+  relationshipSource RelationshipSource @map("relationship_source")
+  sources           Json[]             // Array of source IDs
+
+  // Context
+  startYear       Int?               @map("start_year")
+  endYear         Int?               @map("end_year")  // null = ongoing
+  description     Json?              // { zh: "...", en: "..." }
+  strength        Int                @default(5)  // 1-10, for graph visualization
+
+  // Directional
+  isReciprocal    Boolean            @default(true) @map("is_reciprocal")
+
+  // Relations
+  characterA      Character          @relation("CharacterA", fields: [characterAId], references: [id])
+  characterB      Character          @relation("CharacterB", fields: [characterBId], references: [id])
+
+  // Timestamps
+  createdAt       DateTime           @default(now()) @map("created_at")
+
+  @@map("character_relationships")
+  @@index([characterAId])
+  @@index([characterBId])
+}
+
+// ============================================================================
+// EVENTS
+// ============================================================================
+
+model Event {
+  id              String        @id @default(uuid())
+
+  // Identity
+  name            Json          // { zh: "赤壁之战", en: "Battle of Red Cliffs" }
+  type            EventType
+
+  // Temporal
+  dateYear        Int           @map("date_year")
+  dateMonth       Int?          @map("date_month")
+  dateDay         Int?          @map("date_day")
+  datePrecision   DatePrecision @map("date_precision")
+  durationDays    Int?          @map("duration_days")
+
+  // Spatial
+  locationId      String?       @map("location_id")
+
+  // Content
+  description     Json          // Multilingual markdown
+  significance    Json?         // Why it matters
+
+  // Multi-source handling
+  // Structure: { summary: "...", sources: [...] }
+  historicalAccount Json?       @map("historical_account")
+  literaryAccount   Json?       @map("literary_account")
+
+  // Participants stored as JSONB: { characterId, role }
+  participants    Json[]
+
+  // Consequences
+  outcomes        Json[]
+  leadsToEventIds String[]      @map("leads_to_event_ids")  // Causal chain
+
+  // Relations
+  location        Location?     @relation(fields: [locationId], references: [id])
+  timelineEntries TimelineEntry[]
+  facts           Fact[]
+
+  // Timestamps
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+
+  @@map("events")
+  @@index([dateYear])
+  @@index([type])
+}
+
+// ============================================================================
+// LOCATIONS
+// ============================================================================
+
+model Location {
+  id              String       @id @default(uuid())
+
+  name            Json         // { zh: "长安", en: "Chang'an" }
+  modernName      Json?        // Modern name if different
+  type            LocationType
+
+  // Geography (using PostGIS point type would be ideal, but using Json for now)
+  coordinates     Json?        // { latitude: x, longitude: y }
+  region          String?
+
+  // Historical context
+  controllingKingdom String?   @map("controlling_kingdom")  // Changes over time
+  historicalSignificance Json? @map("historical_significance")
+
+  // Rich content
+  description     Json?        // Multilingual
+  images          Json[]       // Maps, photos, artwork
+
+  // Relations
+  charactersborn  Character[]  @relation("CharacterBirthLocation")
+  events          Event[]
+
+  // Timestamps
+  createdAt       DateTime     @default(now()) @map("created_at")
+
+  @@map("locations")
+}
+
+// ============================================================================
+// CHAPTERS (Novel Structure)
+// ============================================================================
+
+model Chapter {
+  id          String   @id @default(uuid())
+
+  number      Int      @unique  // 1-120
+  title       Json     // { zh: "宴桃园豪杰三结义 斩黄巾英雄首立功" }
+
+  // Content
+  content     String   @db.Text  // Chinese text
+  contentEn   String?  @map("content_en") @db.Text  // English translation
+  summary     Json?    // Multilingual summary
+
+  // Structure - scenes stored as JSONB array
+  // Structure: { title, content, startPosition, endPosition }
+  scenes      Json[]
+
+  // Annotations - stored as JSONB array
+  // Structure: { position, type, content, references: [...] }
+  annotations Json[]
+
+  // Analysis
+  keyCharacters String[]  @map("key_characters")  // Array of character IDs
+  keyEvents     String[]  @map("key_events")      // Array of event IDs
+  themes        String[]                           // Theme tags
+
+  // Timestamps
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@map("chapters")
+  @@index([number])
+}
+
+// ============================================================================
+// FACT & SOURCE ATTRIBUTION SYSTEM
+// ============================================================================
+
+model Fact {
+  id              String         @id @default(uuid())
+
+  // Entity reference
+  entityType      String         @map("entity_type")  // 'character', 'event', 'relationship', 'location'
+  entityId        String         @map("entity_id")
+
+  // The claim
+  claimType       String         @map("claim_type")   // e.g., "birth_year", "personality_trait"
+  claimValue      Json           @map("claim_value")  // Flexible value storage
+
+  // Attribution
+  sourceId        String         @map("source_id")
+  sourceCitation  String?        @map("source_citation")  // Specific page, chapter
+  reliabilityScore Float         @map("reliability_score") @default(0.5)  // 0-1
+
+  // Conflict resolution
+  conflictsWith   String[]       @map("conflicts_with")    // Other fact IDs
+  consensusLevel  ConsensusLevel @map("consensus_level")
+
+  // Verification
+  verifiedBy      String?        @map("verified_by")       // User/admin ID
+  verificationDate DateTime?     @map("verification_date")
+  verificationNotes String?      @map("verification_notes")
+
+  // Relations
+  source          Source         @relation(fields: [sourceId], references: [id])
+  character       Character?     @relation(fields: [entityId], references: [id])
+  event           Event?         @relation(fields: [entityId], references: [id])
+
+  // Timestamps
+  createdAt       DateTime       @default(now()) @map("created_at")
+
+  @@map("facts")
+  @@index([entityType, entityId])
+  @@index([sourceId])
+}
+
+// ============================================================================
+// TIMELINE
+// ============================================================================
+
+model TimelineEntry {
+  id          String    @id @default(uuid())
+
+  year        Int
+  month       Int?
+  day         Int?
+
+  // Reference (can be event OR character-related)
+  eventId     String?   @map("event_id")
+  characterId String?   @map("character_id")  // For birth/death
+  description Json?     // If not tied to event: { zh: "...", en: "..." }
+
+  // Display
+  importance  Int       @default(5)  // 1-10, for filtering
+  category    String?
+
+  // Relations
+  event       Event?    @relation(fields: [eventId], references: [id])
+  character   Character? @relation(fields: [characterId], references: [id])
+
+  // Timestamps
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  @@map("timeline_entries")
+  @@index([year])
+  @@index([importance])
+}
+
+// ============================================================================
+// SEARCH INDEX (Future optimization)
+// ============================================================================
+
+model SearchIndex {
+  id              String   @id @default(uuid())
+
+  entityType      String   @map("entity_type")
+  entityId        String   @map("entity_id")
+
+  // Searchable content
+  searchTextZh    String   @map("search_text_zh") @db.Text
+  searchTextEn    String?  @map("search_text_en") @db.Text
+  keywords        String[]
+
+  // Metadata for ranking
+  importanceScore Float    @map("importance_score") @default(1.0)
+  viewCount       Int      @map("view_count") @default(0)
+
+  // PostgreSQL full-text search (add tsvector in migration)
+  // searchVector tsvector
+
+  // Timestamps
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("search_index")
+  @@unique([entityType, entityId])
+  @@index([entityType])
+}
+
+// ============================================================================
+// USER FEATURES (Future - Phase 7)
+// ============================================================================
+
+// Commenting out for now - will be added in Phase 7
+
+// model User {
+//   id          String   @id @default(uuid())
+//   email       String   @unique
+//   name        String?
+//   avatar      String?
+//
+//   notes       UserNote[]
+//   highlights  UserHighlight[]
+//
+//   createdAt   DateTime @default(now()) @map("created_at")
+//   updatedAt   DateTime @updatedAt @map("updated_at")
+//
+//   @@map("users")
+// }
+
+// model UserNote {
+//   id          String   @id @default(uuid())
+//   userId      String   @map("user_id")
+//   entityType  String   @map("entity_type")
+//   entityId    String   @map("entity_id")
+//   noteContent String   @map("note_content") @db.Text
+//   isPublic    Boolean  @map("is_public") @default(false)
+//
+//   user        User     @relation(fields: [userId], references: [id])
+//
+//   createdAt   DateTime @default(now()) @map("created_at")
+//
+//   @@map("user_notes")
+//   @@index([userId])
+//   @@index([entityType, entityId])
+// }
+
+// model UserHighlight {
+//   id              String   @id @default(uuid())
+//   userId          String   @map("user_id")
+//   chapterId       String   @map("chapter_id")
+//   startPosition   Int      @map("start_position")
+//   endPosition     Int      @map("end_position")
+//   highlightColor  String   @map("highlight_color")
+//   note            String?  @db.Text
+//
+//   user            User     @relation(fields: [userId], references: [id])
+//
+//   createdAt       DateTime @default(now()) @map("created_at")
+//
+//   @@map("user_highlights")
+//   @@index([userId])
+//   @@index([chapterId])
+// }
