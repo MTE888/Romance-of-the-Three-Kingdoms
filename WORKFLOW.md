@@ -19,9 +19,9 @@ master (ignore - legacy/temporary)
 ```
 
 **Key Points**:
-- ✅ **`develop`** is the main branch - all work integrates here
-- ✅ All sessions create feature branches from `develop`
-- ✅ All sessions merge completed work back to `develop`
+- ✅ **`Develop`** is the main branch - all work integrates here
+- ✅ All sessions create feature branches from `Develop`
+- ✅ All sessions merge completed work back to `Develop`
 - ⛔ **Ignore `master`** - it's temporary documentation, not important
 
 ---
@@ -32,8 +32,8 @@ master (ignore - legacy/temporary)
 
 ```bash
 # 1. Checkout develop and pull latest
-git checkout develop
-git pull origin develop
+git checkout Develop
+git pull origin Develop
 
 # 2. Create your feature branch
 git checkout -b claude/your-feature-name-{session-id}
@@ -91,11 +91,11 @@ git add -A
 git commit -m "final commit message"
 git push origin claude/your-feature-name
 
-# 4. Merge to develop
-git checkout develop
-git pull origin develop           # Get latest changes
+# 4. Merge to Develop
+git checkout Develop
+git pull origin Develop           # Get latest changes
 git merge claude/your-feature-name # Merge your work
-git push origin develop           # Push integrated work
+git push origin Develop           # Push integrated work
 
 # 5. (Optional) Delete your feature branch
 git branch -d claude/your-feature-name
@@ -138,7 +138,7 @@ These require coordination in SESSION_LOG.md:
 
 ### Merge Frequently
 
-**Don't wait!** Merge to `develop` when:
+**Don't wait!** Merge to `Develop` when:
 - Feature is complete
 - Tests pass
 - No known issues
@@ -153,8 +153,8 @@ These require coordination in SESSION_LOG.md:
 
 ```bash
 # Pull latest develop first
-git checkout develop
-git pull origin develop
+git checkout Develop
+git pull origin Develop
 
 # Merge your feature
 git merge claude/your-feature-name
@@ -163,8 +163,8 @@ git merge claude/your-feature-name
 git add -A
 git commit -m "merge: resolve conflicts with session X"
 
-# Push to develop
-git push origin develop
+# Push to Develop
+git push origin Develop
 ```
 
 ---
@@ -202,8 +202,8 @@ git push origin develop
 - Status: Must complete first
 
 **Session B**: Wants to set up Prisma
-- **Action**: Wait for Session A to push to `develop`
-- **Then**: Pull `develop` and start work
+- **Action**: Wait for Session A to push to `Develop`
+- **Then**: Pull `Develop` and start work
 
 ---
 
@@ -211,7 +211,7 @@ git push origin develop
 
 ### Starting a New Session
 ```bash
-git checkout develop && git pull origin develop
+git checkout Develop && git pull origin Develop
 git checkout -b claude/feature-name-{id}
 # Read: SESSION_LOG.md, STATUS.md, DECISIONS.md
 # Update: SESSION_LOG.md with your info
@@ -229,9 +229,9 @@ git push origin claude/feature-name
 ```bash
 # Update: SESSION_LOG.md (mark complete)
 # Update: STATUS.md (mark tasks done)
-git checkout develop && git pull origin develop
+git checkout Develop && git pull origin Develop
 git merge claude/feature-name
-git push origin develop
+git push origin Develop
 ```
 
 ---
@@ -242,12 +242,12 @@ git push origin develop
 
 ```bash
 # 1. Pull latest develop
-git checkout develop
-git pull origin develop
+git checkout Develop
+git pull origin Develop
 
 # 2. Try merge again
 git checkout claude/your-feature
-git merge develop
+git merge Develop
 
 # 3. Resolve conflicts in files
 # Look for <<<<<<< HEAD markers
@@ -298,17 +298,17 @@ git checkout claude/feature-name-rescue
 ## ✅ Best Practices
 
 ### DO ✅
-- Pull `develop` before starting every session
+- Pull `Develop` before starting every session
 - Read SESSION_LOG.md before modifying files
 - Commit frequently (every 30-60 minutes)
-- Merge to `develop` when features are complete
+- Merge to `Develop` when features are complete
 - Update SESSION_LOG.md and STATUS.md
 - Document decisions in DECISIONS.md
 - Use clear, descriptive branch names
 - Write clear commit messages
 
 ### DON'T ⛔
-- Work directly on `develop` (always use feature branches)
+- Work directly on `Develop` (always use feature branches)
 - Touch `master` branch
 - Modify files another session is working on without coordination
 - Wait days before merging (merge frequently!)
@@ -322,22 +322,22 @@ git checkout claude/feature-name-rescue
 ## 📊 Example Timeline
 
 **Hour 0**:
-- Session A: Pulls `develop`, creates `claude/monorepo-abc`, starts work
-- Session B: Pulls `develop`, creates `claude/design-tokens-def`, starts work
+- Session A: Pulls `Develop`, creates `claude/monorepo-abc`, starts work
+- Session B: Pulls `Develop`, creates `claude/design-tokens-def`, starts work
 
 **Hour 2**:
-- Session A: Merges monorepo work to `develop`, pushes
+- Session A: Merges monorepo work to `Develop`, pushes
 
 **Hour 3**:
-- Session B: Pulls `develop` (gets Session A's changes), continues work
-- Session C: Pulls `develop`, creates `claude/database-schema-ghi`, starts work
+- Session B: Pulls `Develop` (gets Session A's changes), continues work
+- Session C: Pulls `Develop`, creates `claude/database-schema-ghi`, starts work
 
 **Hour 5**:
-- Session B: Merges design tokens to `develop`, pushes
-- Session C: Pulls `develop` (gets A and B's changes), continues work
+- Session B: Merges design tokens to `Develop`, pushes
+- Session C: Pulls `Develop` (gets A and B's changes), continues work
 
 **Hour 8**:
-- Session C: Merges database schema to `develop`
+- Session C: Merges database schema to `Develop`
 - **Result**: All work integrated, no conflicts, everyone has latest
 
 ---
@@ -345,7 +345,7 @@ git checkout claude/feature-name-rescue
 ## 🎯 Summary
 
 **Three Rules**:
-1. **Always work from `develop`** - create feature branches, merge back
+1. **Always work from `Develop`** - create feature branches, merge back
 2. **Check SESSION_LOG.md first** - see what others are doing
 3. **Merge frequently** - don't wait, integrate often
 
@@ -356,9 +356,9 @@ git checkout claude/feature-name-rescue
 
 **Three Commands**:
 ```bash
-git checkout develop && git pull origin develop  # Start
+git checkout Develop && git pull origin Develop  # Start
 git add -A && git commit && git push             # During
-git merge && git push origin develop             # End
+git merge && git push origin Develop             # End
 ```
 
 ---

@@ -13,7 +13,7 @@
 ```
 
 ### 2. Before Starting Work
-- **Pull latest**: `git checkout develop && git pull origin develop`
+- **Pull latest**: `git checkout Develop && git pull origin Develop`
 - **Add yourself to SESSION_LOG.md**: Document what you're working on
 - **Pick a task from STATUS.md**: Choose from "Next Up" section
 - **Avoid conflicts**: Don't modify files another session is working on
