@@ -115,9 +115,10 @@ data/sources/media/**/*.png
 data/sources/media/**/*.svg
 data/sources/media/**/*.webp
 
-# But keep documentation
+# But keep documentation and downloaded historical sources
 !data/**/README.md
 !data/**/*.md
+!data/sources/historical/sanguozhi/sanguozhi-from-github.txt
 
 # Generated and temporary data
 data/structured/generated/
