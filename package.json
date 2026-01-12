@@ -27,7 +27,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "test": "turbo run test",
     "test:unit": "turbo run test:unit",
-    "test:e2e": "turbo run test:e2e",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug",
     "typecheck": "turbo run typecheck",
     "clean": "turbo run clean && rm -rf node_modules",
     "dev:web": "turbo run dev --filter=web",
@@ -43,6 +45,7 @@
     "docker:seed": "bash scripts/docker-dev.sh db-seed"
   },
   "devDependencies": {
+    "@playwright/test": "^1.40.0",
     "@types/node": "^20.10.0",
     "prettier": "^3.1.0",
     "turbo": "^1.11.0",
