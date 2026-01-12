@@ -216,6 +216,24 @@ export const typeDefs = `#graphql
   }
 
   """
+  Chapter from Romance of Three Kingdoms
+  """
+  type Chapter {
+    id: ID!
+    chapterNumber: Int!
+    title: JSON!
+    content: JSON!
+    summary: JSON
+    metadata: JSON
+
+    # Relations
+    source: Source
+
+    createdAt: DateTime!
+    updatedAt: DateTime!
+  }
+
+  """
   Timeline entry for chronological visualization
   """
   type TimelineEntry {
@@ -351,6 +369,21 @@ export const typeDefs = `#graphql
     List locations
     """
     locations: [Location!]!
+
+    """
+    Get a single chapter by chapter number
+    """
+    chapter(chapterNumber: Int!): Chapter
+
+    """
+    List all chapters
+    """
+    chapters: [Chapter!]!
+
+    """
+    Count total chapters
+    """
+    chaptersCount: Int!
 
     """
     Search across characters, events, and locations

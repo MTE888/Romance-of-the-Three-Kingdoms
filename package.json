@@ -42,12 +42,17 @@
     "docker:build": "bash scripts/docker-dev.sh build",
     "docker:clean": "bash scripts/docker-dev.sh clean",
     "docker:migrate": "bash scripts/docker-dev.sh db-migrate",
-    "docker:seed": "bash scripts/docker-dev.sh db-seed"
+    "docker:seed": "bash scripts/docker-dev.sh db-seed",
+    "import:chapters": "tsx scripts/import-chapters.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.7.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0",
     "@types/node": "^20.10.0",
     "prettier": "^3.1.0",
+    "tsx": "^4.7.0",
     "turbo": "^1.11.0",
     "typescript": "^5.3.0"
   },

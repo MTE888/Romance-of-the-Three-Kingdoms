@@ -12,6 +12,8 @@ import { Home } from './pages/Home';
 import { CharacterList } from './pages/CharacterList';
 import { CharacterDetail } from './pages/CharacterDetail';
 import { Timeline } from './pages/Timeline';
+import { Chapters } from './pages/Chapters';
+import { ChapterViewer } from './pages/ChapterViewer';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
             <Route path="/characters" element={<CharacterList />} />
             <Route path="/characters/:id" element={<CharacterDetail />} />
             <Route path="/timeline" element={<Timeline />} />
+            <Route path="/chapters" element={<Chapters />} />
+            <Route path="/chapters/:chapterNumber" element={<ChapterViewer />} />
             <Route
               path="/events"
               element={

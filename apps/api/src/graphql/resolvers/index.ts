@@ -7,6 +7,7 @@
 import { GraphQLJSON, DateTimeResolver } from 'graphql-scalars';
 import { characterResolvers } from './character.js';
 import { eventResolvers } from './event.js';
+import { chapterResolvers } from './chapter.js';
 import { db } from '@three-kingdoms/database';
 import type { SourceType } from '@three-kingdoms/database';
 
@@ -32,6 +33,9 @@ export const resolvers = {
 
     // Event queries (from event.ts)
     ...eventResolvers.Query,
+
+    // Chapter queries (from chapter.ts)
+    ...chapterResolvers.Query,
 
     // Timeline queries
     timeline: async (_parent: unknown, args: { filter?: TimelineFilter }) => {
@@ -171,4 +175,5 @@ export const resolvers = {
 
   // Type resolvers
   Character: characterResolvers.Character,
+  Chapter: chapterResolvers.Chapter,
 };
