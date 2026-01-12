@@ -1,6 +1,6 @@
 # Project Status - Three Kingdoms Digital Platform
 
-**Last Updated**: 2026-01-11
+**Last Updated**: 2026-01-12
 **Branches**: Merged from planning + research + monorepo/database/api/frontend sessions
 
 ---
@@ -9,8 +9,9 @@
 
 **Phase 0: Planning & Architecture** ✅ COMPLETE
 **Phase 0.5: Data Infrastructure** ✅ COMPLETE
+**Phase 1: Foundation** 🔄 95% COMPLETE (Azure deployment pending)
 
-**Current Phase**: Phase 1 - Foundation (Weeks 1-4) 🔄 IN PROGRESS
+**Current Phase**: Phase 2 - Core Reading Experience (Weeks 5-8) 🔄 IN PROGRESS
 
 ---
 
@@ -108,7 +109,9 @@
 | **Docker Development Setup** | ✅ Complete | Docker Compose + PostgreSQL + Redis |
 | **Source Downloads** | ⏸️ Blocked | Network restrictions |
 | **Testing Infrastructure** | ✅ Complete | Unit tests + E2E tests + CI/CD pipeline |
+| **Chapter Reading System** | ✅ Complete | Import script + API + Web viewer for all 120 chapters |
 | **Phase 1 Implementation** | 🔄 95% | Monorepo + DB + API + Frontend + Docker + Testing done, Azure pending |
+| **Phase 2 Implementation** | 🔄 40% | Chapter reading done, interactive features pending |
 
 ---
 
@@ -307,12 +310,20 @@ PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
   - ✅ Docker development environment complete
   - ✅ Testing infrastructure complete
   - ⏸️ Azure infrastructure pending (requires credentials)
-- **Phase 2 (Core Reading)**: ⏸️ 0% - Not started
+- **Phase 2 (Core Reading)**: 🔄 40% - In progress
+  - ✅ Chapter import script complete
+  - ✅ Chapter API (GraphQL resolvers)
+  - ✅ Chapter list page complete
+  - ✅ Chapter viewer with traditional styling complete
+  - ✅ Chapter navigation (prev/next) complete
+  - ⏸️ Character hover cards pending
+  - ⏸️ Reading progress tracking pending
+  - ⏸️ Bookmark functionality pending
 - **Phase 3 (Relationships & Timeline)**: ⏸️ 0% - Not started
 - **Phase 4 (Multi-Source System)**: ⏸️ 0% - Not started
 - **Phase 5 (Polish & Launch)**: ⏸️ 0% - Not started
 
-**Overall MVP Progress**: 47% (Planning + Data Infrastructure complete, Phase 1 95% complete)
+**Overall MVP Progress**: 51% (Planning + Data Infrastructure complete, Phase 1 95%, Phase 2 40%)
 
 ---
 
@@ -327,8 +338,8 @@ PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 ### Content Metrics
 - Characters documented: 5 / 100 target (from extraction demo)
 - Events documented: 1 / 200 target (sample only)
-- Chapters processed: 1 / 120 (can expand to all)
-- Sources integrated: 1 / 10+ target (have 三国演义)
+- Chapters available: 120 / 120 ✅ (all chapters ready to read)
+- Sources integrated: 1 / 10+ target (Romance of Three Kingdoms)
 
 ### Code Statistics
 **Total Files Created**: 40+
