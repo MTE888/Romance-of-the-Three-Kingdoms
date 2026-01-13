@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import { apolloClient } from './lib/apollo';
 import { ReadingProgressProvider } from './contexts/ReadingProgressContext';
+import { BookmarkProvider } from './contexts/BookmarkContext';
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
 import { CharacterList } from './pages/CharacterList';
@@ -20,9 +21,10 @@ function App() {
   return (
     <ApolloProvider client={apolloClient}>
       <ReadingProgressProvider>
-        <BrowserRouter>
-          <Layout>
-          <Routes>
+        <BookmarkProvider>
+          <BrowserRouter>
+            <Layout>
+            <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/characters" element={<CharacterList />} />
             <Route path="/characters/:id" element={<CharacterDetail />} />
@@ -100,9 +102,10 @@ function App() {
                 </div>
               }
             />
-          </Routes>
-          </Layout>
-        </BrowserRouter>
+            </Routes>
+            </Layout>
+          </BrowserRouter>
+        </BookmarkProvider>
       </ReadingProgressProvider>
     </ApolloProvider>
   );

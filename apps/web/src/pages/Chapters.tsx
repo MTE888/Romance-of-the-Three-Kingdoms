@@ -9,6 +9,8 @@ import { gql, useQuery } from '@apollo/client';
 import { Loading } from '../components/ui/Loading';
 import { ErrorMessage } from '../components/ui/ErrorMessage';
 import { useReadingProgress } from '../contexts/ReadingProgressContext';
+import { useBookmarks } from '../contexts/BookmarkContext';
+import { BookmarksList } from '../components/ui/BookmarksList';
 
 const GET_CHAPTERS = gql`
   query GetChapters {
@@ -29,6 +31,8 @@ export function Chapters() {
     getTotalChapters,
     getProgressPercentage,
   } = useReadingProgress();
+
+  const { isBookmarked, getBookmarkCount } = useBookmarks();
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage message={error.message} />;
@@ -72,12 +76,34 @@ export function Chapters() {
           )}
         </header>
 
+        {/* Bookmarks Section */}
+        {getBookmarkCount() > 0 && (
+          <div className="mb-12">
+            <div className="bg-white rounded-lg border-2 border-imperial-yellow p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <svg
+                  className="w-6 h-6 text-imperial-yellow"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                </svg>
+                <h2 className="text-2xl font-zh-serif text-ink-black">
+                  Your Bookmarks
+                </h2>
+              </div>
+              <BookmarksList maxDisplay={3} />
+            </div>
+          </div>
+        )}
+
         {/* Chapters Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {chapters.map((chapter: any) => {
             const progress = getChapterProgress(chapter.chapterNumber);
             const isCompleted = progress?.completed || false;
             const isInProgress = progress && !progress.completed;
+            const bookmarked = isBookmarked(chapter.chapterNumber);
 
             return (
               <Link
@@ -86,6 +112,8 @@ export function Chapters() {
                 className={`block bg-white rounded-lg border-2 transition-all duration-200 hover:shadow-lg group ${
                   isCompleted
                     ? 'border-green-300 hover:border-green-500'
+                    : bookmarked
+                    ? 'border-imperial-yellow hover:border-imperial-yellow'
                     : 'border-gray-200 hover:border-vermillion'
                 }`}
               >
@@ -100,11 +128,22 @@ export function Chapters() {
                       第 {chapter.chapterNumber} 回
                     </span>
                     <div className="flex items-center gap-2">
+                      {bookmarked && (
+                        <svg
+                          className="w-5 h-5 text-imperial-yellow"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                          title="Bookmarked"
+                        >
+                          <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                        </svg>
+                      )}
                       {isCompleted && (
                         <svg
                           className="w-5 h-5 text-green-600"
                           fill="currentColor"
                           viewBox="0 0 20 20"
+                          title="Completed"
                         >
                           <path
                             fillRule="evenodd"
@@ -118,6 +157,7 @@ export function Chapters() {
                           className="w-5 h-5 text-blue-600"
                           fill="currentColor"
                           viewBox="0 0 20 20"
+                          title="In Progress"
                         >
                           <path
                             fillRule="evenodd"
