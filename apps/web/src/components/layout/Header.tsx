@@ -24,6 +24,12 @@ export function Header() {
           {/* Navigation Links */}
           <div className="flex items-center space-x-6">
             <Link
+              to="/chapters"
+              className="text-ink-black hover:text-vermillion font-medium transition-colors"
+            >
+              Chapters
+            </Link>
+            <Link
               to="/characters"
               className="text-ink-black hover:text-vermillion font-medium transition-colors"
             >

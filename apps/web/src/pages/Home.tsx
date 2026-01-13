@@ -5,6 +5,7 @@
  */
 
 import { Link } from 'react-router-dom';
+import { ReadingProgressStats } from '../components/ui/ReadingProgressStats';
 
 export function Home() {
   return (
@@ -22,6 +23,11 @@ export function Home() {
           Kingdoms period (169-280 AD). Discover characters, events, and
           timelines from both historical records and literary interpretation.
         </p>
+      </div>
+
+      {/* Reading Progress */}
+      <div className="mb-12">
+        <ReadingProgressStats />
       </div>
 
       {/* Features Grid */}

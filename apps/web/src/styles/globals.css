@@ -67,3 +67,19 @@
   @apply inline-block w-8 h-8 border-4 border-gray-300 border-t-vermillion rounded-full;
   animation: spin 1s linear infinite;
 }
+
+/* Fade in animation for hover cards */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
