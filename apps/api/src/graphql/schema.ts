@@ -143,6 +143,15 @@ export const typeDefs = `#graphql
   }
 
   """
+  Lightweight character info for quick lookups (name detection, hover cards)
+  """
+  type CharacterName {
+    id: ID!
+    canonicalName: JSON!
+    kingdom: Kingdom!
+  }
+
+  """
   Relationship between two characters
   """
   type CharacterRelationship {
@@ -329,6 +338,11 @@ export const typeDefs = `#graphql
     Count total characters matching filter
     """
     charactersCount(filter: CharacterFilter): Int!
+
+    """
+    Get lightweight character names for quick lookups (chapter text detection)
+    """
+    characterNames: [CharacterName!]!
 
     """
     Get a single event by ID

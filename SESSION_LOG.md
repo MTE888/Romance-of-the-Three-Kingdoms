@@ -184,6 +184,26 @@
 - **Pull Request**: https://github.com/MTE888/Romance-of-the-Three-Kingdoms/pull/new/claude/docker-setup-Nn6XS
 - **Notes**: ✅ Implemented complete Docker Compose setup with PostgreSQL 16, Redis 7, API service with hot reload, and Web service with hot reload. Created multi-stage Dockerfiles for development and production builds. Built comprehensive helper script with 20+ commands. Added nginx configuration. Wrote extensive DOCKER.md documentation. ✅ Implemented comprehensive testing infrastructure with Vitest for unit tests, React Testing Library for component tests, and Playwright for E2E tests. Created 70+ test cases across API and Web. Set up CI/CD pipeline with GitHub Actions running lint, type check, unit tests, E2E tests, build verification, and Docker build tests. Coverage thresholds set to 70%. All services configured with health checks. ✅ Implemented complete chapter reading system for all 120 chapters of Romance of Three Kingdoms. Created chapter import script that parses text files and imports to database. Built chapter API resolvers (chapter, chapters, chaptersCount). Designed traditional Chinese reading experience with Noto Serif SC font, proper indentation (8 spaces), optimized line spacing (2.0), and decorative elements. Implemented chapter list page and individual chapter viewer with prev/next navigation. Added CHAPTERS.md comprehensive guide (400+ lines). Phase 2 Core Reading Experience now 40% complete. Ready for local full-stack development, automated testing, and chapter reading.
 
+### Session 8 (Branch: claude/setup-project-planning-Nn6XS - continued)
+- **Status**: ✅ Complete
+- **Working on**: Phase 2 - Character Hover Cards
+- **Started**: 2026-01-12
+- **Completed**: 2026-01-13
+- **Files created**:
+  - apps/web/src/components/chapter/CharacterHoverCard.tsx (hover card component with profile preview)
+  - apps/web/src/components/chapter/CharacterLink.tsx (interactive character name wrapper)
+  - apps/web/src/hooks/useCharacterDetection.ts (automatic character name detection in text)
+  - apps/web/src/components/chapter/CharacterHoverCard.test.tsx (comprehensive component tests)
+- **Files modified**:
+  - apps/web/src/pages/ChapterViewer.tsx (integrated hover cards into chapter reader)
+  - apps/web/src/styles/globals.css (added fade-in animation for hover cards)
+  - apps/api/src/graphql/schema.ts (added CharacterName type and characterNames query)
+  - apps/api/src/graphql/resolvers/character.ts (added characterNames resolver for lightweight lookups)
+  - SESSION_LOG.md (this file)
+  - STATUS.md (updated to Phase 2 60% complete)
+- **Blockers**: None
+- **Notes**: ✅ Implemented complete character hover cards system for enhanced chapter reading. Features: (1) Automatic character name detection using smart algorithm that prevents overlapping matches and prioritizes longer names, (2) Color-coded character links by kingdom (Wei=blue, Shu=red, Wu=green), (3) Hover card with character name (Chinese + English), kingdom badge, life span, quick summary (first 2 sentences), top 3 traits, and link to full profile, (4) Smooth fade-in animation and intelligent positioning to stay within viewport, (5) GraphQL optimization with lightweight characterNames query for fast lookups, (6) Comprehensive tests for all components. Phase 2 Core Reading Experience now 60% complete (chapter reading + hover cards done, progress tracking + bookmarks pending). Overall MVP progress: 55%.
+
 ---
 
 ## Completed Sessions

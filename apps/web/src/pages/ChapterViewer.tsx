@@ -1,12 +1,15 @@
 /**
  * Chapter Viewer Page
  * Displays a single chapter with traditional Chinese styling
+ * Features character name detection and hover cards
  */
 
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { gql, useQuery } from '@apollo/client';
 import { Loading } from '../components/ui/Loading';
 import { ErrorMessage } from '../components/ui/ErrorMessage';
+import { useCharacterDetection } from '../hooks/useCharacterDetection';
+import { CharacterLink } from '../components/chapter/CharacterLink';
 
 const GET_CHAPTER = gql`
   query GetChapter($chapterNumber: Int!) {
@@ -35,7 +38,12 @@ export function ChapterViewer() {
     variables: { chapterNumber: number },
   });
 
-  if (loading) return <Loading />;
+  const {
+    loading: charactersLoading,
+    parseTextWithCharacters,
+  } = useCharacterDetection();
+
+  if (loading || charactersLoading) return <Loading />;
   if (error) return <ErrorMessage message={error.message} />;
   if (!data?.chapter) return <ErrorMessage message="Chapter not found" />;
 
@@ -45,6 +53,39 @@ export function ChapterViewer() {
 
   // Parse content into paragraphs
   const paragraphs = (chapter.content?.zh || '').split(/\n\s*\n/).filter(p => p.trim());
+
+  /**
+   * Render a paragraph with character name detection
+   */
+  const renderParagraphWithCharacters = (text: string, index: number) => {
+    const segments = parseTextWithCharacters(text);
+
+    return (
+      <p
+        key={index}
+        className="font-zh-serif text-lg md:text-xl leading-relaxed text-ink-black text-justify indent-8"
+        style={{
+          lineHeight: '2',
+          letterSpacing: '0.05em',
+        }}
+      >
+        {segments.map((segment, i) => {
+          if (segment.type === 'text') {
+            return <span key={i}>{segment.content}</span>;
+          } else {
+            return (
+              <CharacterLink
+                key={i}
+                characterId={segment.id}
+                characterName={segment.name}
+                kingdom={segment.kingdom}
+              />
+            );
+          }
+        })}
+      </p>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-rice-white">
@@ -86,18 +127,9 @@ export function ChapterViewer() {
 
           {/* Chapter Text */}
           <div className="space-y-6">
-            {paragraphs.map((paragraph, index) => (
-              <p
-                key={index}
-                className="font-zh-serif text-lg md:text-xl leading-relaxed text-ink-black text-justify indent-8"
-                style={{
-                  lineHeight: '2',
-                  letterSpacing: '0.05em',
-                }}
-              >
-                {paragraph}
-              </p>
-            ))}
+            {paragraphs.map((paragraph, index) =>
+              renderParagraphWithCharacters(paragraph, index)
+            )}
           </div>
 
           {/* End Marker */}

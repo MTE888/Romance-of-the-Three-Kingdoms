@@ -157,6 +157,21 @@ export const characterResolvers = {
 
       return await db.character.count({ where });
     },
+
+    /**
+     * Get lightweight character names for quick lookups
+     * Used for chapter text detection and hover cards
+     */
+    characterNames: async () => {
+      return await db.character.findMany({
+        select: {
+          id: true,
+          canonicalName: true,
+          kingdom: true,
+        },
+        orderBy: { createdAt: 'asc' },
+      });
+    },
   },
 
   Character: {

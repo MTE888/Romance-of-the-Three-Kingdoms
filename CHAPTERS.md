@@ -37,6 +37,27 @@ The platform provides access to all **120 chapters** of Romance of the Three Kin
   - "本回完" end marker
   - Source attribution panel
 
+- **Character Hover Cards** ✨ NEW:
+  - Automatic character name detection in chapter text
+  - Color-coded character names by kingdom:
+    - Wei (魏): Blue
+    - Shu (蜀): Red
+    - Wu (吴): Green
+    - Han (汉): Yellow
+  - Hover over character names to see profile preview:
+    - Chinese and English names
+    - Kingdom badge
+    - Life span (birth-death years)
+    - Quick summary (first 2 sentences)
+    - Key character traits
+    - Link to full profile page
+  - Smart detection algorithm:
+    - Prioritizes longer names to avoid overlap
+    - Skips single-character names to reduce false positives
+    - Handles multiple occurrences in same paragraph
+  - Smooth fade-in animation
+  - Intelligent positioning to stay within viewport
+
 ## Importing Chapters
 
 ### Prerequisites
