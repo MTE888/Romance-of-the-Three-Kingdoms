@@ -11,7 +11,7 @@
 **Phase 0.5: Data Infrastructure** ✅ COMPLETE
 **Phase 1: Foundation** 🔄 95% COMPLETE (Azure deployment pending)
 
-**Current Phase**: Phase 2 - Core Reading Experience (Weeks 5-8) 🔄 IN PROGRESS (60%)
+**Current Phase**: Phase 2 - Core Reading Experience (Weeks 5-8) 🔄 IN PROGRESS (80%)
 
 ---
 
@@ -111,8 +111,9 @@
 | **Testing Infrastructure** | ✅ Complete | Unit tests + E2E tests + CI/CD pipeline |
 | **Chapter Reading System** | ✅ Complete | Import script + API + Web viewer for all 120 chapters |
 | **Character Hover Cards** | ✅ Complete | Automatic character name detection + hover profiles in chapter text |
+| **Reading Progress Tracking** | ✅ Complete | localStorage-based progress tracking with stats dashboard |
 | **Phase 1 Implementation** | 🔄 95% | Monorepo + DB + API + Frontend + Docker + Testing done, Azure pending |
-| **Phase 2 Implementation** | 🔄 60% | Chapter reading + hover cards done, progress tracking + bookmarks pending |
+| **Phase 2 Implementation** | 🔄 80% | Chapter reading + hover cards + progress tracking done, bookmarks pending |
 
 ---
 
@@ -311,20 +312,20 @@ PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
   - ✅ Docker development environment complete
   - ✅ Testing infrastructure complete
   - ⏸️ Azure infrastructure pending (requires credentials)
-- **Phase 2 (Core Reading)**: 🔄 60% - In progress
+- **Phase 2 (Core Reading)**: 🔄 80% - In progress
   - ✅ Chapter import script complete
   - ✅ Chapter API (GraphQL resolvers + character names query)
   - ✅ Chapter list page complete
   - ✅ Chapter viewer with traditional styling complete
   - ✅ Chapter navigation (prev/next) complete
   - ✅ Character hover cards complete (automatic name detection + profile preview)
-  - ⏸️ Reading progress tracking pending
+  - ✅ Reading progress tracking complete (localStorage + stats dashboard + time tracking)
   - ⏸️ Bookmark functionality pending
 - **Phase 3 (Relationships & Timeline)**: ⏸️ 0% - Not started
 - **Phase 4 (Multi-Source System)**: ⏸️ 0% - Not started
 - **Phase 5 (Polish & Launch)**: ⏸️ 0% - Not started
 
-**Overall MVP Progress**: 55% (Planning + Data Infrastructure complete, Phase 1 95%, Phase 2 60%)
+**Overall MVP Progress**: 59% (Planning + Data Infrastructure complete, Phase 1 95%, Phase 2 80%)
 
 ---
 

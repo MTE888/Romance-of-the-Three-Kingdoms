@@ -6,10 +6,12 @@
 
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { gql, useQuery } from '@apollo/client';
+import { useEffect, useRef, useState } from 'react';
 import { Loading } from '../components/ui/Loading';
 import { ErrorMessage } from '../components/ui/ErrorMessage';
 import { useCharacterDetection } from '../hooks/useCharacterDetection';
 import { CharacterLink } from '../components/chapter/CharacterLink';
+import { useReadingProgress } from '../contexts/ReadingProgressContext';
 
 const GET_CHAPTER = gql`
   query GetChapter($chapterNumber: Int!) {
@@ -43,6 +45,18 @@ export function ChapterViewer() {
     parseTextWithCharacters,
   } = useCharacterDetection();
 
+  const {
+    markChapterAsRead,
+    markChapterAsInProgress,
+    addReadingTime,
+    setCurrentChapter,
+    getChapterProgress,
+  } = useReadingProgress();
+
+  const [isCompleted, setIsCompleted] = useState(false);
+  const readingTimeRef = useRef(0);
+  const lastTickRef = useRef(Date.now());
+
   if (loading || charactersLoading) return <Loading />;
   if (error) return <ErrorMessage message={error.message} />;
   if (!data?.chapter) return <ErrorMessage message="Chapter not found" />;
@@ -50,6 +64,42 @@ export function ChapterViewer() {
   const { chapter } = data;
   const hasNext = number < 120;
   const hasPrev = number > 1;
+
+  const chapterProgress = getChapterProgress(number);
+
+  // Mark chapter as in-progress on mount and track reading time
+  useEffect(() => {
+    setCurrentChapter(number);
+    markChapterAsInProgress(number);
+    setIsCompleted(chapterProgress?.completed || false);
+
+    // Track reading time every 10 seconds
+    const interval = setInterval(() => {
+      const now = Date.now();
+      const elapsed = Math.floor((now - lastTickRef.current) / 1000);
+      if (elapsed > 0) {
+        readingTimeRef.current += elapsed;
+        addReadingTime(number, elapsed);
+        lastTickRef.current = now;
+      }
+    }, 10000); // Save every 10 seconds
+
+    return () => {
+      clearInterval(interval);
+      // Save final reading time on unmount
+      const now = Date.now();
+      const elapsed = Math.floor((now - lastTickRef.current) / 1000);
+      if (elapsed > 0) {
+        addReadingTime(number, elapsed);
+      }
+    };
+  }, [number]);
+
+  // Handle marking chapter as complete
+  const handleMarkAsComplete = () => {
+    markChapterAsRead(number);
+    setIsCompleted(true);
+  };
 
   // Parse content into paragraphs
   const paragraphs = (chapter.content?.zh || '').split(/\n\s*\n/).filter(p => p.trim());
@@ -138,6 +188,48 @@ export function ChapterViewer() {
               <span className="text-vermillion font-zh-serif">— 本回完 —</span>
             </div>
           </div>
+
+          {/* Mark as Complete Button */}
+          {!isCompleted && (
+            <div className="text-center mt-8">
+              <button
+                onClick={handleMarkAsComplete}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                Mark Chapter as Complete
+              </button>
+            </div>
+          )}
+
+          {isCompleted && (
+            <div className="text-center mt-8">
+              <div className="inline-flex items-center gap-2 px-6 py-3 bg-green-100 text-green-800 rounded-lg font-medium">
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                Chapter Completed
+              </div>
+            </div>
+          )}
         </article>
 
         {/* Navigation */}

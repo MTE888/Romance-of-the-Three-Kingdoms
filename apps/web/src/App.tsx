@@ -7,6 +7,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import { apolloClient } from './lib/apollo';
+import { ReadingProgressProvider } from './contexts/ReadingProgressContext';
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
 import { CharacterList } from './pages/CharacterList';
@@ -18,8 +19,9 @@ import { ChapterViewer } from './pages/ChapterViewer';
 function App() {
   return (
     <ApolloProvider client={apolloClient}>
-      <BrowserRouter>
-        <Layout>
+      <ReadingProgressProvider>
+        <BrowserRouter>
+          <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/characters" element={<CharacterList />} />
@@ -99,8 +101,9 @@ function App() {
               }
             />
           </Routes>
-        </Layout>
-      </BrowserRouter>
+          </Layout>
+        </BrowserRouter>
+      </ReadingProgressProvider>
     </ApolloProvider>
   );
 }

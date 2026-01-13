@@ -58,6 +58,25 @@ The platform provides access to all **120 chapters** of Romance of the Three Kin
   - Smooth fade-in animation
   - Intelligent positioning to stay within viewport
 
+- **Reading Progress Tracking** ✨ NEW:
+  - Automatic progress tracking using localStorage (no login required)
+  - Features:
+    - **Chapter List Progress Bar**: Overall progress displayed at top of chapters page
+    - **Chapter Status Indicators**:
+      - Green checkmark icon for completed chapters
+      - Blue clock icon for chapters in progress
+      - Green border for completed chapters
+    - **Automatic Time Tracking**: Tracks time spent reading each chapter
+    - **Mark as Complete Button**: Manually mark chapters as read
+    - **Progress Statistics Dashboard** (on home page):
+      - Chapters completed vs remaining
+      - Total reading time
+      - Average time per chapter
+      - Achievement milestones (First Steps, Halfway There, etc.)
+    - **Data Persistence**: All progress saved to browser localStorage
+    - **Privacy-First**: No account required, data stays on your device
+  - Future: Will sync to database when user authentication is added
+
 ## Importing Chapters
 
 ### Prerequisites
