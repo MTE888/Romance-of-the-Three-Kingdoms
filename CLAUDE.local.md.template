@@ -1,0 +1,138 @@
+# CLAUDE.local.md Template
+
+This is a template for your personal CLAUDE.local.md file. Copy this to `CLAUDE.local.md` (without .template) and customize it for your development preferences.
+
+**Note**: CLAUDE.local.md is gitignored and won't be committed to the repository.
+
+---
+
+## Personal Preferences
+
+### Preferred Language
+<!-- Set your preferred language for Claude's responses -->
+- Response language: [English/Chinese/Both]
+- Code comments: [English/Chinese]
+
+### Working Style
+<!-- How you prefer Claude to work -->
+- Verbosity: [Concise/Detailed/Balanced]
+- Explanation level: [Brief/Comprehensive]
+- Code style preference: [Specify any preferences]
+
+### Common Tasks
+<!-- Add tasks you frequently perform -->
+
+Example:
+```
+When I say "check chapters", run the verify-integrity command automatically.
+When analyzing text, always show character counts and line numbers.
+```
+
+### Custom Shortcuts
+<!-- Personal command shortcuts -->
+
+Example:
+```
+- "ch X" means analyze chapter X
+- "find NAME" means search for character NAME
+- "verify" means run integrity check
+```
+
+### Environment Specifics
+<!-- Your local development environment -->
+
+- Editor: [VS Code/Vim/etc.]
+- Terminal: [iTerm2/Terminal/etc.]
+- OS: [macOS/Linux/Windows]
+
+### Project-Specific Notes
+<!-- Your personal notes about the project -->
+
+Example:
+```
+- Working on chapters 1-40 translation
+- Focus on character analysis for Liu Bei, Cao Cao, Sun Quan
+- Research historical context for Red Cliffs battle
+```
+
+### Common Commands I Use
+<!-- Commands you run frequently -->
+
+Example:
+```bash
+# My most common searches
+grep -r "诸葛亮" src/
+grep -r "赤壁" src/
+
+# My preferred git workflow
+git status
+git add .
+git commit -m "..."
+git push -u origin claude/...
+```
+
+### Reminders
+<!-- Things you want Claude to remember -->
+
+Example:
+```
+- Always backup before bulk operations
+- Double-check UTF-8 encoding
+- Verify changes in chapters 50-60 (working area)
+- Don't commit temporary analysis files
+```
+
+### Tool Preferences
+<!-- Your preferred tools and utilities -->
+
+Example:
+```
+- Use ripgrep (rg) instead of grep when available
+- Prefer jq for JSON processing
+- Use bat instead of cat for syntax highlighting
+```
+
+---
+
+## Usage Notes
+
+1. **Privacy**: This file is private to you and won't be shared
+2. **Updates**: Update this as your workflow evolves
+3. **Sync**: Consider backing up separately if needed
+4. **Conflicts**: This file takes precedence over CLAUDE.md for your sessions
+
+## Example Filled Template
+
+```markdown
+## Personal Preferences
+
+### Preferred Language
+- Response language: English
+- Code comments: English
+
+### Working Style
+- Verbosity: Balanced
+- Explanation level: Comprehensive for complex tasks, brief for simple ones
+
+### Common Tasks
+When I say "daily check":
+1. Run verify-integrity command
+2. Show git status
+3. List any uncommitted changes
+
+### Custom Shortcuts
+- "ch X" → analyze chapter X in detail
+- "find NAME" → search character NAME across all chapters
+- "stats" → show repository statistics
+
+### Project-Specific Notes
+Currently working on:
+- Character frequency analysis for chapters 1-50
+- Building character relationship graph
+- Next: Create metadata for chapters 1-20
+
+### Reminders
+- Always test searches on chapter 1 first
+- Keep original files unchanged
+- Backup before running new scripts
+```
