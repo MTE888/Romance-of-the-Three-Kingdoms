@@ -243,6 +243,25 @@
 - **Blockers**: None
 - **Notes**: ✅ Implemented complete bookmark functionality to complete Phase 2 Core Reading Experience. Features: (1) BookmarkContext for state management with localStorage persistence, (2) Bookmark toggle button in chapter viewer header with golden highlight when bookmarked, (3) Bookmark indicators on chapter list (yellow bookmark icon + golden border), (4) Bookmarks quick access section on chapters page showing up to 3 recent bookmarks with chapter info and remove functionality, (5) Comprehensive tests for bookmark context, (6) Full documentation in CHAPTERS.md. **Phase 2 Core Reading Experience is now 100% complete** with all features implemented: chapter reading + character hover cards + progress tracking + bookmarks. Overall MVP progress: 63%.
 
+### Session 11 (Branch: claude/setup-project-planning-Nn6XS - continued)
+- **Status**: 🔄 In Progress
+- **Working on**: Phase 3 - Relationships & Timeline (Start)
+- **Started**: 2026-01-13
+- **Expected completion**: 2026-01-14
+- **Tasks**:
+  - [ ] Enhance database schema for character relationships
+  - [ ] Create relationship data models and seed data
+  - [ ] Build GraphQL schema and resolvers for relationships
+  - [ ] Implement relationship graph visualization (React Flow)
+  - [ ] Build relationship graph page with filters
+  - [ ] Enhance Timeline data model with more events
+  - [ ] Build enhanced Timeline UI with horizontal scroll
+  - [ ] Create Event detail pages
+  - [ ] Document Azure deployment requirements (Phase 1 completion)
+- **Files to create/modify**: TBD as work progresses
+- **Blockers**: None
+- **Notes**: Starting Phase 3 - Relationships & Timeline. This phase focuses on interconnected exploration of characters and events through: (1) Relationship Graph - visualize character connections (sworn brothers, family, lord-vassal, rivals) with interactive D3.js/React Flow, (2) Timeline Viewer - horizontal scrolling timeline with 200+ events (169-280 AD), zoom levels, filters, (3) Locations & Geography - interactive map of historical China. Also documenting Azure infrastructure requirements to complete Phase 1. Target: Phase 3 at 50%+ by end of session.
+
 ---
 
 ## Completed Sessions

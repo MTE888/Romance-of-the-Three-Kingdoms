@@ -306,6 +306,17 @@ export const typeDefs = `#graphql
   }
 
   """
+  Relationship filter options
+  """
+  input RelationshipFilter {
+    relationshipType: RelationshipType
+    relationshipSource: RelationshipSource
+    characterId: ID
+    kingdom: Kingdom
+    minStrength: Int
+  }
+
+  """
   Timeline filter options
   """
   input TimelineFilter {
@@ -343,6 +354,11 @@ export const typeDefs = `#graphql
     Get lightweight character names for quick lookups (chapter text detection)
     """
     characterNames: [CharacterName!]!
+
+    """
+    Get character relationships with optional filtering
+    """
+    relationships(filter: RelationshipFilter): [CharacterRelationship!]!
 
     """
     Get a single event by ID

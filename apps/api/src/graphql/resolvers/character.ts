@@ -23,6 +23,14 @@ interface CharacterSort {
   direction?: 'ASC' | 'DESC';
 }
 
+interface RelationshipFilter {
+  relationshipType?: string;
+  relationshipSource?: string;
+  characterId?: string;
+  kingdom?: Kingdom;
+  minStrength?: number;
+}
+
 export const characterResolvers = {
   Query: {
     /**
@@ -171,6 +179,65 @@ export const characterResolvers = {
         },
         orderBy: { createdAt: 'asc' },
       });
+    },
+
+    /**
+     * Get character relationships with optional filtering
+     * Used for relationship graph visualization
+     */
+    relationships: async (
+      _parent: unknown,
+      args: { filter?: RelationshipFilter }
+    ) => {
+      const { filter } = args;
+
+      // Build where clause
+      const where: any = {};
+
+      if (filter?.relationshipType) {
+        where.relationshipType = filter.relationshipType;
+      }
+
+      if (filter?.relationshipSource) {
+        where.relationshipSource = filter.relationshipSource;
+      }
+
+      if (filter?.minStrength) {
+        where.strength = {
+          gte: filter.minStrength,
+        };
+      }
+
+      // Filter by character ID (either A or B)
+      if (filter?.characterId) {
+        where.OR = [
+          { characterAId: filter.characterId },
+          { characterBId: filter.characterId },
+        ];
+      }
+
+      // Fetch relationships
+      let relationships = await db.characterRelationship.findMany({
+        where,
+        include: {
+          characterA: true,
+          characterB: true,
+        },
+        orderBy: {
+          strength: 'desc', // Show strongest relationships first
+        },
+      });
+
+      // Filter by kingdom if specified
+      if (filter?.kingdom) {
+        relationships = relationships.filter(
+          (rel) =>
+            rel.characterA.kingdom === filter.kingdom ||
+            rel.characterB.kingdom === filter.kingdom
+        );
+      }
+
+      return relationships;
     },
   },
 
