@@ -16,6 +16,7 @@ import { CharacterDetail } from './pages/CharacterDetail';
 import { Timeline } from './pages/Timeline';
 import { Chapters } from './pages/Chapters';
 import { ChapterViewer } from './pages/ChapterViewer';
+import { Relationships } from './pages/Relationships';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/characters" element={<CharacterList />} />
             <Route path="/characters/:id" element={<CharacterDetail />} />
             <Route path="/timeline" element={<Timeline />} />
+            <Route path="/relationships" element={<Relationships />} />
             <Route path="/chapters" element={<Chapters />} />
             <Route path="/chapters/:chapterNumber" element={<ChapterViewer />} />
             <Route

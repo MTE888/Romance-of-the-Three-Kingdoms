@@ -244,23 +244,39 @@
 - **Notes**: ✅ Implemented complete bookmark functionality to complete Phase 2 Core Reading Experience. Features: (1) BookmarkContext for state management with localStorage persistence, (2) Bookmark toggle button in chapter viewer header with golden highlight when bookmarked, (3) Bookmark indicators on chapter list (yellow bookmark icon + golden border), (4) Bookmarks quick access section on chapters page showing up to 3 recent bookmarks with chapter info and remove functionality, (5) Comprehensive tests for bookmark context, (6) Full documentation in CHAPTERS.md. **Phase 2 Core Reading Experience is now 100% complete** with all features implemented: chapter reading + character hover cards + progress tracking + bookmarks. Overall MVP progress: 63%.
 
 ### Session 11 (Branch: claude/setup-project-planning-Nn6XS - continued)
-- **Status**: 🔄 In Progress
-- **Working on**: Phase 3 - Relationships & Timeline (Start)
+- **Status**: ✅ Significant Progress
+- **Working on**: Phase 3 - Relationships & Timeline (Relationship Graph Complete)
 - **Started**: 2026-01-13
-- **Expected completion**: 2026-01-14
-- **Tasks**:
-  - [ ] Enhance database schema for character relationships
-  - [ ] Create relationship data models and seed data
-  - [ ] Build GraphQL schema and resolvers for relationships
-  - [ ] Implement relationship graph visualization (React Flow)
-  - [ ] Build relationship graph page with filters
-  - [ ] Enhance Timeline data model with more events
+- **Completed**: 2026-01-13 (ongoing)
+- **Tasks Completed**:
+  - [x] Document Azure deployment requirements (docs/AZURE_DEPLOYMENT.md)
+  - [x] Add relationships query to GraphQL schema with RelationshipFilter
+  - [x] Implement relationships resolver with filtering
+  - [x] Enhance relationship seed data (13+ relationships across kingdoms)
+  - [x] Install React Flow library
+  - [x] Create RelationshipGraph component with interactive visualization
+  - [x] Build Relationships page with comprehensive filters
+  - [x] Add /relationships route to App.tsx
+  - [x] Add Relationships link to Header navigation
+- **Tasks Remaining**:
+  - [ ] Enhance Timeline with more event seed data
   - [ ] Build enhanced Timeline UI with horizontal scroll
   - [ ] Create Event detail pages
-  - [ ] Document Azure deployment requirements (Phase 1 completion)
-- **Files to create/modify**: TBD as work progresses
+  - [ ] Update documentation
+- **Files created**:
+  - docs/AZURE_DEPLOYMENT.md (complete Azure deployment guide)
+  - apps/web/src/components/graph/RelationshipGraph.tsx (React Flow graph component)
+  - apps/web/src/pages/Relationships.tsx (relationship graph page with filters)
+- **Files modified**:
+  - apps/api/src/graphql/schema.ts (added relationships query + RelationshipFilter)
+  - apps/api/src/graphql/resolvers/character.ts (added relationships resolver)
+  - packages/database/prisma/seed.ts (13+ relationship records)
+  - apps/web/src/App.tsx (added Relationships route)
+  - apps/web/src/components/layout/Header.tsx (added Relationships nav link)
+  - apps/web/package.json (added reactflow dependency)
+  - SESSION_LOG.md (this file)
 - **Blockers**: None
-- **Notes**: Starting Phase 3 - Relationships & Timeline. This phase focuses on interconnected exploration of characters and events through: (1) Relationship Graph - visualize character connections (sworn brothers, family, lord-vassal, rivals) with interactive D3.js/React Flow, (2) Timeline Viewer - horizontal scrolling timeline with 200+ events (169-280 AD), zoom levels, filters, (3) Locations & Geography - interactive map of historical China. Also documenting Azure infrastructure requirements to complete Phase 1. Target: Phase 3 at 50%+ by end of session.
+- **Notes**: ✅ Completed Relationship Graph feature for Phase 3! Implemented full-stack relationship visualization: (1) GraphQL API with relationships query supporting filters (type, source, kingdom, strength), (2) Enhanced seed data with 13+ relationships including Peach Garden Oath, rivalries (Cao Cao vs Liu Bei), alliances (Liu Bei + Sun Quan), family ties (Sun Ce + Sun Quan), lord-vassal bonds (Zhuge Liang + Liu Bei), and betrayals (Lü Bu + Dong Zhuo), (3) React Flow interactive graph with circular layout, kingdom-colored nodes, relationship-type-colored edges, strength-based animations, mini-map, zoom/pan controls, and comprehensive legend, (4) Filtering UI for type, source, kingdom, and minimum strength. Also created complete Azure deployment documentation for Phase 1 completion. **Phase 3 Progress: ~40%** (Relationship Graph complete, Timeline + Events remaining).
 
 ---
 
