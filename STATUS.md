@@ -10,8 +10,9 @@
 **Phase 0: Planning & Architecture** ✅ COMPLETE
 **Phase 0.5: Data Infrastructure** ✅ COMPLETE
 **Phase 1: Foundation** 🔄 95% COMPLETE (Azure deployment pending)
+**Phase 2: Core Reading Experience** ✅ 100% COMPLETE
 
-**Current Phase**: Phase 2 - Core Reading Experience (Weeks 5-8) 🔄 IN PROGRESS (80%)
+**Current Phase**: Phase 3 - Relationships & Timeline (Weeks 9-12) 🔄 IN PROGRESS (40%)
 
 ---
 
@@ -112,8 +113,13 @@
 | **Chapter Reading System** | ✅ Complete | Import script + API + Web viewer for all 120 chapters |
 | **Character Hover Cards** | ✅ Complete | Automatic character name detection + hover profiles in chapter text |
 | **Reading Progress Tracking** | ✅ Complete | localStorage-based progress tracking with stats dashboard |
+| **Bookmark Functionality** | ✅ Complete | Save favorite chapters + visual indicators + quick access list |
+| **Relationship Graph API** | ✅ Complete | GraphQL query + filters for relationship visualization |
+| **Relationship Graph Visualization** | ✅ Complete | React Flow interactive graph with filters and legend |
+| **Azure Deployment Documentation** | ✅ Complete | Complete guide for Phase 1 completion |
 | **Phase 1 Implementation** | 🔄 95% | Monorepo + DB + API + Frontend + Docker + Testing done, Azure pending |
-| **Phase 2 Implementation** | 🔄 80% | Chapter reading + hover cards + progress tracking done, bookmarks pending |
+| **Phase 2 Implementation** | ✅ 100% | Chapter reading + hover cards + progress tracking + bookmarks all complete! |
+| **Phase 3 Implementation** | 🔄 40% | Relationship graph done, Timeline + Events pending |
 
 ---
 
@@ -312,7 +318,7 @@ PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
   - ✅ Docker development environment complete
   - ✅ Testing infrastructure complete
   - ⏸️ Azure infrastructure pending (requires credentials)
-- **Phase 2 (Core Reading)**: 🔄 80% - In progress
+- **Phase 2 (Core Reading)**: ✅ 100% - Complete!
   - ✅ Chapter import script complete
   - ✅ Chapter API (GraphQL resolvers + character names query)
   - ✅ Chapter list page complete
@@ -320,12 +326,18 @@ PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
   - ✅ Chapter navigation (prev/next) complete
   - ✅ Character hover cards complete (automatic name detection + profile preview)
   - ✅ Reading progress tracking complete (localStorage + stats dashboard + time tracking)
-  - ⏸️ Bookmark functionality pending
-- **Phase 3 (Relationships & Timeline)**: ⏸️ 0% - Not started
+  - ✅ Bookmark functionality complete (add/remove bookmarks + visual indicators + quick access list)
+- **Phase 3 (Relationships & Timeline)**: 🔄 40% - In progress
+  - ✅ Relationship Graph API (GraphQL query + filters)
+  - ✅ Relationship seed data (13+ relationships)
+  - ✅ React Flow graph visualization
+  - ✅ Relationships page with interactive filters
+  - ⏸️ Enhanced Timeline UI pending
+  - ⏸️ Event detail pages pending
 - **Phase 4 (Multi-Source System)**: ⏸️ 0% - Not started
 - **Phase 5 (Polish & Launch)**: ⏸️ 0% - Not started
 
-**Overall MVP Progress**: 59% (Planning + Data Infrastructure complete, Phase 1 95%, Phase 2 80%)
+**Overall MVP Progress**: 67% (Planning + Data Infrastructure complete, Phase 1 95%, Phase 2 100%, Phase 3 40%)
 
 ---
 

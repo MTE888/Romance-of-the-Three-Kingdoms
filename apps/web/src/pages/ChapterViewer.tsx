@@ -12,6 +12,7 @@ import { ErrorMessage } from '../components/ui/ErrorMessage';
 import { useCharacterDetection } from '../hooks/useCharacterDetection';
 import { CharacterLink } from '../components/chapter/CharacterLink';
 import { useReadingProgress } from '../contexts/ReadingProgressContext';
+import { useBookmarks } from '../contexts/BookmarkContext';
 
 const GET_CHAPTER = gql`
   query GetChapter($chapterNumber: Int!) {
@@ -52,6 +53,12 @@ export function ChapterViewer() {
     setCurrentChapter,
     getChapterProgress,
   } = useReadingProgress();
+
+  const {
+    addBookmark,
+    removeBookmark,
+    isBookmarked,
+  } = useBookmarks();
 
   const [isCompleted, setIsCompleted] = useState(false);
   const readingTimeRef = useRef(0);
@@ -99,6 +106,18 @@ export function ChapterViewer() {
   const handleMarkAsComplete = () => {
     markChapterAsRead(number);
     setIsCompleted(true);
+  };
+
+  // Handle bookmark toggle
+  const handleToggleBookmark = () => {
+    const titleZh = chapter.title?.zh || '';
+    const titleEn = chapter.title?.en || '';
+
+    if (isBookmarked(number)) {
+      removeBookmark(number);
+    } else {
+      addBookmark(number, titleZh, titleEn);
+    }
   };
 
   // Parse content into paragraphs
@@ -155,7 +174,32 @@ export function ChapterViewer() {
                 {chapter.title?.zh || chapter.title?.en}
               </h1>
             </div>
-            <div className="w-32"></div> {/* Spacer for centering */}
+            <button
+              onClick={handleToggleBookmark}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+                isBookmarked(number)
+                  ? 'bg-imperial-yellow text-ink-black hover:bg-opacity-80'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+              title={isBookmarked(number) ? 'Remove bookmark' : 'Add bookmark'}
+            >
+              <svg
+                className="w-5 h-5"
+                fill={isBookmarked(number) ? 'currentColor' : 'none'}
+                stroke="currentColor"
+                strokeWidth={isBookmarked(number) ? 0 : 2}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                />
+              </svg>
+              <span className="hidden md:inline">
+                {isBookmarked(number) ? 'Bookmarked' : 'Bookmark'}
+              </span>
+            </button>
           </div>
         </div>
       </header>

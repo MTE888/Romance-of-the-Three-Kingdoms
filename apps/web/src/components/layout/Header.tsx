@@ -48,6 +48,12 @@ export function Header() {
               Timeline
             </Link>
             <Link
+              to="/relationships"
+              className="text-ink-black hover:text-vermillion font-medium transition-colors"
+            >
+              Relationships
+            </Link>
+            <Link
               to="/about"
               className="text-ink-black hover:text-vermillion font-medium transition-colors"
             >

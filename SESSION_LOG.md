@@ -224,6 +224,60 @@
 - **Blockers**: None
 - **Notes**: ✅ Implemented complete reading progress tracking system using localStorage (no authentication required). Features: (1) ReadingProgressContext for state management with automatic localStorage persistence, (2) Chapter list shows overall progress bar and status indicators (green checkmark for completed, blue clock for in-progress, green borders), (3) ChapterViewer automatically tracks reading time every 10 seconds and provides "Mark as Complete" button, (4) ReadingProgressStats dashboard on home page showing chapters completed, reading time, average time per chapter, and achievement milestones (First Steps, Halfway There, Journey Complete, etc.), (5) Privacy-first approach - all data stays in browser, no account needed, (6) Comprehensive tests for context functionality. System ready to migrate to database storage when user authentication is added in Phase 4. Phase 2 Core Reading Experience now 80% complete (chapter reading + hover cards + progress tracking done, only bookmarks pending). Overall MVP progress: 59%.
 
+### Session 10 (Branch: claude/setup-project-planning-Nn6XS - continued)
+- **Status**: ✅ Complete
+- **Working on**: Phase 2 - Bookmark Functionality
+- **Started**: 2026-01-13
+- **Completed**: 2026-01-13
+- **Files created**:
+  - apps/web/src/contexts/BookmarkContext.tsx (bookmark state management with localStorage)
+  - apps/web/src/contexts/BookmarkContext.test.tsx (comprehensive bookmark tests)
+  - apps/web/src/components/ui/BookmarksList.tsx (bookmarks display component)
+- **Files modified**:
+  - apps/web/src/App.tsx (wrapped with BookmarkProvider)
+  - apps/web/src/pages/ChapterViewer.tsx (added bookmark toggle button in header)
+  - apps/web/src/pages/Chapters.tsx (added bookmark indicators and bookmarks section)
+  - CHAPTERS.md (documented bookmark feature)
+  - SESSION_LOG.md (this file)
+  - STATUS.md (updated to Phase 2 100% complete, Overall MVP 63%)
+- **Blockers**: None
+- **Notes**: ✅ Implemented complete bookmark functionality to complete Phase 2 Core Reading Experience. Features: (1) BookmarkContext for state management with localStorage persistence, (2) Bookmark toggle button in chapter viewer header with golden highlight when bookmarked, (3) Bookmark indicators on chapter list (yellow bookmark icon + golden border), (4) Bookmarks quick access section on chapters page showing up to 3 recent bookmarks with chapter info and remove functionality, (5) Comprehensive tests for bookmark context, (6) Full documentation in CHAPTERS.md. **Phase 2 Core Reading Experience is now 100% complete** with all features implemented: chapter reading + character hover cards + progress tracking + bookmarks. Overall MVP progress: 63%.
+
+### Session 11 (Branch: claude/setup-project-planning-Nn6XS - continued)
+- **Status**: ✅ Significant Progress
+- **Working on**: Phase 3 - Relationships & Timeline (Relationship Graph Complete)
+- **Started**: 2026-01-13
+- **Completed**: 2026-01-13 (ongoing)
+- **Tasks Completed**:
+  - [x] Document Azure deployment requirements (docs/AZURE_DEPLOYMENT.md)
+  - [x] Add relationships query to GraphQL schema with RelationshipFilter
+  - [x] Implement relationships resolver with filtering
+  - [x] Enhance relationship seed data (13+ relationships across kingdoms)
+  - [x] Install React Flow library
+  - [x] Create RelationshipGraph component with interactive visualization
+  - [x] Build Relationships page with comprehensive filters
+  - [x] Add /relationships route to App.tsx
+  - [x] Add Relationships link to Header navigation
+- **Tasks Remaining**:
+  - [ ] Enhance Timeline with more event seed data
+  - [ ] Build enhanced Timeline UI with horizontal scroll
+  - [ ] Create Event detail pages
+  - [ ] Update documentation
+- **Files created**:
+  - docs/AZURE_DEPLOYMENT.md (complete Azure deployment guide)
+  - apps/web/src/components/graph/RelationshipGraph.tsx (React Flow graph component)
+  - apps/web/src/pages/Relationships.tsx (relationship graph page with filters)
+- **Files modified**:
+  - apps/api/src/graphql/schema.ts (added relationships query + RelationshipFilter)
+  - apps/api/src/graphql/resolvers/character.ts (added relationships resolver)
+  - packages/database/prisma/seed.ts (13+ relationship records)
+  - apps/web/src/App.tsx (added Relationships route)
+  - apps/web/src/components/layout/Header.tsx (added Relationships nav link)
+  - apps/web/package.json (added reactflow dependency)
+  - SESSION_LOG.md (this file)
+- **Blockers**: None
+- **Notes**: ✅ Completed Relationship Graph feature for Phase 3! Implemented full-stack relationship visualization: (1) GraphQL API with relationships query supporting filters (type, source, kingdom, strength), (2) Enhanced seed data with 13+ relationships including Peach Garden Oath, rivalries (Cao Cao vs Liu Bei), alliances (Liu Bei + Sun Quan), family ties (Sun Ce + Sun Quan), lord-vassal bonds (Zhuge Liang + Liu Bei), and betrayals (Lü Bu + Dong Zhuo), (3) React Flow interactive graph with circular layout, kingdom-colored nodes, relationship-type-colored edges, strength-based animations, mini-map, zoom/pan controls, and comprehensive legend, (4) Filtering UI for type, source, kingdom, and minimum strength. Also created complete Azure deployment documentation for Phase 1 completion. **Phase 3 Progress: ~40%** (Relationship Graph complete, Timeline + Events remaining).
+
 ---
 
 ## Completed Sessions

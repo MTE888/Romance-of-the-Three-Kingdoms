@@ -315,9 +315,17 @@ async function seedCharacters(locations: any[], sources: any[]) {
 }
 
 async function seedRelationships(characters: any[]) {
+  // Find all major characters
   const liuBei = characters.find((c) => (c.canonicalName as any).zh === '刘备');
   const guanYu = characters.find((c) => (c.canonicalName as any).zh === '关羽');
   const zhangFei = characters.find((c) => (c.canonicalName as any).zh === '张飞');
+  const caoCao = characters.find((c) => (c.canonicalName as any).zh === '曹操');
+  const sunQuan = characters.find((c) => (c.canonicalName as any).zh === '孙权');
+  const zhuGeLiang = characters.find((c) => (c.canonicalName as any).zh === '诸葛亮');
+  const lvBu = characters.find((c) => (c.canonicalName as any).zh === '吕布');
+  const dongZhuo = characters.find((c) => (c.canonicalName as any).zh === '董卓');
+  const yuanShao = characters.find((c) => (c.canonicalName as any).zh === '袁绍');
+  const sunCe = characters.find((c) => (c.canonicalName as any).zh === '孙策');
 
   if (!liuBei || !guanYu || !zhangFei) {
     console.log('⚠️  Could not find main characters, skipping relationships');
@@ -397,10 +405,157 @@ async function seedRelationships(characters: any[]) {
     },
   ];
 
+  // Add relationships for other characters if they exist
+  if (zhuGeLiang && liuBei) {
+    relationships.push({
+      characterAId: liuBei.id,
+      characterBId: zhuGeLiang.id,
+      relationshipType: 'LORD_VASSAL',
+      relationshipSource: 'BOTH',
+      sources: [],
+      startYear: 207,
+      description: {
+        zh: '三顾茅庐后的君臣关系',
+        en: 'Lord-vassal relationship after Three Visits to the Thatched Cottage',
+      },
+      strength: 10,
+      isReciprocal: false,
+    });
+  }
+
+  if (caoCao && liuBei) {
+    relationships.push({
+      characterAId: caoCao.id,
+      characterBId: liuBei.id,
+      relationshipType: 'RIVAL',
+      relationshipSource: 'BOTH',
+      sources: [],
+      startYear: 190,
+      description: {
+        zh: '一生的对手，争夺天下',
+        en: 'Lifelong rivals competing for control of China',
+      },
+      strength: 9,
+      isReciprocal: true,
+    });
+  }
+
+  if (sunQuan && liuBei) {
+    relationships.push({
+      characterAId: sunQuan.id,
+      characterBId: liuBei.id,
+      relationshipType: 'FRIEND',
+      relationshipSource: 'BOTH',
+      sources: [],
+      startYear: 208,
+      endYear: 219,
+      description: {
+        zh: '赤壁之战后的盟友',
+        en: 'Allies after the Battle of Red Cliffs',
+      },
+      strength: 6,
+      isReciprocal: true,
+    });
+  }
+
+  if (caoCao && sunQuan) {
+    relationships.push({
+      characterAId: caoCao.id,
+      characterBId: sunQuan.id,
+      relationshipType: 'ENEMY',
+      relationshipSource: 'BOTH',
+      sources: [],
+      startYear: 208,
+      description: {
+        zh: '赤壁之战的敌对关系',
+        en: 'Enemies since the Battle of Red Cliffs',
+      },
+      strength: 8,
+      isReciprocal: true,
+    });
+  }
+
+  if (lvBu && dongZhuo) {
+    relationships.push({
+      characterAId: dongZhuo.id,
+      characterBId: lvBu.id,
+      relationshipType: 'LORD_VASSAL',
+      relationshipSource: 'BOTH',
+      sources: [],
+      startYear: 189,
+      endYear: 192,
+      description: {
+        zh: '义父义子关系，最终吕布杀董卓',
+        en: 'Adoptive father-son relationship, ended when Lü Bu killed Dong Zhuo',
+      },
+      strength: 5,
+      isReciprocal: false,
+    });
+  }
+
+  if (lvBu && caoCao) {
+    relationships.push({
+      characterAId: lvBu.id,
+      characterBId: caoCao.id,
+      relationshipType: 'ENEMY',
+      relationshipSource: 'BOTH',
+      sources: [],
+      startYear: 195,
+      endYear: 199,
+      description: {
+        zh: '白门楼曹操斩吕布',
+        en: 'Enemies, Cao Cao executed Lü Bu at White Gate Tower',
+      },
+      strength: 8,
+      isReciprocal: true,
+    });
+  }
+
+  if (yuanShao && caoCao) {
+    relationships.push({
+      characterAId: yuanShao.id,
+      characterBId: caoCao.id,
+      relationshipType: 'RIVAL',
+      relationshipSource: 'BOTH',
+      sources: [],
+      startYear: 190,
+      endYear: 200,
+      description: {
+        zh: '昔日盟友，官渡之战成为敌手',
+        en: 'Former allies turned rivals at the Battle of Guandu',
+      },
+      strength: 9,
+      isReciprocal: true,
+    });
+  }
+
+  if (sunCe && sunQuan) {
+    relationships.push({
+      characterAId: sunCe.id,
+      characterBId: sunQuan.id,
+      relationshipType: 'FAMILY',
+      relationshipSource: 'BOTH',
+      sources: [],
+      startYear: null,
+      endYear: null,
+      description: {
+        zh: '兄弟关系，孙策是孙权的哥哥',
+        en: 'Brothers, Sun Ce is the elder brother of Sun Quan',
+      },
+      strength: 10,
+      isReciprocal: true,
+    });
+  }
+
   const created = [];
   for (const relationship of relationships) {
-    const r = await prisma.characterRelationship.create({ data: relationship });
-    created.push(r);
+    try {
+      const r = await prisma.characterRelationship.create({ data: relationship });
+      created.push(r);
+    } catch (error) {
+      // Skip if character doesn't exist
+      console.log(`⚠️  Skipping relationship: ${error}`);
+    }
   }
 
   return created;

@@ -77,6 +77,33 @@ The platform provides access to all **120 chapters** of Romance of the Three Kin
     - **Privacy-First**: No account required, data stays on your device
   - Future: Will sync to database when user authentication is added
 
+- **Bookmarks** ✨ NEW:
+  - Save your favorite chapters for quick access
+  - Features:
+    - **Bookmark Button**: Toggle bookmark from chapter viewer (in sticky header)
+      - Golden/yellow highlight when bookmarked
+      - Click to add or remove bookmark
+      - Visible on all screen sizes
+    - **Bookmark Indicators on Chapter List**:
+      - Yellow bookmark icon on chapter cards
+      - Golden border for bookmarked chapters
+      - Shows alongside completion status
+    - **Bookmarks Section**: Quick access panel on chapters page
+      - Displays up to 3 most recent bookmarks
+      - Shows chapter number, title (Chinese & English)
+      - Bookmark creation date
+      - Optional personal notes (future feature)
+      - One-click navigation to bookmarked chapters
+      - Remove bookmarks directly from list
+    - **Data Persistence**: Bookmarks saved to browser localStorage
+    - **Privacy-First**: No account needed, stays on your device
+  - Usage:
+    - While reading a chapter, click the bookmark button in the header
+    - View all bookmarks at the top of the chapters page (`/chapters`)
+    - Click on any bookmark to jump directly to that chapter
+    - Remove bookmarks by clicking the X button in the list
+  - Future: Will sync to database when user authentication is added
+
 ## Importing Chapters
 
 ### Prerequisites
