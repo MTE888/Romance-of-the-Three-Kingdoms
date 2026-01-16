@@ -43,7 +43,10 @@
     "docker:clean": "bash scripts/docker-dev.sh clean",
     "docker:migrate": "bash scripts/docker-dev.sh db-migrate",
     "docker:seed": "bash scripts/docker-dev.sh db-seed",
-    "import:chapters": "tsx scripts/import-chapters.ts"
+    "import:chapters": "tsx scripts/import-chapters.ts",
+    "import:characters": "tsx scripts/import-characters.ts",
+    "import:characters:dry-run": "tsx scripts/import-characters.ts --dry-run",
+    "import:characters:test": "tsx scripts/import-characters.ts --dry-run --limit 5"
   },
   "dependencies": {
     "@prisma/client": "^5.7.0"
