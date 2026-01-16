@@ -92,6 +92,18 @@
   - Database package documentation (packages/database/README.md)
   - Environment configuration template (.env.example)
 
+- [x] **Character Import Script** (Session - 2026-01-16)
+  - scripts/import-characters.ts - Import 81 character profiles to database
+  - Dual profile transformation (historicalBriefIntroduction → historicalProfile, novelisticBriefIntroduction → literaryProfile)
+  - Multilingual field mapping (Chinese → `{ zh: "...", en: "..." }` JSON format)
+  - Smart faction-to-Kingdom enum mapping (蜀汉→SHU, 曹魏→WEI, 东吴→WU)
+  - Chinese date parsing ("223年6月10日" → birthYear: 223)
+  - Image and historical quote import
+  - Dry run mode for testing
+  - Comprehensive documentation (scripts/README.md)
+  - Ready to import 81 characters from fthux/Characters_of_the_Three_Kingdoms dataset
+  - **Status**: Complete, testing blocked by network restrictions (Prisma engine download)
+
 ---
 
 ## 📊 Current Status Summary
@@ -109,6 +121,7 @@
 | **Frontend Implementation** | ✅ Complete | React + Vite + Tailwind + Apollo Client |
 | **Docker Development Setup** | ✅ Complete | Docker Compose + PostgreSQL + Redis |
 | **Source Downloads** | ⏸️ Blocked | Network restrictions |
+| **Character Import Script** | ✅ Complete | Ready to import 81 characters (blocked by network for testing) |
 | **Testing Infrastructure** | ✅ Complete | Unit tests + E2E tests + CI/CD pipeline |
 | **Chapter Reading System** | ✅ Complete | Import script + API + Web viewer for all 120 chapters |
 | **Character Hover Cards** | ✅ Complete | Automatic character name detection + hover profiles in chapter text |
