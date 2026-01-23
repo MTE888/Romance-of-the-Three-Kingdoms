@@ -4,6 +4,8 @@
 
 **The definitive digital platform for exploring the Three Kingdoms period**
 
+<!-- Local sync verified: 2025-01-23 -->
+
 *Blending historical accuracy with literary artistry through exceptional design*
 
 [About](#-about) • [Features](#-features) • [Tech Stack](#-tech-stack) • [Roadmap](#️-roadmap) • [Contributing](#-contributing)
