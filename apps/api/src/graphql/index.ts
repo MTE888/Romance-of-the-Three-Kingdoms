@@ -48,6 +48,21 @@ export async function createGraphQLServer() {
 }
 
 /**
+ * Convert Fastify headers to a Map-like object that Apollo expects
+ */
+function createHeadersMap(
+  headers: Record<string, string | string[] | undefined>
+): Map<string, string> {
+  const map = new Map<string, string>();
+  for (const [key, value] of Object.entries(headers)) {
+    if (value !== undefined) {
+      map.set(key.toLowerCase(), Array.isArray(value) ? value.join(', ') : value);
+    }
+  }
+  return map;
+}
+
+/**
  * Register GraphQL endpoint with Fastify
  */
 export async function registerGraphQL(
@@ -56,10 +71,12 @@ export async function registerGraphQL(
 ) {
   // GraphQL endpoint
   app.post('/graphql', async (request, reply) => {
+    const headersMap = createHeadersMap(request.headers as Record<string, string | string[] | undefined>);
+
     const response = await apolloServer.executeHTTPGraphQLRequest({
       httpGraphQLRequest: {
         body: request.body as any,
-        headers: request.headers as any,
+        headers: headersMap,
         method: request.method,
         search: '',
       },
@@ -94,10 +111,12 @@ export async function registerGraphQL(
 
   // GraphQL GET endpoint (for Apollo Studio and introspection)
   app.get('/graphql', async (request, reply) => {
+    const headersMap = createHeadersMap(request.headers as Record<string, string | string[] | undefined>);
+
     const response = await apolloServer.executeHTTPGraphQLRequest({
       httpGraphQLRequest: {
         body: null,
-        headers: request.headers as any,
+        headers: headersMap,
         method: request.method,
         search: request.url.split('?')[1] || '',
       },

@@ -1,0 +1,57 @@
+{
+  "title": "章节",
+  "pageTitle": "三国演义",
+  "subtitle": "阅读全部一百二十回",
+  "chapterNumber": "第{{number}}回",
+  "chapterNotFound": "未找到该章节",
+  "progress": {
+    "title": "阅读进度",
+    "completed": "已完成",
+    "inProgress": "阅读中",
+    "notStarted": "未开始",
+    "chaptersRead": "已读{{count}}回",
+    "percentComplete": "已完成{{percent}}%",
+    "overallProgress": "总体进度"
+  },
+  "bookmarks": {
+    "title": "书签",
+    "add": "添加书签",
+    "remove": "移除书签",
+    "noBookmarks": "暂无书签",
+    "bookmarked": "已收藏",
+    "recentBookmarks": "最近书签",
+    "viewAll": "查看全部书签"
+  },
+  "reader": {
+    "previousChapter": "上一回",
+    "nextChapter": "下一回",
+    "backToChapters": "返回章节列表",
+    "allChapters": "全部章节",
+    "markComplete": "标记为已读",
+    "markIncomplete": "标记为未读",
+    "chapterCompleted": "已完成本回",
+    "readingTime": "阅读时间",
+    "estimatedTime": "预计：{{time}}分钟",
+    "scrollToTop": "返回顶部"
+  },
+  "stats": {
+    "chaptersCompleted": "已完成章节",
+    "totalReadingTime": "总阅读时间",
+    "averageTime": "平均阅读时间",
+    "minutes": "分钟",
+    "hours": "小时"
+  },
+  "milestones": {
+    "firstSteps": "初入三国",
+    "gettingStarted": "渐入佳境",
+    "halfway": "过半之旅",
+    "almostDone": "即将完成",
+    "complete": "通读全书"
+  },
+  "source": {
+    "title": "来源信息",
+    "chapterTitle": "标题：",
+    "author": "作者：",
+    "type": "类型："
+  }
+}

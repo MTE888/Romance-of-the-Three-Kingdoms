@@ -1,0 +1,49 @@
+{
+  "title": "Relationships",
+  "pageTitle": "Character Relationships",
+  "subtitle": "Explore the complex web of relationships in the Three Kingdoms era",
+  "filters": {
+    "title": "Filter Relationships",
+    "type": "Relationship Type",
+    "kingdom": "Kingdom",
+    "source": "Source",
+    "strength": "Minimum Strength"
+  },
+  "types": {
+    "all": "All Types",
+    "family": "Family",
+    "ally": "Ally",
+    "enemy": "Enemy",
+    "lord_vassal": "Lord-Vassal",
+    "mentor_student": "Mentor-Student",
+    "rival": "Rival",
+    "sworn_brothers": "Sworn Brothers",
+    "sworn_brother": "Sworn Brother",
+    "marriage": "Marriage",
+    "spouse": "Spouse",
+    "parent_child": "Parent-Child",
+    "friend": "Friend"
+  },
+  "legend": {
+    "title": "Legend",
+    "kingdoms": "Kingdoms",
+    "relationships": "Relationships",
+    "nodeColors": "Node Colors (by Kingdom)",
+    "edgeColors": "Edge Colors (by Type)",
+    "edgeThickness": "Edge thickness indicates relationship strength",
+    "animatedStrong": "Animated lines = Strong relationships (8+)",
+    "arrowOneWay": "Arrow = One-way relationship",
+    "dragToRearrange": "Click and drag nodes to rearrange"
+  },
+  "graph": {
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "fitView": "Fit View",
+    "resetView": "Reset View"
+  },
+  "node": {
+    "clickToSelect": "Click to select",
+    "viewProfile": "View Character Profile"
+  },
+  "noRelationships": "No relationships found for the selected criteria"
+}

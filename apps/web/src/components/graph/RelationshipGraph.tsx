@@ -2,9 +2,11 @@
  * Relationship Graph Component
  *
  * Interactive visualization of character relationships using React Flow
+ * with full i18n support
  */
 
 import { useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import ReactFlow, {
   Node,
   Edge,
@@ -17,6 +19,7 @@ import ReactFlow, {
   ConnectionLineType,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
+import { useLocalized } from '../../lib/i18n/multilingual';
 
 interface Character {
   id: string;
@@ -68,6 +71,10 @@ const RELATIONSHIP_COLORS = {
 };
 
 export function RelationshipGraph({ relationships }: RelationshipGraphProps) {
+  const { t } = useTranslation('relationships');
+  const { t: tCommon } = useTranslation('common');
+  const { convertText } = useLocalized();
+
   // Extract unique characters from relationships
   const characters = useMemo(() => {
     const charMap = new Map<string, Character>();
@@ -94,8 +101,8 @@ export function RelationshipGraph({ relationships }: RelationshipGraphProps) {
         data: {
           label: (
             <div className="text-center">
-              <div className="font-zh-serif font-semibold text-sm">
-                {char.canonicalName.zh}
+              <div className="font-zh-serif font-semibold text-sm" lang="zh">
+                {convertText(char.canonicalName.zh)}
               </div>
               {char.canonicalName.en && (
                 <div className="text-xs text-gray-500">{char.canonicalName.en}</div>
@@ -119,7 +126,7 @@ export function RelationshipGraph({ relationships }: RelationshipGraphProps) {
         },
       };
     });
-  }, [characters]);
+  }, [characters, convertText]);
 
   // Create edges from relationships
   const initialEdges: Edge[] = useMemo(() => {
@@ -184,11 +191,11 @@ export function RelationshipGraph({ relationships }: RelationshipGraphProps) {
 
       {/* Legend */}
       <div className="absolute bottom-4 left-4 bg-white p-4 rounded-lg shadow-lg border border-gray-200 max-w-xs">
-        <h3 className="font-semibold text-sm mb-3 text-ink-black">Legend</h3>
+        <h3 className="font-semibold text-sm mb-3 text-ink-black">{t('legend.title')}</h3>
 
         <div className="space-y-2">
           <div>
-            <div className="text-xs font-semibold text-gray-700 mb-1">Kingdoms</div>
+            <div className="text-xs font-semibold text-gray-700 mb-1">{t('legend.kingdoms')}</div>
             <div className="flex flex-wrap gap-2">
               {Object.entries(KINGDOM_COLORS).map(([kingdom, color]) => (
                 <div key={kingdom} className="flex items-center gap-1">
@@ -196,14 +203,14 @@ export function RelationshipGraph({ relationships }: RelationshipGraphProps) {
                     className="w-3 h-3 rounded-full border border-white"
                     style={{ backgroundColor: color }}
                   />
-                  <span className="text-xs text-gray-600">{kingdom}</span>
+                  <span className="text-xs text-gray-600">{tCommon(`kingdoms.${kingdom.toLowerCase()}`)}</span>
                 </div>
               ))}
             </div>
           </div>
 
           <div>
-            <div className="text-xs font-semibold text-gray-700 mb-1">Relationships</div>
+            <div className="text-xs font-semibold text-gray-700 mb-1">{t('legend.relationships')}</div>
             <div className="grid grid-cols-2 gap-1">
               {Object.entries(RELATIONSHIP_COLORS).slice(0, 6).map(([type, color]) => (
                 <div key={type} className="flex items-center gap-1">
@@ -211,16 +218,16 @@ export function RelationshipGraph({ relationships }: RelationshipGraphProps) {
                     className="w-6 h-0.5"
                     style={{ backgroundColor: color }}
                   />
-                  <span className="text-xs text-gray-600">{type.replace('_', ' ')}</span>
+                  <span className="text-xs text-gray-600">{t(`types.${type.toLowerCase()}`)}</span>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="text-xs text-gray-500 pt-2 border-t border-gray-200">
-            <p>• Animated lines = Strong relationships (8+)</p>
-            <p>• Arrow = One-way relationship</p>
-            <p>• Click and drag nodes to rearrange</p>
+            <p>• {t('legend.animatedStrong')}</p>
+            <p>• {t('legend.arrowOneWay')}</p>
+            <p>• {t('legend.dragToRearrange')}</p>
           </div>
         </div>
       </div>

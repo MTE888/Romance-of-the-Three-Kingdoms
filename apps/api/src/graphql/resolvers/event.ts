@@ -2,10 +2,10 @@
  * Event Resolvers
  *
  * GraphQL resolvers for event-related queries
+ * Uses mock data for development without PostgreSQL
  */
 
-import { db } from '@three-kingdoms/database';
-import type { EventType } from '@three-kingdoms/database';
+import { mockDb, type EventType } from '../../data/mockData.js';
 
 interface PaginationInput {
   limit?: number;
@@ -18,12 +18,7 @@ export const eventResolvers = {
      * Get a single event by ID
      */
     event: async (_parent: unknown, args: { id: string }) => {
-      return await db.event.findUnique({
-        where: { id: args.id },
-        include: {
-          location: true,
-        },
-      });
+      return mockDb.event.findUnique({ where: { id: args.id } });
     },
 
     /**
@@ -56,14 +51,10 @@ export const eventResolvers = {
         }
       }
 
-      return await db.event.findMany({
+      return mockDb.event.findMany({
         where,
-        orderBy: { dateYear: 'asc' },
         take: pagination?.limit || 20,
         skip: pagination?.offset || 0,
-        include: {
-          location: true,
-        },
       });
     },
   },

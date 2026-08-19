@@ -2,74 +2,516 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom base styles */
+/**
+ * Three Kingdoms Platform - Global Styles
+ *
+ * Blend of modern minimalism and traditional Chinese aesthetics
+ * Research References: Palace Museum, WeChat Reading, Guochao movement
+ *
+ * @see docs/DESIGN_REFRESH_RESEARCH.md for full research findings
+ */
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
 @layer base {
-  body {
-    @apply bg-rice-white text-ink-black font-en-sans;
+  /* Root variables for traditional Chinese design elements */
+  :root {
+    /* Traditional Chinese colors */
+    --vermillion: #c73e1d;
+    --imperial-yellow: #f8d147;
+    --ink-black: #1a1a1a;
+    --rice-white: #f9f7f4;
+    --jade-green: #2c5f2d;
+    --indigo-blue: #3a4b8a;
+    --bronze: #8b6914;
+
+    /* Heritage colors (Museum-inspired) */
+    --heritage-gold: #d4af37;
+    --heritage-burgundy: #a5343c;
+    --heritage-maroon: #7d1e1e;
+    --heritage-beige: #efc8a8;
+    --palace-gray: #575757;
+
+    /* Easing curves */
+    --ease-elegant: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Shadows */
+    --shadow-paper: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-seal: 2px 2px 4px rgba(199, 62, 29, 0.2);
   }
 
-  /* Chinese text styling */
+  /* Base body styles */
+  body {
+    @apply bg-rice-white text-ink-black font-en-sans;
+    font-feature-settings: 'kern' 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Chinese text styling - enhanced for readability */
   [lang='zh'],
+  [lang='zh-Hans'],
+  [lang='zh-Hant'],
   .zh {
-    @apply font-zh-serif;
+    @apply font-zh-serif leading-relaxed tracking-wider;
+  }
+
+  /* Traditional Chinese for reading (chapters) */
+  [lang='zh-Hant'] {
+    @apply font-zh-hant-serif;
   }
 
   /* Headings */
   h1 {
-    @apply text-4xl font-bold mb-4;
+    @apply text-4xl font-bold mb-4 leading-tight;
   }
 
   h2 {
-    @apply text-3xl font-semibold mb-3;
+    @apply text-3xl font-semibold mb-3 leading-tight;
   }
 
   h3 {
-    @apply text-2xl font-semibold mb-2;
+    @apply text-2xl font-semibold mb-2 leading-snug;
   }
 
-  /* Links */
+  h4 {
+    @apply text-xl font-semibold mb-2 leading-snug;
+  }
+
+  h5 {
+    @apply text-lg font-medium mb-1;
+  }
+
+  h6 {
+    @apply text-base font-medium mb-1;
+  }
+
+  /* Links - elegant transition */
   a {
-    @apply text-indigo-blue hover:text-vermillion transition-colors;
+    @apply text-indigo-blue transition-colors duration-300;
+    transition-timing-function: var(--ease-elegant);
+  }
+
+  a:hover {
+    @apply text-vermillion;
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-indigo-blue;
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: rgba(199, 62, 29, 0.2);
+  }
+
+  /* Scrollbar styling (subtle, modern) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
   }
 }
 
-/* Custom components */
+/* ==========================================================================
+   COMPONENT STYLES
+   ========================================================================== */
+
 @layer components {
+  /* Button base */
   .btn {
-    @apply px-4 py-2 rounded font-medium transition-colors;
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-300;
+    transition-timing-function: var(--ease-elegant);
   }
 
   .btn-primary {
-    @apply bg-vermillion text-white hover:bg-opacity-90;
+    @apply bg-vermillion text-white;
+  }
+
+  .btn-primary:hover {
+    @apply bg-opacity-90 shadow-md;
+    transform: translateY(-1px);
   }
 
   .btn-secondary {
-    @apply bg-gray-200 text-ink-black hover:bg-gray-300;
+    @apply bg-gray-200 text-ink-black;
   }
 
+  .btn-secondary:hover {
+    @apply bg-gray-300;
+  }
+
+  .btn-heritage {
+    @apply text-white;
+    background-color: #A5343C; /* heritage-burgundy */
+  }
+
+  .btn-heritage:hover {
+    background-color: #7D1E1E; /* heritage-maroon */
+  }
+
+  /* Card base */
   .card {
-    @apply bg-white rounded-lg shadow-md p-6;
+    @apply bg-white rounded-xl p-6 transition-shadow duration-300;
+    box-shadow: var(--shadow-paper);
+    transition-timing-function: var(--ease-elegant);
   }
 
+  .card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Card with heritage styling */
+  .card-heritage {
+    @apply rounded-xl p-6;
+    background-color: #EFC8A8; /* heritage-beige */
+    box-shadow: var(--shadow-paper);
+  }
+
+  /* Container */
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-}
 
-/* Loading spinner */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+  /* Container - Artron style fixed width */
+  .container-artron {
+    @apply max-w-container mx-auto px-4;
+  }
+
+  /* ==========================================================================
+     TRADITIONAL CHINESE DESIGN ELEMENTS
+     ========================================================================== */
+
+  /**
+   * Seal Stamp (印章) Styles
+   * Used for decorative accents, signatures, and content dividers
+   */
+  .seal-stamp {
+    @apply inline-flex items-center justify-center;
+    @apply border-2 border-vermillion text-vermillion;
+    @apply font-zh-serif font-bold;
+    @apply px-3 py-1;
+    box-shadow: var(--shadow-seal);
+  }
+
+  .seal-stamp-square {
+    @apply seal-stamp aspect-square p-2;
+  }
+
+  .seal-stamp-round {
+    @apply seal-stamp rounded-full;
+  }
+
+  .seal-stamp-filled {
+    @apply seal-stamp bg-vermillion text-white;
+  }
+
+  /**
+   * Cloud Pattern (云纹) Backgrounds
+   * Subtle decorative pattern inspired by traditional Chinese art
+   */
+  .bg-cloud-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C73E1D' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .bg-cloud-pattern-dark {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /**
+   * Traditional Border Patterns
+   * Inspired by classical Chinese frame designs
+   */
+  .border-traditional {
+    @apply border-2;
+    border-color: #D4AF37; /* heritage-gold */
+    border-image: linear-gradient(
+        45deg,
+        var(--heritage-gold) 25%,
+        transparent 25%,
+        transparent 75%,
+        var(--heritage-gold) 75%
+      )
+      1;
+  }
+
+  .border-double-line {
+    @apply border-4 border-double border-ink-black;
+  }
+
+  /**
+   * Scroll-like Margins
+   * Generous padding honoring traditional scroll format
+   */
+  .scroll-margin {
+    @apply px-8 py-12 md:px-16 md:py-16 lg:px-24 lg:py-20;
+  }
+
+  .scroll-margin-sm {
+    @apply px-6 py-8 md:px-12 md:py-12;
+  }
+
+  /**
+   * Ink-wash Effect
+   * Subtle background texture inspired by Chinese ink painting
+   */
+  .bg-ink-wash {
+    background: linear-gradient(
+      135deg,
+      rgba(26, 26, 26, 0.02) 0%,
+      transparent 50%,
+      rgba(26, 26, 26, 0.02) 100%
+    );
+  }
+
+  .bg-ink-wash-dark {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.02) 0%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+  }
+
+  /**
+   * Paper Texture
+   * Subtle texture reminiscent of traditional rice paper
+   */
+  .bg-paper-texture {
+    background-color: var(--rice-white);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='0.02' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  }
+
+  /**
+   * Decorative Divider
+   * Traditional horizontal rule with Chinese aesthetic
+   */
+  .divider-traditional {
+    @apply relative flex items-center justify-center my-8;
+  }
+
+  .divider-traditional::before,
+  .divider-traditional::after {
+    content: '';
+    @apply flex-1 h-px;
+  }
+
+  .divider-traditional::before {
+    margin-right: 1rem;
+    background: linear-gradient(to right, transparent, #D4AF37); /* heritage-gold */
+  }
+
+  .divider-traditional::after {
+    margin-left: 1rem;
+    background: linear-gradient(to right, #D4AF37, transparent); /* heritage-gold */
+  }
+
+  /**
+   * Kingdom Color Accents
+   * Visual indicators for the three kingdoms
+   */
+  .accent-wei {
+    @apply border-l-4 border-wei pl-4;
+  }
+
+  .accent-shu {
+    @apply border-l-4 border-shu pl-4;
+  }
+
+  .accent-wu {
+    @apply border-l-4 border-wu pl-4;
+  }
+
+  /* ==========================================================================
+     READING EXPERIENCE STYLES (WeChat Reading inspired)
+     ========================================================================== */
+
+  /**
+   * Chapter Reader Typography
+   * Optimized for long-form Chinese text reading
+   */
+  .reading-chapter {
+    @apply font-zh-serif text-lg leading-reading tracking-wider;
+    @apply max-w-3xl mx-auto;
+  }
+
+  .reading-chapter p {
+    @apply mb-6;
+    text-indent: 2em; /* Traditional Chinese paragraph indent */
+  }
+
+  .reading-chapter h2 {
+    @apply font-bold text-2xl text-center my-8;
+    text-indent: 0;
+  }
+
+  /**
+   * Classical Poetry Layout
+   */
+  .poetry-classical {
+    @apply font-zh-serif text-center leading-loose tracking-widest;
+  }
+
+  .poetry-classical p {
+    @apply my-4;
+  }
+
+  /* ==========================================================================
+     GLASSMORPHIC EFFECTS (Xiaohongshu inspired)
+     ========================================================================== */
+
+  .glass {
+    @apply bg-white bg-opacity-80 backdrop-blur-md;
+    @apply border border-white border-opacity-20;
+  }
+
+  .glass-dark {
+    @apply bg-ink-black bg-opacity-80 backdrop-blur-md;
+    @apply border border-white border-opacity-10;
+  }
+
+  /* ==========================================================================
+     ANIMATION UTILITIES
+     ========================================================================== */
+
+  /* Loading spinner */
+  .spinner {
+    @apply inline-block w-8 h-8 border-4 border-gray-300 border-t-vermillion rounded-full;
+    animation: spin 1s linear infinite;
+  }
+
+  .spinner-sm {
+    @apply w-4 h-4 border-2;
+  }
+
+  .spinner-lg {
+    @apply w-12 h-12 border-4;
+  }
+
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.3s var(--ease-elegant);
+  }
+
+  /* Slide up animation */
+  .animate-slide-up {
+    animation: slideUp 0.3s var(--ease-elegant);
+  }
+
+  /* Pulse subtle animation */
+  .animate-pulse-subtle {
+    animation: pulseSubtle 2s ease-in-out infinite;
   }
 }
 
-.spinner {
-  @apply inline-block w-8 h-8 border-4 border-gray-300 border-t-vermillion rounded-full;
-  animation: spin 1s linear infinite;
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+@layer utilities {
+  /* Text utilities for traditional Chinese */
+  .text-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .text-vertical-lr {
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+  }
+
+  /* Balance text for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Prevent orphans in paragraphs */
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Gradient text */
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, #D4AF37, #F8D147); /* heritage-gold to imperial-yellow */
+  }
+
+  .text-gradient-vermillion {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, #C73E1D, #A5343C); /* vermillion to heritage-burgundy */
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Custom easing utility */
+  .ease-elegant {
+    transition-timing-function: var(--ease-elegant);
+  }
+
+  /* Focus ring for accessibility */
+  .focus-ring {
+    @apply focus-visible:ring-2 focus-visible:ring-indigo-blue focus-visible:ring-offset-2;
+  }
 }
 
-/* Fade in animation for hover cards */
+/* ==========================================================================
+   KEYFRAME ANIMATIONS
+   ========================================================================== */
+
 @keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
   from {
     opacity: 0;
     transform: translateY(-8px);
@@ -80,6 +522,44 @@
   }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.2s ease-out;
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseSubtle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   MEDIA QUERIES FOR REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

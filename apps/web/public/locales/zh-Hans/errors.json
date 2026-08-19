@@ -1,0 +1,32 @@
+{
+  "generic": {
+    "title": "错误",
+    "message": "发生意外错误，请重试。",
+    "retry": "重试"
+  },
+  "network": {
+    "title": "连接错误",
+    "message": "无法连接到服务器，请检查您的网络连接。",
+    "offline": "您似乎已离线"
+  },
+  "notFound": {
+    "title": "未找到",
+    "message": "您要查找的页面或资源不存在。",
+    "goHome": "返回首页"
+  },
+  "serverError": {
+    "title": "服务器错误",
+    "message": "服务器发生错误，请稍后重试。"
+  },
+  "validation": {
+    "required": "此字段为必填项",
+    "invalidFormat": "格式无效",
+    "tooShort": "至少需要{{min}}个字符",
+    "tooLong": "不能超过{{max}}个字符"
+  },
+  "api": {
+    "loadFailed": "加载数据失败",
+    "saveFailed": "保存更改失败",
+    "deleteFailed": "删除失败"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "title": "关系图",
+  "pageTitle": "人物关系",
+  "subtitle": "探索三国时代错综复杂的人物关系网络",
+  "filters": {
+    "title": "筛选关系",
+    "type": "关系类型",
+    "kingdom": "势力",
+    "source": "来源",
+    "strength": "最低强度"
+  },
+  "types": {
+    "all": "全部类型",
+    "family": "亲属",
+    "ally": "盟友",
+    "enemy": "敌对",
+    "lord_vassal": "君臣",
+    "mentor_student": "师生",
+    "rival": "对手",
+    "sworn_brothers": "结义兄弟",
+    "sworn_brother": "结义兄弟",
+    "marriage": "婚姻",
+    "spouse": "配偶",
+    "parent_child": "亲子",
+    "friend": "友人"
+  },
+  "legend": {
+    "title": "图例",
+    "kingdoms": "势力",
+    "relationships": "关系",
+    "nodeColors": "节点颜色（按势力）",
+    "edgeColors": "连线颜色（按类型）",
+    "edgeThickness": "连线粗细表示关系强度",
+    "animatedStrong": "动态线条 = 强关系（8+）",
+    "arrowOneWay": "箭头 = 单向关系",
+    "dragToRearrange": "点击并拖动节点以重新排列"
+  },
+  "graph": {
+    "zoomIn": "放大",
+    "zoomOut": "缩小",
+    "fitView": "适应视图",
+    "resetView": "重置视图"
+  },
+  "node": {
+    "clickToSelect": "点击选择",
+    "viewProfile": "查看人物资料"
+  },
+  "noRelationships": "没有找到符合条件的关系"
+}

@@ -2,14 +2,14 @@
  * GraphQL Resolvers Index
  *
  * Combines all resolver modules into a single resolver object
+ * Uses mock data for development without PostgreSQL
  */
 
 import { GraphQLJSON, DateTimeResolver } from 'graphql-scalars';
 import { characterResolvers } from './character.js';
 import { eventResolvers } from './event.js';
 import { chapterResolvers } from './chapter.js';
-import { db } from '@three-kingdoms/database';
-import type { SourceType } from '@three-kingdoms/database';
+import { mockDb, type SourceType } from '../../data/mockData.js';
 
 interface TimelineFilter {
   startYear?: number;
@@ -59,111 +59,61 @@ export const resolvers = {
         }
       }
 
-      return await db.timelineEntry.findMany({
-        where,
-        orderBy: [{ year: 'asc' }, { month: 'asc' }, { day: 'asc' }],
-        include: {
-          event: true,
-          character: true,
-        },
-      });
+      return mockDb.timelineEntry.findMany({ where });
     },
 
     // Source queries
     source: async (_parent: unknown, args: { id: string }) => {
-      return await db.source.findUnique({
-        where: { id: args.id },
-      });
+      return mockDb.source.findUnique({ where: { id: args.id } });
     },
 
     sources: async (_parent: unknown, args: { type?: SourceType }) => {
-      const where = args.type ? { type: args.type } : {};
-      return await db.source.findMany({
-        where,
-        orderBy: { createdAt: 'asc' },
-      });
+      return mockDb.source.findMany(args.type ? { where: { type: args.type } } : undefined);
     },
 
     // Location queries
     location: async (_parent: unknown, args: { id: string }) => {
-      return await db.location.findUnique({
-        where: { id: args.id },
-      });
+      return mockDb.location.findUnique({ where: { id: args.id } });
     },
 
     locations: async () => {
-      return await db.location.findMany({
-        orderBy: { createdAt: 'asc' },
-      });
+      return mockDb.location.findMany();
     },
 
     // Search across entities
     search: async (_parent: unknown, args: { query: string; limit?: number }) => {
       const limit = args.limit || 10;
-      const searchTerm = args.query;
+      const searchTerm = args.query.toLowerCase();
 
       // Search characters
-      const characters = await db.character.findMany({
-        where: {
-          OR: [
-            {
-              canonicalName: {
-                path: ['zh'],
-                string_contains: searchTerm,
-              },
-            },
-            {
-              canonicalName: {
-                path: ['en'],
-                string_contains: searchTerm,
-              },
-            },
-          ],
-        },
-        take: limit,
-      });
+      const allCharacters = mockDb.character.findMany();
+      const characters = allCharacters
+        .filter(c => {
+          const nameZh = (c.canonicalName as any).zh?.toLowerCase() || '';
+          const nameEn = (c.canonicalName as any).en?.toLowerCase() || '';
+          return nameZh.includes(searchTerm) || nameEn.includes(searchTerm);
+        })
+        .slice(0, limit);
 
       // Search events
-      const events = await db.event.findMany({
-        where: {
-          OR: [
-            {
-              name: {
-                path: ['zh'],
-                string_contains: searchTerm,
-              },
-            },
-            {
-              name: {
-                path: ['en'],
-                string_contains: searchTerm,
-              },
-            },
-          ],
-        },
-        take: limit,
-      });
+      const allEvents = mockDb.event.findMany();
+      const events = allEvents
+        .filter(e => {
+          const nameZh = (e.name as any).zh?.toLowerCase() || '';
+          const nameEn = (e.name as any).en?.toLowerCase() || '';
+          return nameZh.includes(searchTerm) || nameEn.includes(searchTerm);
+        })
+        .slice(0, limit);
 
       // Search locations
-      const locations = await db.location.findMany({
-        where: {
-          OR: [
-            {
-              name: {
-                path: ['zh'],
-                string_contains: searchTerm,
-              },
-            },
-            {
-              name: {
-                path: ['en'],
-                string_contains: searchTerm,
-              },
-            },
-          ],
-        },
-        take: limit,
-      });
+      const allLocations = mockDb.location.findMany();
+      const locations = allLocations
+        .filter(l => {
+          const nameZh = (l.name as any).zh?.toLowerCase() || '';
+          const nameEn = (l.name as any).en?.toLowerCase() || '';
+          return nameZh.includes(searchTerm) || nameEn.includes(searchTerm);
+        })
+        .slice(0, limit);
 
       return {
         characters,

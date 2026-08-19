@@ -1,8 +1,9 @@
 /**
  * Chapter GraphQL Resolvers
+ * Uses mock data for development without PostgreSQL
  */
 
-import { db } from '@three-kingdoms/database';
+import { mockDb } from '../../data/mockData.js';
 
 export const chapterResolvers = {
   Query: {
@@ -10,44 +11,30 @@ export const chapterResolvers = {
      * Get a single chapter by chapter number
      */
     chapter: async (_parent: unknown, args: { chapterNumber: number }) => {
-      return await db.chapter.findUnique({
-        where: { chapterNumber: args.chapterNumber },
-        include: {
-          source: true,
-        },
-      });
+      return mockDb.chapter.findUnique({ where: { number: args.chapterNumber } });
     },
 
     /**
      * Get all chapters
      */
     chapters: async () => {
-      return await db.chapter.findMany({
-        orderBy: { chapterNumber: 'asc' },
-        include: {
-          source: true,
-        },
-      });
+      return mockDb.chapter.findMany({ orderBy: { number: 'asc' } });
     },
 
     /**
      * Get chapters count
      */
     chaptersCount: async () => {
-      return await db.chapter.count();
+      return mockDb.chapter.count();
     },
   },
 
   Chapter: {
     /**
-     * Resolve source relationship
+     * Resolve source relationship (returns the novel source)
      */
-    source: async (parent: any) => {
-      if (!parent.sourceId) return null;
-
-      return await db.source.findUnique({
-        where: { id: parent.sourceId },
-      });
+    source: async () => {
+      return mockDb.source.findUnique({ where: { id: 'source-sanguo-yanyi' } });
     },
   },
 };

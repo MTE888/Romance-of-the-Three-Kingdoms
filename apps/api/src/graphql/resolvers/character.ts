@@ -2,10 +2,10 @@
  * Character Resolvers
  *
  * GraphQL resolvers for character-related queries
+ * Uses mock data for development without PostgreSQL
  */
 
-import { db } from '@three-kingdoms/database';
-import type { Kingdom } from '@three-kingdoms/database';
+import { mockDb, type Kingdom } from '../../data/mockData.js';
 
 interface CharacterFilter {
   kingdom?: Kingdom;
@@ -37,22 +37,7 @@ export const characterResolvers = {
      * Get a single character by ID
      */
     character: async (_parent: unknown, args: { id: string }) => {
-      return await db.character.findUnique({
-        where: { id: args.id },
-        include: {
-          birthLocation: true,
-          relationshipsAsA: {
-            include: {
-              characterB: true,
-            },
-          },
-          relationshipsAsB: {
-            include: {
-              characterA: true,
-            },
-          },
-        },
-      });
+      return mockDb.character.findUnique({ where: { id: args.id } });
     },
 
     /**
@@ -80,7 +65,6 @@ export const characterResolvers = {
       }
 
       if (filter?.search) {
-        // Search in canonical name (JSONB field)
         where.OR = [
           {
             canonicalName: {
@@ -98,7 +82,7 @@ export const characterResolvers = {
       }
 
       // Build orderBy clause
-      let orderBy: any = { createdAt: 'desc' }; // Default sort
+      let orderBy: any = { createdAt: 'desc' };
 
       if (sort) {
         const direction = sort.direction?.toLowerCase() || 'asc';
@@ -112,20 +96,16 @@ export const characterResolvers = {
           case 'CREATED_AT':
             orderBy = { createdAt: direction };
             break;
-          // CANONICAL_NAME sorting would require raw SQL for JSONB
           default:
             orderBy = { createdAt: direction };
         }
       }
 
-      return await db.character.findMany({
+      return mockDb.character.findMany({
         where,
         orderBy,
         take: pagination?.limit || 20,
         skip: pagination?.offset || 0,
-        include: {
-          birthLocation: true,
-        },
       });
     },
 
@@ -142,56 +122,29 @@ export const characterResolvers = {
         where.kingdom = args.filter.kingdom;
       }
 
-      if (args.filter?.verified !== undefined) {
-        where.verified = args.filter.verified;
-      }
-
-      if (args.filter?.search) {
-        where.OR = [
-          {
-            canonicalName: {
-              path: ['zh'],
-              string_contains: args.filter.search,
-            },
-          },
-          {
-            canonicalName: {
-              path: ['en'],
-              string_contains: args.filter.search,
-            },
-          },
-        ];
-      }
-
-      return await db.character.count({ where });
+      return mockDb.character.count({ where });
     },
 
     /**
      * Get lightweight character names for quick lookups
-     * Used for chapter text detection and hover cards
      */
     characterNames: async () => {
-      return await db.character.findMany({
-        select: {
-          id: true,
-          canonicalName: true,
-          kingdom: true,
-        },
-        orderBy: { createdAt: 'asc' },
-      });
+      const characters = mockDb.character.findMany();
+      return characters.map(c => ({
+        id: c.id,
+        canonicalName: c.canonicalName,
+        kingdom: c.kingdom,
+      }));
     },
 
     /**
      * Get character relationships with optional filtering
-     * Used for relationship graph visualization
      */
     relationships: async (
       _parent: unknown,
       args: { filter?: RelationshipFilter }
     ) => {
       const { filter } = args;
-
-      // Build where clause
       const where: any = {};
 
       if (filter?.relationshipType) {
@@ -203,12 +156,9 @@ export const characterResolvers = {
       }
 
       if (filter?.minStrength) {
-        where.strength = {
-          gte: filter.minStrength,
-        };
+        where.strength = { gte: filter.minStrength };
       }
 
-      // Filter by character ID (either A or B)
       if (filter?.characterId) {
         where.OR = [
           { characterAId: filter.characterId },
@@ -216,24 +166,17 @@ export const characterResolvers = {
         ];
       }
 
-      // Fetch relationships
-      let relationships = await db.characterRelationship.findMany({
+      let relationships = mockDb.characterRelationship.findMany({
         where,
-        include: {
-          characterA: true,
-          characterB: true,
-        },
-        orderBy: {
-          strength: 'desc', // Show strongest relationships first
-        },
+        orderBy: { strength: 'desc' },
       });
 
       // Filter by kingdom if specified
       if (filter?.kingdom) {
         relationships = relationships.filter(
           (rel) =>
-            rel.characterA.kingdom === filter.kingdom ||
-            rel.characterB.kingdom === filter.kingdom
+            rel.characterA?.kingdom === filter.kingdom ||
+            rel.characterB?.kingdom === filter.kingdom
         );
       }
 
@@ -243,23 +186,15 @@ export const characterResolvers = {
 
   Character: {
     /**
-     * Resolve relationships field by combining both directions
+     * Resolve relationships field
      */
     relationships: async (parent: { id: string }) => {
-      const asA = await db.characterRelationship.findMany({
-        where: { characterAId: parent.id },
-        include: {
-          characterA: true,
-          characterB: true,
-        },
+      const asA = mockDb.characterRelationship.findMany({
+        where: { OR: [{ characterAId: parent.id }] },
       });
 
-      const asB = await db.characterRelationship.findMany({
-        where: { characterBId: parent.id },
-        include: {
-          characterA: true,
-          characterB: true,
-        },
+      const asB = mockDb.characterRelationship.findMany({
+        where: { OR: [{ characterBId: parent.id }] },
       });
 
       return [...asA, ...asB];

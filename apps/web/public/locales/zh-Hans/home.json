@@ -1,0 +1,38 @@
+{
+  "hero": {
+    "titleChinese": "三国演义",
+    "titleEnglish": "Romance of the Three Kingdoms",
+    "description": "探索三国时期（公元169-280年）的丰富历史和引人入胜的文学作品。从历史记载和文学诠释中发现人物、事件和时间线。"
+  },
+  "features": {
+    "characters": {
+      "title": "人物",
+      "titleChinese": "人物",
+      "description": "浏览三国时代历史和文学人物的详细资料。"
+    },
+    "events": {
+      "title": "事件",
+      "titleChinese": "事件",
+      "description": "探索塑造历史的重大战役、政治事件和个人时刻。"
+    },
+    "timeline": {
+      "title": "时间线",
+      "titleChinese": "时间线",
+      "description": "追随三国百年历史的时间脉络。"
+    }
+  },
+  "multiSource": {
+    "title": "多源真相系统",
+    "historical": {
+      "title": "历史记载",
+      "titleChinese": "三国志",
+      "description": "基于陈寿在3世纪编纂的《三国志》——权威的历史记载。"
+    },
+    "literary": {
+      "title": "文学诠释",
+      "titleChinese": "三国演义",
+      "description": "基于罗贯中的《三国演义》——中国四大名著之一，包含文学戏剧化内容。"
+    },
+    "note": "每个人物和事件都同时呈现两种视角，帮助您区分史实与虚构。"
+  }
+}

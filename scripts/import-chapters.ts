@@ -80,8 +80,29 @@ async function importChapters() {
       });
 
       if (existing) {
-        console.log(`⏭️  Chapter ${chapterData.number}: Already exists, skipping`);
-        skipped++;
+        // Update existing chapter with new content
+        await prisma.chapter.update({
+          where: { chapterNumber: chapterData.number },
+          data: {
+            title: {
+              zh: chapterData.title,
+              en: `Chapter ${chapterData.number}`,
+            },
+            content: {
+              zh: chapterData.content,
+            },
+            summary: {
+              zh: chapterData.paragraphs[0]?.substring(0, 200) || '',
+            },
+            metadata: {
+              paragraphCount: chapterData.paragraphs.length,
+              characterCount: chapterData.content.length,
+              filename: filename,
+            },
+          },
+        });
+        console.log(`🔄 Chapter ${chapterData.number}: Updated`);
+        imported++;
         continue;
       }
 

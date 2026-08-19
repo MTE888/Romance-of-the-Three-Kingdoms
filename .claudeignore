@@ -1,0 +1,5 @@
+# Ignore almost everything to debug the crash
+*
+!README.md
+!package.json
+

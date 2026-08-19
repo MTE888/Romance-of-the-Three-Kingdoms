@@ -1,0 +1,71 @@
+{
+  "title": "Timeline",
+  "pageTitle": "Three Kingdoms Timeline",
+  "subtitle": "Follow the major events from 169 to 280 AD",
+  "filters": {
+    "title": "Filter Events",
+    "importance": "Importance Level",
+    "all": "All Events",
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "event": {
+    "year": "Year",
+    "description": "Description",
+    "participants": "Key Participants",
+    "location": "Location",
+    "sources": "Sources",
+    "viewDetails": "View Details"
+  },
+  "periods": {
+    "lateHan": "Late Han Dynasty",
+    "warOfWarlords": "War of the Warlords",
+    "threeKingdoms": "Three Kingdoms Era",
+    "jinUnification": "Jin Unification"
+  },
+  "eventTypes": {
+    "birth": "Birth",
+    "death": "Death",
+    "battle": "Battle",
+    "political": "Political",
+    "personal": "Personal",
+    "military": "Military",
+    "diplomatic": "Diplomatic",
+    "cultural": "Cultural",
+    "economic": "Economic",
+    "natural": "Natural Disaster",
+    "rebellion": "Rebellion",
+    "coronation": "Coronation",
+    "marriage": "Marriage",
+    "alliance": "Alliance",
+    "betrayal": "Betrayal",
+    "conquest": "Conquest",
+    "retreat": "Retreat",
+    "siege": "Siege",
+    "assassination": "Assassination"
+  },
+  "categories": {
+    "personal": "Personal",
+    "political": "Political",
+    "military": "Military",
+    "cultural": "Cultural",
+    "economic": "Economic",
+    "diplomatic": "Diplomatic",
+    "religious": "Religious",
+    "battle": "Battle",
+    "death": "Death",
+    "birth": "Birth",
+    "rebellion": "Rebellion",
+    "coronation": "Coronation",
+    "marriage": "Marriage",
+    "alliance": "Alliance",
+    "betrayal": "Betrayal",
+    "conquest": "Conquest",
+    "siege": "Siege",
+    "assassination": "Assassination",
+    "natural": "Natural Disaster"
+  },
+  "noEvents": "No events found for the selected criteria"
+}

@@ -1,7 +1,7 @@
 # Project Status - Three Kingdoms Digital Platform
 
-**Last Updated**: 2026-01-12
-**Branches**: Merged from planning + research + monorepo/database/api/frontend sessions
+**Last Updated**: 2026-01-24
+**Branches**: Merged from planning + research + monorepo/database/api/frontend sessions + i18n implementation + design refresh research
 
 ---
 
@@ -130,6 +130,8 @@
 | **Relationship Graph API** | ✅ Complete | GraphQL query + filters for relationship visualization |
 | **Relationship Graph Visualization** | ✅ Complete | React Flow interactive graph with filters and legend |
 | **Azure Deployment Documentation** | ✅ Complete | Complete guide for Phase 1 completion |
+| **Internationalization (i18n)** | ✅ Complete | English, Simplified Chinese, Traditional Chinese support |
+| **Design Refresh Research** | ✅ Complete | 12+ platforms researched, tokens + CSS utilities updated |
 | **Phase 1 Implementation** | 🔄 95% | Monorepo + DB + API + Frontend + Docker + Testing done, Azure pending |
 | **Phase 2 Implementation** | ✅ 100% | Chapter reading + hover cards + progress tracking + bookmarks all complete! |
 | **Phase 3 Implementation** | 🔄 40% | Relationship graph done, Timeline + Events pending |
@@ -431,11 +433,27 @@ PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 ## 🎨 Design Status
 
 ### Design System
-- Color palette: ✅ Defined in ARCHITECTURE.md + implemented in packages/ui/src/tokens/
-- Typography: ✅ Defined in ARCHITECTURE.md + implemented in packages/ui/src/tokens/
+- Color palette: ✅ Expanded (ARCHITECTURE.md + packages/ui/src/tokens/ + heritage colors)
+- Typography: ✅ Enhanced (Chinese line heights 1.6-1.8, letter spacing for readability)
 - Components: ⏸️ Not started
-- Design tokens: ✅ Implemented (packages/ui/src/tokens/index.ts)
+- Design tokens: ✅ Comprehensive (packages/ui/src/tokens/index.ts - 260+ lines)
 - Storybook: ⏸️ Not configured
+- Traditional Chinese elements: ✅ Added (seal stamps, cloud patterns, scroll margins)
+
+### Design Refresh Research (Session 13)
+- Research documentation: ✅ Complete (docs/DESIGN_REFRESH_RESEARCH.md)
+- Platforms researched: 12+ (Palace Museum, WeChat Reading, Xiaohongshu, etc.)
+- Design patterns identified: ✅ Imperial heritage, typography, animations, glassmorphic effects
+- CSS utilities added: ✅ Seal stamps, cloud patterns, ink-wash effects, reading styles
+- Tailwind config updated: ✅ Animations, keyframes, easing curves, colors
+- Guochao (国潮) principles: ✅ Implemented
+
+### Design Refresh Implementation (Session 14)
+- Pages updated: ✅ All 6 main pages (Home, Chapters, ChapterViewer, CharacterList, CharacterDetail, Timeline)
+- Layout components: ✅ Header (glassmorphic), Footer (cloud patterns + heritage gold)
+- UI components: ✅ All updated (Loading, ErrorMessage, KingdomBadge, LanguageSwitcher, BookmarksList, ReadingProgressStats)
+- Traditional elements applied: ✅ Seal stamps, heritage colors, elegant animations
+- Card system refined: ✅ Shadows, borders, hover effects, accent bars
 
 ### UI/UX
 - Wireframes: ⏸️ Not started

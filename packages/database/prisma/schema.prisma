@@ -357,8 +357,8 @@ model Fact {
 
   // Relations
   source          Source         @relation(fields: [sourceId], references: [id])
-  character       Character?     @relation(fields: [entityId], references: [id])
-  event           Event?         @relation(fields: [entityId], references: [id])
+  character       Character?     @relation(fields: [entityId], references: [id], map: "facts_character_id_fkey")
+  event           Event?         @relation(fields: [entityId], references: [id], map: "facts_event_id_fkey")
 
   // Timestamps
   createdAt       DateTime       @default(now()) @map("created_at")

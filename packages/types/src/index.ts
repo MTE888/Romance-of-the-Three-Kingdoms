@@ -43,5 +43,8 @@ export enum Kingdom {
   OTHER = 'Other'
 }
 
+// Export i18n types
+export * from './i18n';
+
 // Export placeholder for future types
 export type * from './types';

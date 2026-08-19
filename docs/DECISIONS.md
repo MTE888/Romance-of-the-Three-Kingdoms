@@ -331,9 +331,116 @@ interface MultilingualString {
 - English can be added without data model changes
 - Slightly more complex even for single language
 
-**Status**: Active
+**Status**: Superseded by 2026-01-24 decision
 
 **Session**: claude/setup-project-planning-Nn6XS
+
+---
+
+## 2026-01-24: Full i18n Implementation
+
+**Decision**: Implement full internationalization supporting English, Simplified Chinese (zh-Hans), and Traditional Chinese (zh-Hant)
+
+**Context**: Platform needed to support international users while maintaining Chinese content integrity
+
+**Rationale**:
+- Full i18n from the start allows global reach
+- Runtime Traditional Chinese conversion (OpenCC) eliminates duplicate translation files
+- Character names always show both Chinese + English romanization for cultural context
+- Chapter content stays Chinese regardless of UI locale (source material integrity)
+
+**Implementation Details**:
+- **i18next**: Core translation framework with HTTP backend
+- **OpenCC**: Runtime Simplified ↔ Traditional Chinese conversion
+- **Language Detection**: localStorage → browser preferences → fallback to English
+- **Translation Namespaces**: common, layout, home, characters, chapters, timeline, relationships, errors
+
+**Key Design Decisions**:
+1. **zh-Hant Strategy**: Runtime conversion from zh-Hans using OpenCC (not separate files)
+2. **Character Names**: Always display both Chinese + English romanization
+3. **URL Strategy**: Language stored in localStorage (clean URLs without /en/, /zh/)
+4. **Chapter Content**: Always Chinese with lang="zh" attribute (never translated)
+
+**Alternatives Considered**:
+1. **Separate translation files for Traditional Chinese**: More work, harder to maintain
+2. **URL-based language switching**: SEO benefits, but more complex routing
+3. **Machine translation for content**: Poor quality for classical Chinese
+
+**Consequences**:
+- 3-language support from day 1
+- Simple workflow: translate to zh-Hans only, Traditional generated automatically
+- Character profiles work naturally in all languages
+- Slightly larger bundle (OpenCC library ~50KB gzipped)
+
+**Status**: Active
+
+**Session**: Session 12 (i18n implementation)
+
+---
+
+## 2026-01-24: Design Refresh - Guochao (国潮) Design System
+
+**Decision**: Implement design system based on research of 12+ leading Chinese digital platforms, incorporating Guochao (国潮) and 新中式 (New Chinese Style) principles
+
+**Context**: Platform needed a design refresh that honors traditional Chinese aesthetics while maintaining modern UX standards. Research was conducted on museums (Palace Museum, National Museum), reading platforms (WeChat Reading, Douban), modern apps (Xiaohongshu, Bilibili, Zhihu), and design systems (Ant Design).
+
+**Rationale**:
+- Traditional Chinese colors and patterns create cultural authority and authenticity
+- Modern UX patterns ensure accessibility and usability
+- Guochao movement represents contemporary appreciation of Chinese heritage
+- WeChat Reading provides best-in-class model for Chinese text reading experience
+- 8px base grid aligns with Ant Design and classical Chinese proportions
+
+**Implementation Details**:
+
+1. **Color System Expansion**:
+   - Heritage colors: Gold (#D4AF37), Burgundy (#A5343C), Beige (#EFC8A8) from museums
+   - Semantic text colors from Zhihu: Primary (#373A40), Secondary (#9196A1)
+   - Status colors with cultural significance
+
+2. **Typography Refinements**:
+   - Chinese line height: 1.6-1.8 (vs 1.5 for English)
+   - Letter spacing: 0.5px for improved Chinese readability
+   - Font fallback chains include PingFang SC, Songti SC
+
+3. **Animation Guidelines**:
+   - Duration: 300-500ms for UI, 800-1200ms for narrative
+   - Easing: `cubic-bezier(0.25, 0.46, 0.45, 0.94)` for elegant deceleration
+   - Principle: Subtle, restrained animations
+
+4. **Traditional Design Elements**:
+   - Seal stamps (印章): `.seal-stamp` class for decorative accents
+   - Cloud patterns (云纹): `.bg-cloud-pattern` for subtle backgrounds
+   - Scroll margins: `.scroll-margin` for traditional reading experience
+   - Ink-wash effects: `.bg-ink-wash` for subtle gradients
+
+5. **Modern Patterns**:
+   - Glassmorphic effects (Xiaohongshu): `.glass` class
+   - 8px base grid spacing system
+   - Card hover shadows and transitions
+
+**Files Modified**:
+- `packages/ui/src/tokens/index.ts` - Comprehensive design tokens
+- `apps/web/tailwind.config.js` - Extended Tailwind configuration
+- `apps/web/src/styles/globals.css` - Traditional Chinese CSS utilities
+
+**Research Documentation**: `docs/DESIGN_REFRESH_RESEARCH.md`
+
+**Alternatives Considered**:
+1. **Material Design**: Too generic, lacks cultural character
+2. **Pure traditional Chinese design**: May feel dated, accessibility concerns
+3. **Guochao + Modern UX blend** ✅ SELECTED: Best of both worlds
+
+**Consequences**:
+- Design system now has unique cultural identity
+- CSS utilities available for traditional Chinese design patterns
+- Improved Chinese text readability
+- Animation timing standardized for elegant user experience
+- May need performance testing for complex animations on mobile
+
+**Status**: Active
+
+**Session**: Session 13 (Design Refresh Research)
 
 ---
 
@@ -370,6 +477,7 @@ interface MultilingualString {
 
 ---
 
-**Last Updated**: 2026-01-10
-**Total Decisions**: 7
-**Active Decisions**: 7
+**Last Updated**: 2026-01-24
+**Total Decisions**: 9
+**Active Decisions**: 8
+**Superseded Decisions**: 1

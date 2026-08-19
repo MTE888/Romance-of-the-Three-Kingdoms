@@ -278,6 +278,98 @@
 - **Blockers**: None
 - **Notes**: ✅ Completed Relationship Graph feature for Phase 3! Implemented full-stack relationship visualization: (1) GraphQL API with relationships query supporting filters (type, source, kingdom, strength), (2) Enhanced seed data with 13+ relationships including Peach Garden Oath, rivalries (Cao Cao vs Liu Bei), alliances (Liu Bei + Sun Quan), family ties (Sun Ce + Sun Quan), lord-vassal bonds (Zhuge Liang + Liu Bei), and betrayals (Lü Bu + Dong Zhuo), (3) React Flow interactive graph with circular layout, kingdom-colored nodes, relationship-type-colored edges, strength-based animations, mini-map, zoom/pan controls, and comprehensive legend, (4) Filtering UI for type, source, kingdom, and minimum strength. Also created complete Azure deployment documentation for Phase 1 completion. **Phase 3 Progress: ~40%** (Relationship Graph complete, Timeline + Events remaining).
 
+### Session 12 (Branch: current - i18n implementation)
+- **Status**: ✅ Complete
+- **Working on**: Internationalization (i18n) Implementation
+- **Started**: 2026-01-24
+- **Completed**: 2026-01-24
+- **Files created**:
+  - apps/web/src/lib/i18n/index.ts (i18n configuration with i18next)
+  - apps/web/src/lib/i18n/chinese-converter.ts (OpenCC converter for Traditional Chinese)
+  - apps/web/src/lib/i18n/multilingual.ts (helpers for multilingual API data)
+  - apps/web/src/contexts/LanguageContext.tsx (language state management)
+  - apps/web/src/components/ui/LanguageSwitcher.tsx (language dropdown component)
+  - apps/web/public/locales/en/*.json (8 English translation files)
+  - apps/web/public/locales/zh-Hans/*.json (8 Simplified Chinese translation files)
+  - packages/types/src/i18n.ts (i18n TypeScript types)
+- **Files modified**:
+  - apps/web/package.json (added i18next, opencc-js dependencies)
+  - apps/web/src/main.tsx (i18n initialization + Suspense)
+  - apps/web/src/App.tsx (added LanguageProvider)
+  - apps/web/src/components/layout/Header.tsx (translations + LanguageSwitcher)
+  - apps/web/src/components/layout/Footer.tsx (translations)
+  - apps/web/src/components/ui/Loading.tsx (translations)
+  - apps/web/src/components/ui/ErrorMessage.tsx (translations)
+  - apps/web/src/components/ui/KingdomBadge.tsx (translations)
+  - apps/web/src/pages/Home.tsx (translations)
+  - apps/web/src/pages/CharacterList.tsx (translations + locale formatting)
+  - apps/web/src/pages/CharacterDetail.tsx (translations)
+  - apps/web/src/pages/Timeline.tsx (translations + year formatting)
+  - apps/web/src/pages/Chapters.tsx (translations)
+  - apps/web/src/pages/Relationships.tsx (translations)
+  - apps/web/tailwind.config.js (Traditional Chinese fonts)
+  - packages/types/src/index.ts (export i18n types)
+  - SESSION_LOG.md (this file)
+  - STATUS.md (updated progress)
+  - docs/DECISIONS.md (documented i18n architecture)
+- **Blockers**: None
+- **Notes**: ✅ Implemented complete multilingual (i18n) system supporting English, Simplified Chinese (zh-Hans), and Traditional Chinese (zh-Hant). Key features: (1) i18next configuration with HTTP backend and language detection, (2) OpenCC-based runtime conversion for Traditional Chinese (no separate translation files needed), (3) LanguageContext for state management with document.lang sync, (4) LanguageSwitcher dropdown component with accessible design, (5) useLocalized hook for extracting localized content from API data, (6) 8 translation namespaces (common, layout, home, characters, chapters, timeline, relationships, errors), (7) All UI components and pages migrated to use translations, (8) Character names always show both Chinese + English romanization per design decision, (9) Chapter content stays Chinese regardless of UI locale. **i18n implementation complete and ready for use.**
+
+### Session 13 (Branch: current - Design Refresh Research)
+- **Status**: ✅ Complete
+- **Working on**: Design Refresh Research - Chinese Websites & Apps Blending Traditional Aesthetics with Modern UX
+- **Started**: 2026-01-24
+- **Completed**: 2026-01-24
+- **Files created**:
+  - docs/DESIGN_REFRESH_RESEARCH.md (comprehensive research documentation, 500+ lines)
+- **Files modified**:
+  - packages/ui/src/tokens/index.ts (expanded design tokens with heritage colors, typography refinements, animation timing, spacing system, and more)
+  - apps/web/tailwind.config.js (new colors, animations, keyframes, typography settings, glassmorphic effects)
+  - apps/web/src/styles/globals.css (traditional Chinese design utilities, reading experience styles, seal stamps, cloud patterns, etc.)
+  - SESSION_LOG.md (this file)
+  - STATUS.md (updated progress)
+- **Blockers**: None
+- **Notes**: ✅ Implemented comprehensive design refresh based on research of 12+ leading Chinese digital platforms. Key updates include:
+  1. **Research Documentation**: Created detailed docs/DESIGN_REFRESH_RESEARCH.md covering museums (Palace Museum, National Museum), reading platforms (WeChat Reading, Douban), modern apps (Xiaohongshu, Bilibili, Zhihu), and design systems (Ant Design).
+  2. **Design Tokens Updates**: Added heritage colors (museum-inspired), expanded typography (Chinese line heights 1.6-1.8, letter spacing), 8px base grid spacing system, elegant easing curves, semantic text colors, status colors.
+  3. **Tailwind Config Updates**: New animations (fade, slide, scale), keyframes, transition timing functions (elegant deceleration), backdrop blur for glassmorphic effects, expanded color palette.
+  4. **CSS Utilities**: Traditional Chinese design elements including seal stamps (印章), cloud patterns (云纹), scroll-like margins, ink-wash effects, paper textures, traditional borders, decorative dividers, kingdom color accents, reading experience styles (WeChat Reading inspired), glassmorphic effects (Xiaohongshu inspired), and accessibility features.
+  **Design system now implements Guochao (国潮) and 新中式 (New Chinese Style) principles.**
+
+### Session 14 (Branch: current - Design Refresh Implementation)
+- **Status**: ✅ Complete
+- **Working on**: Applying design refresh to all pages and components
+- **Started**: 2026-01-24
+- **Completed**: 2026-01-24
+- **Files modified** (Pages):
+  - apps/web/src/pages/Home.tsx (cloud pattern hero, seal stamps, feature cards, kingdom cards)
+  - apps/web/src/pages/Chapters.tsx (paper texture, seal stamp, heritage cards, shimmer progress)
+  - apps/web/src/pages/ChapterViewer.tsx (paper texture, glassmorphic header, scroll margins, seal end marker)
+  - apps/web/src/pages/CharacterList.tsx (seal stamp, kingdom-colored cards, filter buttons)
+  - apps/web/src/pages/CharacterDetail.tsx (kingdom gradient accent, icon stats grid, bordered profiles)
+  - apps/web/src/pages/Timeline.tsx (gradient timeline, importance dots, staggered animations)
+- **Files modified** (Layout):
+  - apps/web/src/components/layout/Header.tsx (glassmorphic design, animated underlines)
+  - apps/web/src/components/layout/Footer.tsx (cloud pattern, heritage gold, seal stamp)
+- **Files modified** (UI Components):
+  - apps/web/src/components/ui/KingdomBadge.tsx (added outline variant, hover scale)
+  - apps/web/src/components/ui/ReadingProgressStats.tsx (seal stamps, stat cards, milestones)
+  - apps/web/src/components/ui/Loading.tsx (heritage spinner, decorative dots)
+  - apps/web/src/components/ui/ErrorMessage.tsx (card styling, vermillion accent, retry button)
+  - apps/web/src/components/ui/LanguageSwitcher.tsx (glassmorphic dropdown, heritage gold)
+  - apps/web/src/components/ui/BookmarksList.tsx (heritage cards, imperial yellow accents)
+  - SESSION_LOG.md (this file)
+- **Blockers**: None
+- **Notes**: ✅ Applied comprehensive design refresh to all major pages and UI components:
+  1. **Traditional Chinese Elements**: Seal stamps (印章) on section headers, cloud patterns in hero sections, scroll-like margins for reading
+  2. **Heritage Color Palette**: Vermillion for CTAs, heritage gold for accents, heritage burgundy for emphasis, kingdom colors for character/faction styling
+  3. **Glassmorphic Effects**: Header, language switcher dropdown, chapter viewer header with backdrop blur
+  4. **Elegant Animations**: fade-in entrance, slide-up for lists, elegant easing curves (cubic-bezier), hover scale effects, staggered delays
+  5. **Reading Experience**: Paper texture backgrounds, optimized line spacing, traditional chapter titles with decorative borders
+  6. **Card System**: Rounded corners, subtle shadows, hover lift effects, colored accent bars/borders
+  7. **Icon Integration**: Consistent icon containers with colored backgrounds across stats grids
+  **All pages and components now implement the Guochao (国潮) design refresh.**
+
 ---
 
 ## Completed Sessions

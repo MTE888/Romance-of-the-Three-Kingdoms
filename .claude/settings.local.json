@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash scripts/docker-dev.sh:*)",
+      "Bash(docker --version:*)",
+      "Bash(\"/c/Program Files/Docker/Docker/resources/bin/docker\" ps -a)",
+      "Bash(tasklist:*)",
+      "Bash(netstat:*)",
+      "Bash(taskkill:*)"
+    ]
+  }
+}

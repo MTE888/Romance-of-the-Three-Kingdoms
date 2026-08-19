@@ -1,0 +1,139 @@
+{
+  "actions": {
+    "search": "搜索",
+    "filter": "筛选",
+    "back": "返回",
+    "next": "下一个",
+    "previous": "上一个",
+    "close": "关闭",
+    "save": "保存",
+    "cancel": "取消",
+    "confirm": "确认",
+    "delete": "删除",
+    "edit": "编辑",
+    "view": "查看",
+    "viewAll": "查看全部",
+    "loadMore": "加载更多",
+    "refresh": "刷新",
+    "retry": "重试",
+    "submit": "提交",
+    "reset": "重置",
+    "clear": "清除",
+    "select": "选择",
+    "toggle": "切换",
+    "expand": "展开",
+    "collapse": "收起",
+    "share": "分享",
+    "copy": "复制",
+    "download": "下载",
+    "browseChapters": "浏览章节",
+    "continueReading": "继续阅读",
+    "viewFullProfile": "查看完整资料",
+    "removeBookmark": "移除书签",
+    "addBookmark": "添加书签"
+  },
+  "status": {
+    "loading": "加载中...",
+    "saving": "保存中...",
+    "error": "发生错误",
+    "success": "成功",
+    "empty": "无结果",
+    "noData": "暂无数据",
+    "notFound": "未找到"
+  },
+  "kingdoms": {
+    "wei": "魏",
+    "shu": "蜀汉",
+    "wu": "吴",
+    "han": "汉",
+    "other": "其他"
+  },
+  "sourceTypes": {
+    "historical": "历史",
+    "literary": "文学",
+    "primary": "原始史料",
+    "secondary": "二手史料",
+    "tertiary": "三手史料",
+    "fiction": "小说"
+  },
+  "time": {
+    "ad": "公元",
+    "bc": "公元前",
+    "year": "年",
+    "years": "年",
+    "unknown": "未知",
+    "minutes": "分钟",
+    "hours": "小时"
+  },
+  "accessibility": {
+    "skipToContent": "跳转到主要内容",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单",
+    "selectLanguage": "选择语言"
+  },
+  "pagination": {
+    "page": "第",
+    "of": "共",
+    "showing": "显示",
+    "to": "至",
+    "results": "条结果"
+  },
+  "reading": {
+    "startJourney": "开始您的阅读之旅",
+    "startJourneyDesc": "开始阅读《三国演义》。追踪您在全部一百二十回中的阅读进度。",
+    "yourProgress": "您的阅读进度",
+    "chaptersCompleted": "已完成章节",
+    "chaptersRead": "已读章节",
+    "chaptersRemaining": "剩余章节",
+    "readingTime": "阅读时间",
+    "avgPerChapter": "平均每章",
+    "milestones": "里程碑",
+    "moreBookmarks": "还有 {{count}} 个书签...",
+    "totalBookmarks": "共 {{count}} 个书签",
+    "noBookmarksYet": "暂无书签",
+    "bookmarkHint": "收藏您喜欢的章节以便快速访问"
+  },
+  "milestones": {
+    "firstSteps": "初入三国",
+    "firstStepsDesc": "阅读第一回",
+    "gettingStarted": "渐入佳境",
+    "gettingStartedDesc": "阅读10回",
+    "makingProgress": "稳步前进",
+    "makingProgressDesc": "阅读30回",
+    "halfway": "过半之旅",
+    "halfwayDesc": "阅读60回",
+    "almostDone": "即将完成",
+    "almostDoneDesc": "阅读100回",
+    "journeyComplete": "通读全书",
+    "journeyCompleteDesc": "阅读全部120回"
+  },
+  "about": {
+    "title": "关于本版本",
+    "description1": "《三国演义》是中国古典文学四大名著之一。",
+    "description2": "由罗贯中于明朝（14世纪）创作，记述了动荡的三国时期（公元169-280年）。",
+    "description3": "本平台呈现完整的一百二十回内容，让您探索文学叙事与历史背景。"
+  },
+  "pages": {
+    "about": {
+      "title": "关于三国数字平台",
+      "intro": "三国数字平台是一个综合性的网络应用程序，用于探索中国历史上的三国时期（公元169-280年）。",
+      "multiSourceTitle": "多源真相系统",
+      "multiSourceIntro": "我们的平台独特地呈现来自多个来源的信息，明确区分：",
+      "source1": "历史记录（《三国志》）",
+      "source2": "文学演绎（《三国演义》）",
+      "source3": "现代学术研究",
+      "attribution": "每个事实都注明其来源并附有明确的可靠性指标，让您了解历史事实与文学演绎之间的差异。",
+      "technologyTitle": "技术",
+      "technology": "采用React、GraphQL和PostgreSQL等现代网络技术构建，托管于Microsoft Azure。"
+    },
+    "events": {
+      "title": "事件",
+      "comingSoon": "事件页面即将推出..."
+    },
+    "notFound": {
+      "title": "404",
+      "message": "页面未找到",
+      "returnHome": "返回首页"
+    }
+  }
+}

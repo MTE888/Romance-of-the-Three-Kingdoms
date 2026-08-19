@@ -1,0 +1,71 @@
+{
+  "title": "时间线",
+  "pageTitle": "三国时间线",
+  "subtitle": "追溯公元169年至280年的重大事件",
+  "filters": {
+    "title": "筛选事件",
+    "importance": "重要程度",
+    "all": "全部事件",
+    "critical": "关键事件",
+    "high": "重要事件",
+    "medium": "一般事件",
+    "low": "次要事件"
+  },
+  "event": {
+    "year": "年份",
+    "description": "描述",
+    "participants": "主要人物",
+    "location": "地点",
+    "sources": "来源",
+    "viewDetails": "查看详情"
+  },
+  "periods": {
+    "lateHan": "东汉末年",
+    "warOfWarlords": "群雄逐鹿",
+    "threeKingdoms": "三国鼎立",
+    "jinUnification": "晋统一"
+  },
+  "eventTypes": {
+    "birth": "出生",
+    "death": "去世",
+    "battle": "战役",
+    "political": "政治",
+    "personal": "个人",
+    "military": "军事",
+    "diplomatic": "外交",
+    "cultural": "文化",
+    "economic": "经济",
+    "natural": "天灾",
+    "rebellion": "起义",
+    "coronation": "登基",
+    "marriage": "联姻",
+    "alliance": "同盟",
+    "betrayal": "背叛",
+    "conquest": "征服",
+    "retreat": "撤退",
+    "siege": "围城",
+    "assassination": "暗杀"
+  },
+  "categories": {
+    "personal": "个人",
+    "political": "政治",
+    "military": "军事",
+    "cultural": "文化",
+    "economic": "经济",
+    "diplomatic": "外交",
+    "religious": "宗教",
+    "battle": "战役",
+    "death": "去世",
+    "birth": "出生",
+    "rebellion": "起义",
+    "coronation": "登基",
+    "marriage": "联姻",
+    "alliance": "同盟",
+    "betrayal": "背叛",
+    "conquest": "征服",
+    "siege": "围城",
+    "assassination": "暗杀",
+    "natural": "天灾"
+  },
+  "noEvents": "没有找到符合条件的事件"
+}

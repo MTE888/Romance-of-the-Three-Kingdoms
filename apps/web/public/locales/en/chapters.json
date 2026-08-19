@@ -1,0 +1,57 @@
+{
+  "title": "Chapters",
+  "pageTitle": "Romance of the Three Kingdoms",
+  "subtitle": "Read all 120 chapters of the classic novel",
+  "chapterNumber": "Chapter {{number}}",
+  "chapterNotFound": "Chapter not found",
+  "progress": {
+    "title": "Reading Progress",
+    "completed": "Completed",
+    "inProgress": "In Progress",
+    "notStarted": "Not Started",
+    "chaptersRead": "{{count}} chapters read",
+    "percentComplete": "{{percent}}% complete",
+    "overallProgress": "Overall Progress"
+  },
+  "bookmarks": {
+    "title": "Bookmarks",
+    "add": "Add Bookmark",
+    "remove": "Remove Bookmark",
+    "noBookmarks": "No bookmarks yet",
+    "bookmarked": "Bookmarked",
+    "recentBookmarks": "Recent Bookmarks",
+    "viewAll": "View All Bookmarks"
+  },
+  "reader": {
+    "previousChapter": "Previous Chapter",
+    "nextChapter": "Next Chapter",
+    "backToChapters": "Back to Chapters",
+    "allChapters": "All Chapters",
+    "markComplete": "Mark Chapter as Complete",
+    "markIncomplete": "Mark as Incomplete",
+    "chapterCompleted": "Chapter Completed",
+    "readingTime": "Reading Time",
+    "estimatedTime": "Estimated: {{time}} min",
+    "scrollToTop": "Scroll to Top"
+  },
+  "stats": {
+    "chaptersCompleted": "Chapters Completed",
+    "totalReadingTime": "Total Reading Time",
+    "averageTime": "Average Time per Chapter",
+    "minutes": "minutes",
+    "hours": "hours"
+  },
+  "milestones": {
+    "firstSteps": "First Steps",
+    "gettingStarted": "Getting Started",
+    "halfway": "Halfway There",
+    "almostDone": "Almost Done",
+    "complete": "Journey Complete"
+  },
+  "source": {
+    "title": "Source Information",
+    "chapterTitle": "Title:",
+    "author": "Author:",
+    "type": "Type:"
+  }
+}

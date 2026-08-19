@@ -1,0 +1,24 @@
+{
+  "header": {
+    "logo": {
+      "chinese": "三国",
+      "english": "Three Kingdoms"
+    },
+    "nav": {
+      "chapters": "Chapters",
+      "characters": "Characters",
+      "events": "Events",
+      "timeline": "Timeline",
+      "relationships": "Relationships",
+      "about": "About"
+    }
+  },
+  "footer": {
+    "title": "Three Kingdoms Platform",
+    "description": "A comprehensive digital platform for exploring the Three Kingdoms period, blending historical records with literary interpretation.",
+    "quickLinks": "Quick Links",
+    "resources": "Resources",
+    "github": "GitHub",
+    "copyright": "© {{year}} Three Kingdoms Digital Platform. All rights reserved."
+  }
+}

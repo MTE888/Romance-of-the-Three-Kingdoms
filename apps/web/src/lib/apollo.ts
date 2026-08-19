@@ -8,7 +8,7 @@ import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 
 // Get GraphQL endpoint from environment
 const graphqlEndpoint =
-  import.meta.env.VITE_GRAPHQL_ENDPOINT || 'http://localhost:4000/graphql';
+  import.meta.env.VITE_GRAPHQL_ENDPOINT || 'http://localhost:4001/graphql';
 
 /**
  * Apollo Client instance
@@ -20,20 +20,21 @@ export const apolloClient = new ApolloClient({
   }),
   cache: new InMemoryCache({
     typePolicies: {
-      // Custom cache policies for pagination
+      // Custom cache policies
       Query: {
         fields: {
           characters: {
-            // Merge function for paginated results
+            // Use filter and sort as cache key args, but replace instead of merge
             keyArgs: ['filter', 'sort'],
-            merge(existing = [], incoming) {
-              return [...existing, ...incoming];
+            // Don't merge - just replace with incoming data
+            merge(existing, incoming) {
+              return incoming;
             },
           },
           events: {
             keyArgs: ['type', 'startYear', 'endYear'],
-            merge(existing = [], incoming) {
-              return [...existing, ...incoming];
+            merge(existing, incoming) {
+              return incoming;
             },
           },
         },
@@ -53,5 +54,7 @@ export const apolloClient = new ApolloClient({
       errorPolicy: 'all',
     },
   },
-  connectToDevTools: import.meta.env.VITE_APP_ENV !== 'production',
+  devtools: {
+    enabled: import.meta.env.VITE_APP_ENV !== 'production',
+  },
 });

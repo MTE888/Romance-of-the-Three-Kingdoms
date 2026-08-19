@@ -1,0 +1,139 @@
+{
+  "actions": {
+    "search": "Search",
+    "filter": "Filter",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "viewAll": "View All",
+    "loadMore": "Load More",
+    "refresh": "Refresh",
+    "retry": "Retry",
+    "submit": "Submit",
+    "reset": "Reset",
+    "clear": "Clear",
+    "select": "Select",
+    "toggle": "Toggle",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "share": "Share",
+    "copy": "Copy",
+    "download": "Download",
+    "browseChapters": "Browse Chapters",
+    "continueReading": "Continue Reading",
+    "viewFullProfile": "View Full Profile",
+    "removeBookmark": "Remove Bookmark",
+    "addBookmark": "Add Bookmark"
+  },
+  "status": {
+    "loading": "Loading...",
+    "saving": "Saving...",
+    "error": "An error occurred",
+    "success": "Success",
+    "empty": "No results found",
+    "noData": "No data available",
+    "notFound": "Not found"
+  },
+  "kingdoms": {
+    "wei": "Wei",
+    "shu": "Shu Han",
+    "wu": "Wu",
+    "han": "Han",
+    "other": "Other"
+  },
+  "sourceTypes": {
+    "historical": "Historical",
+    "literary": "Literary",
+    "primary": "Primary Source",
+    "secondary": "Secondary Source",
+    "tertiary": "Tertiary Source",
+    "fiction": "Fiction"
+  },
+  "time": {
+    "ad": "AD",
+    "bc": "BC",
+    "year": "Year",
+    "years": "Years",
+    "unknown": "Unknown",
+    "minutes": "minutes",
+    "hours": "hours"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "selectLanguage": "Select language"
+  },
+  "pagination": {
+    "page": "Page",
+    "of": "of",
+    "showing": "Showing",
+    "to": "to",
+    "results": "results"
+  },
+  "reading": {
+    "startJourney": "Start Your Journey",
+    "startJourneyDesc": "Begin reading Romance of the Three Kingdoms. Track your progress through all 120 chapters.",
+    "yourProgress": "Your Reading Progress",
+    "chaptersCompleted": "Chapters Completed",
+    "chaptersRead": "Chapters Read",
+    "chaptersRemaining": "Chapters Remaining",
+    "readingTime": "Reading Time",
+    "avgPerChapter": "Avg. per Chapter",
+    "milestones": "Milestones",
+    "moreBookmarks": "And {{count}} more bookmark(s)...",
+    "totalBookmarks": "Total: {{count}} bookmark(s)",
+    "noBookmarksYet": "No bookmarks yet",
+    "bookmarkHint": "Bookmark your favorite chapters for quick access"
+  },
+  "milestones": {
+    "firstSteps": "First Steps",
+    "firstStepsDesc": "Read your first chapter",
+    "gettingStarted": "Getting Started",
+    "gettingStartedDesc": "Read 10 chapters",
+    "makingProgress": "Making Progress",
+    "makingProgressDesc": "Read 30 chapters",
+    "halfway": "Halfway There",
+    "halfwayDesc": "Read 60 chapters",
+    "almostDone": "Almost Done",
+    "almostDoneDesc": "Read 100 chapters",
+    "journeyComplete": "Journey Complete",
+    "journeyCompleteDesc": "Read all 120 chapters"
+  },
+  "about": {
+    "title": "About This Edition",
+    "description1": "Romance of the Three Kingdoms (三国演义) is one of the Four Great Classical Novels of Chinese literature.",
+    "description2": "Written by Luo Guanzhong during the Ming Dynasty (14th century), it chronicles the turbulent Three Kingdoms period (169-280 AD).",
+    "description3": "This platform presents the complete 120 chapters, allowing you to explore both the literary narrative and the historical context behind the stories."
+  },
+  "pages": {
+    "about": {
+      "title": "About Three Kingdoms Platform",
+      "intro": "The Three Kingdoms Digital Platform is a comprehensive web application for exploring the Three Kingdoms period (169-280 AD) of Chinese history.",
+      "multiSourceTitle": "Multi-Source Truth System",
+      "multiSourceIntro": "Our platform uniquely presents information from multiple sources, explicitly distinguishing between:",
+      "source1": "Historical records (三国志 - Records of the Three Kingdoms)",
+      "source2": "Literary interpretation (三国演义 - Romance of the Three Kingdoms)",
+      "source3": "Modern scholarly analysis",
+      "attribution": "Every fact is attributed to its source with clear reliability indicators, allowing you to understand the difference between historical fact and literary dramatization.",
+      "technologyTitle": "Technology",
+      "technology": "Built with modern web technologies including React, GraphQL, and PostgreSQL, hosted on Microsoft Azure."
+    },
+    "events": {
+      "title": "Events",
+      "comingSoon": "Events page coming soon..."
+    },
+    "notFound": {
+      "title": "404",
+      "message": "Page not found",
+      "returnHome": "Return Home"
+    }
+  }
+}

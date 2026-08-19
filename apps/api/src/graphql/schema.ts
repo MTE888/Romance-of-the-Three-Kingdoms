@@ -96,8 +96,8 @@ export const typeDefs = `#graphql
   type Source {
     id: ID!
     type: SourceType!
-    title: String!
-    author: String
+    title: JSON!
+    author: JSON
     era: String
     language: String!
     reliability: ReliabilityTier!

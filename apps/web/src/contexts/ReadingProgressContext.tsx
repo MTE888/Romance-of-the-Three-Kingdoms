@@ -6,7 +6,7 @@
  * Can be migrated to database storage when user auth is implemented.
  */
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo, ReactNode } from 'react';
 
 interface ChapterProgress {
   completed: boolean;
@@ -71,7 +71,7 @@ export const ReadingProgressProvider: React.FC<{ children: ReactNode }> = ({ chi
     }
   }, [progress]);
 
-  const markChapterAsRead = (chapterNumber: number) => {
+  const markChapterAsRead = useCallback((chapterNumber: number) => {
     setProgress((prev) => ({
       ...prev,
       chapters: {
@@ -84,24 +84,31 @@ export const ReadingProgressProvider: React.FC<{ children: ReactNode }> = ({ chi
       },
       lastActivity: Date.now(),
     }));
-  };
+  }, []);
 
-  const markChapterAsInProgress = (chapterNumber: number) => {
-    setProgress((prev) => ({
-      ...prev,
-      chapters: {
-        ...prev.chapters,
-        [chapterNumber]: {
-          ...(prev.chapters[chapterNumber] || { timeSpent: 0, scrollPosition: 0 }),
-          completed: false,
-          lastRead: Date.now(),
+  const markChapterAsInProgress = useCallback((chapterNumber: number) => {
+    setProgress((prev) => {
+      // Skip update if already in progress to avoid unnecessary re-renders
+      const existing = prev.chapters[chapterNumber];
+      if (existing && !existing.completed) {
+        return prev;
+      }
+      return {
+        ...prev,
+        chapters: {
+          ...prev.chapters,
+          [chapterNumber]: {
+            ...(existing || { timeSpent: 0, scrollPosition: 0 }),
+            completed: false,
+            lastRead: Date.now(),
+          },
         },
-      },
-      lastActivity: Date.now(),
-    }));
-  };
+        lastActivity: Date.now(),
+      };
+    });
+  }, []);
 
-  const updateScrollPosition = (chapterNumber: number, position: number) => {
+  const updateScrollPosition = useCallback((chapterNumber: number, position: number) => {
     setProgress((prev) => ({
       ...prev,
       chapters: {
@@ -113,9 +120,9 @@ export const ReadingProgressProvider: React.FC<{ children: ReactNode }> = ({ chi
       },
       lastActivity: Date.now(),
     }));
-  };
+  }, []);
 
-  const addReadingTime = (chapterNumber: number, seconds: number) => {
+  const addReadingTime = useCallback((chapterNumber: number, seconds: number) => {
     setProgress((prev) => ({
       ...prev,
       chapters: {
@@ -128,38 +135,44 @@ export const ReadingProgressProvider: React.FC<{ children: ReactNode }> = ({ chi
       totalTimeSpent: prev.totalTimeSpent + seconds,
       lastActivity: Date.now(),
     }));
-  };
+  }, []);
 
-  const setCurrentChapter = (chapterNumber: number | null) => {
-    setProgress((prev) => ({
-      ...prev,
-      currentChapter: chapterNumber,
-      lastActivity: Date.now(),
-    }));
-  };
+  const setCurrentChapter = useCallback((chapterNumber: number | null) => {
+    setProgress((prev) => {
+      // Skip update if same chapter to avoid unnecessary re-renders
+      if (prev.currentChapter === chapterNumber) {
+        return prev;
+      }
+      return {
+        ...prev,
+        currentChapter: chapterNumber,
+        lastActivity: Date.now(),
+      };
+    });
+  }, []);
 
-  const getChapterProgress = (chapterNumber: number): ChapterProgress | undefined => {
+  const getChapterProgress = useCallback((chapterNumber: number): ChapterProgress | undefined => {
     return progress.chapters[chapterNumber];
-  };
+  }, [progress.chapters]);
 
-  const getReadChaptersCount = (): number => {
+  const getReadChaptersCount = useCallback((): number => {
     return Object.values(progress.chapters).filter((ch) => ch.completed).length;
-  };
+  }, [progress.chapters]);
 
-  const getTotalChapters = (): number => {
+  const getTotalChapters = useCallback((): number => {
     return TOTAL_CHAPTERS;
-  };
+  }, []);
 
-  const getProgressPercentage = (): number => {
-    const readCount = getReadChaptersCount();
+  const getProgressPercentage = useCallback((): number => {
+    const readCount = Object.values(progress.chapters).filter((ch) => ch.completed).length;
     return Math.round((readCount / TOTAL_CHAPTERS) * 100);
-  };
+  }, [progress.chapters]);
 
-  const resetProgress = () => {
+  const resetProgress = useCallback(() => {
     setProgress(defaultProgress);
-  };
+  }, []);
 
-  const value: ReadingProgressContextType = {
+  const value: ReadingProgressContextType = useMemo(() => ({
     progress,
     markChapterAsRead,
     markChapterAsInProgress,
@@ -171,7 +184,19 @@ export const ReadingProgressProvider: React.FC<{ children: ReactNode }> = ({ chi
     getTotalChapters,
     getProgressPercentage,
     resetProgress,
-  };
+  }), [
+    progress,
+    markChapterAsRead,
+    markChapterAsInProgress,
+    updateScrollPosition,
+    addReadingTime,
+    setCurrentChapter,
+    getChapterProgress,
+    getReadChaptersCount,
+    getTotalChapters,
+    getProgressPercentage,
+    resetProgress,
+  ]);
 
   return (
     <ReadingProgressContext.Provider value={value}>

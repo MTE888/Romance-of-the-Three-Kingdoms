@@ -1,0 +1,24 @@
+{
+  "header": {
+    "logo": {
+      "chinese": "三国",
+      "english": "Three Kingdoms"
+    },
+    "nav": {
+      "chapters": "章节",
+      "characters": "人物",
+      "events": "事件",
+      "timeline": "时间线",
+      "relationships": "关系图",
+      "about": "关于"
+    }
+  },
+  "footer": {
+    "title": "三国演义平台",
+    "description": "一个综合性的数字平台，用于探索三国时期，将历史记载与文学诠释相结合。",
+    "quickLinks": "快速链接",
+    "resources": "资源",
+    "github": "GitHub",
+    "copyright": "© {{year}} 三国数字平台。保留所有权利。"
+  }
+}

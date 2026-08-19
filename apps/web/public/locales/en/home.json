@@ -1,0 +1,38 @@
+{
+  "hero": {
+    "titleChinese": "三国演义",
+    "titleEnglish": "Romance of the Three Kingdoms",
+    "description": "Explore the rich history and captivating literature of the Three Kingdoms period (169-280 AD). Discover characters, events, and timelines from both historical records and literary interpretation."
+  },
+  "features": {
+    "characters": {
+      "title": "Characters",
+      "titleChinese": "人物",
+      "description": "Browse detailed profiles of historical and literary characters from the Three Kingdoms era."
+    },
+    "events": {
+      "title": "Events",
+      "titleChinese": "事件",
+      "description": "Explore major battles, political events, and personal moments that shaped history."
+    },
+    "timeline": {
+      "title": "Timeline",
+      "titleChinese": "时间线",
+      "description": "Follow the chronological journey through over a century of Three Kingdoms history."
+    }
+  },
+  "multiSource": {
+    "title": "Multi-Source Truth System",
+    "historical": {
+      "title": "Historical Records",
+      "titleChinese": "三国志",
+      "description": "Based on the Records of the Three Kingdoms compiled by Chen Shou in the 3rd century - the authoritative historical account."
+    },
+    "literary": {
+      "title": "Literary Interpretation",
+      "titleChinese": "三国演义",
+      "description": "Based on the Romance of the Three Kingdoms by Luo Guanzhong - one of China's Four Great Classical Novels with literary dramatization."
+    },
+    "note": "Every character and event presents both perspectives side-by-side, helping you distinguish fact from fiction."
+  }
+}

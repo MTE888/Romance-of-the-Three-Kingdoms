@@ -19,6 +19,7 @@
     "@apollo/server": "^4.9.0",
     "@fastify/cors": "^8.4.0",
     "@prisma/client": "^5.7.0",
+    "dotenv": "^16.3.1",
     "fastify": "^4.25.0",
     "graphql": "^16.8.0",
     "graphql-scalars": "^1.22.0"
